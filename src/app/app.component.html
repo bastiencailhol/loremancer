@@ -28,16 +28,15 @@
     Générer
   </button>
   <div>
-    <ng-container
-      *ngTemplateOutlet="
-        randomizedAttribute;
-        context: { name: 'Chapeau', value: selectedHat }
-      "
-    ></ng-container>
+    <div *ngFor="let category of categories" class="mb-5">
+      <ng-container
+        *ngTemplateOutlet="randomizedAttribute; context: { category: category }"
+      ></ng-container>
+    </div>
   </div>
 </div>
 
-<ng-template #randomizedAttribute let-name="name" let-value="value">
-  <h5>{{ name }}</h5>
-  <p>{{ value }}</p>
+<ng-template #randomizedAttribute let-category="category">
+  <h5>{{ category.name }}</h5>
+  <p>{{ category.selected }}</p>
 </ng-template>

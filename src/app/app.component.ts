@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core'
 import * as _ from 'lodash'
+import { ageAttributes } from 'src/assets/attributes/age'
+import { genderAttributes } from 'src/assets/attributes/gender'
 
 import { hatAttributes } from 'src/assets/attributes/hats'
+import { raceAttributes } from 'src/assets/attributes/races'
 
 @Component({
   selector: 'app-root',
@@ -9,12 +12,30 @@ import { hatAttributes } from 'src/assets/attributes/hats'
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  hatAttributes: string[] = hatAttributes
-  selectedHat = ''
+  categories: any = [
+    {
+      name: 'Chapeau',
+      attributes: hatAttributes,
+    },
+    {
+      name: 'Genre',
+      attributes: genderAttributes,
+    },
+    {
+      name: 'Âge',
+      attributes: ageAttributes,
+    },
+    {
+      name: 'Race',
+      attributes: raceAttributes,
+    },
+  ]
   constructor() {}
   ngOnInit() {}
 
   rollAllAttributes() {
-    this.selectedHat = _.sample(this.hatAttributes)!
+    this.categories.forEach((cat: any) => {
+      cat.selected = _.sample(cat.attributes)
+    })
   }
 }
