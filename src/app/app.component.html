@@ -5,6 +5,39 @@
     <p>You'll never have the blank page again</p>
   </div>
 </div>
-<div class="container mx-auto">
-  <button>Générer</button>
+<div class="container mx-auto py-5">
+  <button
+    type="button"
+    (click)="rollAllAttributes()"
+    class="
+      py-2
+      px-4
+      bg-indigo-600
+      hover:bg-indigo-700
+      text-white
+      w-full
+      transition
+      ease-in
+      duration-200
+      text-center text-base
+      font-semibold
+      shadow-md
+      rounded-lg
+    "
+  >
+    Générer
+  </button>
+  <div>
+    <ng-container
+      *ngTemplateOutlet="
+        randomizedAttribute;
+        context: { name: 'Chapeau', value: selectedHat }
+      "
+    ></ng-container>
+  </div>
 </div>
+
+<ng-template #randomizedAttribute let-name="name" let-value="value">
+  <h5>{{ name }}</h5>
+  <p>{{ value }}</p>
+</ng-template>
