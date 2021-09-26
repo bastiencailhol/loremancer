@@ -34,12 +34,20 @@ export class AppComponent implements OnInit {
   ngOnInit() {}
 
   rollAllAttributes() {
-    this.categories.forEach((cat: any) => {
-      cat.selected = _.sample(cat.attributes)
+    this.categories.forEach((category: any) => {
+      category.selected = _.sample(
+        category.attributes.filter(
+          (attribute) => attribute !== category.selected,
+        ),
+      )
     })
   }
 
   rollAttributes(category) {
-    category.selected = _.sample(category.attributes)
+    category.selected = _.sample(
+      category.attributes.filter(
+        (attribute) => attribute !== category.selected,
+      ),
+    )
   }
 }
