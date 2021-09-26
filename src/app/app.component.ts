@@ -38,4 +38,8 @@ export class AppComponent implements OnInit {
       cat.selected = _.sample(cat.attributes)
     })
   }
+
+  rollAttributes(category) {
+    category.selected = _.sample(category.attributes)
+  }
 }
