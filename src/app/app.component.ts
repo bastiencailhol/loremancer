@@ -34,13 +34,15 @@ export class AppComponent implements OnInit {
   ngOnInit() {}
 
   rollAllAttributes() {
-    this.categories.forEach((category: any) => {
-      category.selected = _.sample(
-        category.attributes.filter(
-          (attribute) => attribute !== category.selected,
-        ),
-      )
-    })
+    this.categories
+      .filter((category) => !category.locked)
+      .forEach((category) => {
+        category.selected = _.sample(
+          category.attributes.filter(
+            (attribute) => attribute !== category.selected,
+          ),
+        )
+      })
   }
 
   rollAttributes(category) {
@@ -49,5 +51,9 @@ export class AppComponent implements OnInit {
         (attribute) => attribute !== category.selected,
       ),
     )
+  }
+
+  toggleCategoryLock(category) {
+    category.locked = !category.locked
   }
 }

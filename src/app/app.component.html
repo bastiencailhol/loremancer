@@ -12,6 +12,7 @@
     class="
       py-2
       px-4
+      mb-5
       bg-indigo-600
       hover:bg-indigo-700
       text-white
@@ -78,6 +79,60 @@
           d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
         />
       </svg>
+    </button>
+    <button
+      type="button"
+      class="
+        flex
+        justify-center
+        items-center
+        bg-blue-600
+        hover:bg-blue-700
+        focus:ring-blue-500 focus:ring-offset-blue-200
+        text-white
+        transition
+        ease-in
+        duration-200
+        text-center text-base
+        font-semibold
+        shadow-md
+        w-10
+        h-10
+        rounded-lg
+      "
+      (click)="toggleCategoryLock(category)"
+    >
+      <svg
+        *ngIf="!category.locked; else unlockIcon"
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-5 w-5"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke="currentColor"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+        />
+      </svg>
+      <ng-template #unlockIcon>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-5 w-5"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
+          />
+        </svg>
+      </ng-template>
     </button>
   </div>
 </ng-template>
