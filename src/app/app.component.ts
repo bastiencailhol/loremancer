@@ -12,7 +12,6 @@ import {
 import {
   backgroundAttributes,
   frameAttributes,
-  gestureAttributes,
   paletteAttributes,
   periodAttributes,
 } from 'src/assets/attributes/framing'
@@ -103,10 +102,6 @@ export class AppComponent implements OnInit {
     {
       name: 'Cadre',
       attributes: frameAttributes,
-    },
-    {
-      name: 'Posture',
-      attributes: gestureAttributes,
     },
     {
       name: 'Palette',

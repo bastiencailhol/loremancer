@@ -11,7 +11,43 @@ export const raceAttributes: string[] = [
   'Vampire',
   'Démon',
 ]
-export const appearanceAttributes: string[] = []
-export const hairAttributes: string[] = []
-export const keyFeatureAttributes: string[] = []
-export const personnalityAttributes: string[] = []
+export const appearanceAttributes: string[] = [
+  'Grand maigre',
+  'Colosse',
+  'Nain',
+  'Bossu',
+  'Musclé',
+  'Maigre',
+  'Body buildé',
+  'Fit',
+]
+export const hairAttributes: string[] = [
+  'Poilu',
+  'Chauve',
+  'Barbu',
+  'Cheveux longs',
+  'Cheveux très longs',
+  'Calvicie',
+  'Moustache',
+  'Moustache guidon',
+  'Gros sourcils',
+]
+export const keyFeatureAttributes: string[] = [
+  'Grosses dents',
+  'Dent manquante',
+  'Gros yeux',
+  'Grosse lèvres',
+  'Menton carré',
+  'Pas de cou',
+  'Manchot',
+  'Œil crevé',
+  'Gros nez',
+]
+export const personnalityAttributes: string[] = [
+  'Timide',
+  'Fier',
+  'Intello',
+  'Colérique',
+  'Triste',
+  'Appeuré',
+]
