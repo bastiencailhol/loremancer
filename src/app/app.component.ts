@@ -33,6 +33,14 @@ import {
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
+/*
+TODO :
+- Migrer les categories dans un fichier de définition
+- Compléter les listes
+- Renseigner liestes manquantes
+- Ajouter des icônes pour chaque catégorie
+- Séparer Cheveux & pilosité ?
+ */
 export class AppComponent implements OnInit {
   categories: any = [
     {
