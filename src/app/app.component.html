@@ -53,16 +53,14 @@
           flex
           justify-center
           items-center
-          bg-blue-600
-          hover:bg-blue-700
-          focus:ring-blue-500 focus:ring-offset-blue-200
-          text-white
+          bg-gray-200
+          hover:bg-gray-300
+          text-gray-600
           transition
           ease-in
           duration-200
           text-center text-base
           font-semibold
-          shadow-md
           w-7
           h-7
           rounded-lg
@@ -87,20 +85,20 @@
       </button>
       <button
         type="button"
+        [ngClass]="
+          category.locked
+            ? 'bg-gray-600 hover:bg-gray-700 text-white'
+            : 'bg-gray-200 hover:bg-gray-300 text-gray-600'
+        "
         class="
           flex
           justify-center
           items-center
-          bg-blue-600
-          hover:bg-blue-700
-          focus:ring-blue-500 focus:ring-offset-blue-200
-          text-white
           transition
           ease-in
           duration-200
           text-center text-base
           font-semibold
-          shadow-md
           w-7
           h-7
           rounded-lg
@@ -108,7 +106,7 @@
         (click)="toggleCategoryLock(category)"
       >
         <svg
-          *ngIf="!category.locked; else unlockIcon"
+          *ngIf="category.locked; else unlockIcon"
           xmlns="http://www.w3.org/2000/svg"
           class="h-5 w-5"
           fill="none"
