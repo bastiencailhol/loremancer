@@ -1,10 +1,33 @@
 import { Component, OnInit } from '@angular/core'
 import * as _ from 'lodash'
-import { ageAttributes } from 'src/assets/attributes/age'
-import { genderAttributes } from 'src/assets/attributes/gender'
+import {
+  ageAttributes,
+  appearanceAttributes,
+  genderAttributes,
+  hairAttributes,
+  keyFeatureAttributes,
+  personnalityAttributes,
+  raceAttributes,
+} from 'src/assets/attributes/being'
+import {
+  backgroundAttributes,
+  frameAttributes,
+  gestureAttributes,
+  paletteAttributes,
+  periodAttributes,
+} from 'src/assets/attributes/framing'
 
-import { hatAttributes } from 'src/assets/attributes/hats'
-import { raceAttributes } from 'src/assets/attributes/races'
+import {
+  backAttributes,
+  beltAttributes,
+  bottomAttributes,
+  feetAttributes,
+  handAttributes,
+  headAttributes,
+  jewelsAttributes,
+  petAttributes,
+  topAttributes,
+} from 'src/assets/attributes/props'
 
 @Component({
   selector: 'app-root',
@@ -14,8 +37,40 @@ import { raceAttributes } from 'src/assets/attributes/races'
 export class AppComponent implements OnInit {
   categories: any = [
     {
-      name: 'Chapeau',
-      attributes: hatAttributes,
+      name: 'Tête',
+      attributes: headAttributes,
+    },
+    {
+      name: 'Main',
+      attributes: handAttributes,
+    },
+    {
+      name: 'Haut',
+      attributes: topAttributes,
+    },
+    {
+      name: 'Bas',
+      attributes: bottomAttributes,
+    },
+    {
+      name: 'Pieds',
+      attributes: feetAttributes,
+    },
+    {
+      name: 'Dos',
+      attributes: backAttributes,
+    },
+    {
+      name: 'Ceinture',
+      attributes: beltAttributes,
+    },
+    {
+      name: 'Bijoux',
+      attributes: jewelsAttributes,
+    },
+    {
+      name: 'Familier',
+      attributes: petAttributes,
     },
     {
       name: 'Genre',
@@ -29,7 +84,44 @@ export class AppComponent implements OnInit {
       name: 'Race',
       attributes: raceAttributes,
     },
+    {
+      name: 'Apparence',
+      attributes: appearanceAttributes,
+    },
+    {
+      name: 'Coiffure',
+      attributes: hairAttributes,
+    },
+    {
+      name: 'Particularité',
+      attributes: keyFeatureAttributes,
+    },
+    {
+      name: 'Personnalité',
+      attributes: personnalityAttributes,
+    },
+    {
+      name: 'Cadre',
+      attributes: frameAttributes,
+    },
+    {
+      name: 'Posture',
+      attributes: gestureAttributes,
+    },
+    {
+      name: 'Palette',
+      attributes: paletteAttributes,
+    },
+    {
+      name: 'Décors',
+      attributes: backgroundAttributes,
+    },
+    {
+      name: 'Période',
+      attributes: periodAttributes,
+    },
   ]
+
   constructor() {}
   ngOnInit() {}
 
