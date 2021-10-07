@@ -133,11 +133,13 @@ export class AppComponent implements OnInit {
   }
 
   rollAttributes(category) {
-    category.selected = _.sample(
-      category.attributes.filter(
-        (attribute) => attribute !== category.selected,
-      ),
-    )
+    if (!category.locked) {
+      category.selected = _.sample(
+        category.attributes.filter(
+          (attribute) => attribute !== category.selected,
+        ),
+      )
+    }
   }
 
   toggleCategoryLock(category) {
