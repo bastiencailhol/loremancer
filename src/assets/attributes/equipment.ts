@@ -1,0 +1,98 @@
+export const equipments = [
+  {
+    name: 'Tête',
+    attributes: [
+      'Chapeau',
+      'Casquette',
+      'Berêt',
+      'Casque',
+      'Couronne',
+      'Bandana',
+      '',
+    ],
+  },
+  {
+    name: 'Mains',
+    attributes: ['Gants en cuir', 'Bracelets', 'Mains nues', 'Gantelets'],
+  },
+  {
+    name: 'Arme',
+    attributes: [
+      'Épée longue',
+      'Épée courte',
+      'Dague',
+      'Sabre',
+      'Cane',
+      'Baton',
+      'Lance',
+      'Baguette/Baton magique',
+      'Griffes',
+      'Grimoire',
+      'Fléau',
+      'Bourse',
+      'Arc et flèches',
+    ],
+  },
+  {
+    name: 'Corps',
+    attributes: [
+      'Plastron',
+      'Grigandine',
+      'Veste',
+      'Torse nu',
+      'Haillons',
+      'Chemise',
+      'Costard',
+      'Robe',
+      'Manteau',
+    ],
+  },
+  {
+    name: 'Dos',
+    attributes: [
+      'Cape',
+      'Capuche',
+      'Écharpe',
+      'Sac à dos',
+      'Sac de voyage',
+      'Sac à main',
+      'Fourrure',
+      'Bouclier',
+    ],
+  },
+  {
+    name: 'Ceinture',
+    attributes: ['Fourreau', 'Ceinturon', 'Plusieurs ceintures', 'Corde'],
+  },
+  {
+    name: 'Jambes',
+    attributes: [
+      'Jupe',
+      'Pantalon droit',
+      'Baggy',
+      'Collants',
+      'Jogging',
+      'Short',
+      'Slip',
+    ],
+  },
+  {
+    name: 'Pieds',
+    attributes: ['Bottes', 'Chaussures', 'Talons', 'Pieds nus'],
+  },
+  {
+    name: 'Acessoires',
+    attributes: ['Fioles', 'Bourse', 'Masque', "Arme d'apparât"],
+  },
+  {
+    name: 'Bijoux',
+    attributes: [
+      'Bagues',
+      'Pendentif',
+      'Chaîne',
+      'Tiare',
+      'Piercings',
+      'Montre à gousset',
+    ],
+  },
+]

@@ -1,33 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import * as _ from 'lodash'
-import {
-  ageAttributes,
-  appearanceAttributes,
-  genderAttributes,
-  hairAttributes,
-  keyFeatureAttributes,
-  personnalityAttributes,
-  raceAttributes,
-} from 'src/assets/attributes/being'
-import {
-  backgroundAttributes,
-  frameAttributes,
-  paletteAttributes,
-  periodAttributes,
-} from 'src/assets/attributes/framing'
-
-import {
-  backAttributes,
-  beltAttributes,
-  bottomAttributes,
-  feetAttributes,
-  handAttributes,
-  headAttributes,
-  jewelsAttributes,
-  petAttributes,
-  topAttributes,
-} from 'src/assets/attributes/props'
-
+import { physicalTraits } from 'src/assets/attributes/physicaltraits'
+import { roles } from 'src/assets/attributes/role'
+import { coreTraits } from 'src/assets/attributes/coretraits'
+import { equipments } from 'src/assets/attributes/equipment'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,91 +13,27 @@ import {
 TODO :
 - Migrer les categories dans un fichier de définition
 - Compléter les listes
-- Renseigner liestes manquantes
+- Renseigner listes manquantes
 - Ajouter des icônes pour chaque catégorie
 - Séparer Cheveux & pilosité ?
  */
 export class AppComponent implements OnInit {
-  categories: any = [
+  categories: any[] = [
     {
-      name: 'Tête',
-      attributes: headAttributes,
+      name: 'Caractéristiques',
+      traits: coreTraits,
     },
     {
-      name: 'Main',
-      attributes: handAttributes,
+      name: 'Rôle',
+      traits: roles,
     },
     {
-      name: 'Haut',
-      attributes: topAttributes,
+      name: 'Attributs physiques',
+      traits: physicalTraits,
     },
     {
-      name: 'Bas',
-      attributes: bottomAttributes,
-    },
-    {
-      name: 'Pieds',
-      attributes: feetAttributes,
-    },
-    {
-      name: 'Dos',
-      attributes: backAttributes,
-    },
-    {
-      name: 'Ceinture',
-      attributes: beltAttributes,
-    },
-    {
-      name: 'Bijoux',
-      attributes: jewelsAttributes,
-    },
-    {
-      name: 'Familier',
-      attributes: petAttributes,
-    },
-    {
-      name: 'Genre',
-      attributes: genderAttributes,
-    },
-    {
-      name: 'Âge',
-      attributes: ageAttributes,
-    },
-    {
-      name: 'Race',
-      attributes: raceAttributes,
-    },
-    {
-      name: 'Apparence',
-      attributes: appearanceAttributes,
-    },
-    {
-      name: 'Coiffure',
-      attributes: hairAttributes,
-    },
-    {
-      name: 'Particularité',
-      attributes: keyFeatureAttributes,
-    },
-    {
-      name: 'Personnalité',
-      attributes: personnalityAttributes,
-    },
-    {
-      name: 'Cadre',
-      attributes: frameAttributes,
-    },
-    {
-      name: 'Palette',
-      attributes: paletteAttributes,
-    },
-    {
-      name: 'Décors',
-      attributes: backgroundAttributes,
-    },
-    {
-      name: 'Période',
-      attributes: periodAttributes,
+      name: 'Équipements',
+      traits: equipments,
     },
   ]
 
@@ -129,28 +41,28 @@ export class AppComponent implements OnInit {
   ngOnInit() {}
 
   rollAllAttributes() {
-    this.categories
-      .filter((category) => !category.locked)
-      .forEach((category) => {
-        category.selected = _.sample(
-          category.attributes.filter(
-            (attribute) => attribute !== category.selected,
-          ),
-        )
-      })
+    this.categories.forEach((category) => {
+      category.traits
+        .filter((trait) => !trait.locked)
+        .forEach((trait) => {
+          trait.selected = _.sample(
+            trait.attributes.filter(
+              (attribute) => attribute !== trait.selected,
+            ),
+          )
+        })
+    })
   }
 
-  rollAttributes(category) {
-    if (!category.locked) {
-      category.selected = _.sample(
-        category.attributes.filter(
-          (attribute) => attribute !== category.selected,
-        ),
+  rollAttributes(trait) {
+    if (!trait.locked) {
+      trait.selected = _.sample(
+        trait.attributes.filter((attribute) => attribute !== trait.selected),
       )
     }
   }
 
-  toggleCategoryLock(category) {
-    category.locked = !category.locked
+  toggleTraitLock(trait) {
+    trait.locked = !trait.locked
   }
 }
