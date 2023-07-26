@@ -95,4 +95,22 @@ export const equipments = [
       'Montre à gousset',
     ],
   },
+  {
+    name: 'Familier',
+    attributes: [
+      'Nuée de rats',
+      'Araignée géante',
+      'Chien',
+      'Loup',
+      'Félin',
+      'Cheval',
+      'Zombie',
+      'Lézard',
+      'Gobelin',
+      'Chat',
+      'Serpent',
+      'Élémentaire',
+      'Mini-dragon',
+    ],
+  },
 ]

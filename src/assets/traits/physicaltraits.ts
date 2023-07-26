@@ -1,5 +1,13 @@
 export const physicalTraits = [
   {
+    name: 'Genre',
+    attributes: ['Mâle', 'Femelle', 'Queer'],
+  },
+  {
+    name: 'Âge',
+    attributes: ['Enfant', 'Jeune', 'Adulte', 'Mûr', 'Vieux'],
+  },
+  {
     name: 'Morphologie',
     attributes: [
       'Grand maigre',

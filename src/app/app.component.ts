@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import * as _ from 'lodash'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
-import { roles } from 'src/assets/traits/role'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
 @Component({
@@ -24,18 +23,29 @@ export class AppComponent implements OnInit {
       traits: coreTraits,
     },
     {
-      name: 'Rôle',
-      traits: roles,
+      name: 'Équipements',
+      traits: equipments,
     },
     {
       name: 'Attributs physiques',
       traits: physicalTraits,
     },
-    {
-      name: 'Équipements',
-      traits: equipments,
-    },
   ]
+  coreTraitsCategory = {
+    name: 'Caractéristiques',
+    traits: coreTraits,
+    locked: false,
+  }
+  equipmentsCategory = {
+    name: 'Équipements',
+    traits: equipments,
+    locked: false,
+  }
+  physicalTraitsCategory = {
+    name: 'Attributs physiques',
+    traits: physicalTraits,
+    locked: false,
+  }
 
   constructor() {}
   ngOnInit() {}

@@ -1,6 +1,6 @@
-<div class="bg-gray-300 py-8">
+<div class="bg-gray-300 py-6">
   <div class="container mx-auto px-4">
-    <h1 class="mb-6">Fantasy Character Design Ideator</h1>
+    <h1 class="mb-3">Fantasy Character Design Ideator</h1>
 
     <p>You'll never have the blank page again</p>
   </div>
@@ -29,18 +29,54 @@
     Générer
   </button>
   <div class="grid grid-cols-2 gap-6">
-    <div *ngFor="let category of categories" class="relative mb-6">
-      <h3 class="mb-4">{{ category.name }}</h3>
+    <div>
+      <div class="relative mb-6">
+        <h3 class="mb-4">Caractéristiques</h3>
+        <div class="absolute top-0 right-2 flex">
+          <app-reroll-button
+            (onClick)="rollCategoryTraits(coreTraitsCategory)"
+          ></app-reroll-button>
+          <app-lock-button
+            (onClick)="toggleCategoryLock(coreTraitsCategory)"
+            [isLocked]="coreTraitsCategory.locked"
+          ></app-lock-button>
+        </div>
+        <div *ngFor="let trait of coreTraitsCategory.traits" class="mb-3">
+          <ng-container
+            *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+          ></ng-container>
+        </div>
+      </div>
+      <div class="relative mb-6">
+        <h3 class="mb-4">Attributs physiques</h3>
+        <div class="absolute top-0 right-2 flex">
+          <app-reroll-button
+            (onClick)="rollCategoryTraits(physicalTraitsCategory)"
+          ></app-reroll-button>
+          <app-lock-button
+            (onClick)="toggleCategoryLock(physicalTraitsCategory)"
+            [isLocked]="physicalTraitsCategory.locked"
+          ></app-lock-button>
+        </div>
+        <div *ngFor="let trait of physicalTraitsCategory.traits" class="mb-3">
+          <ng-container
+            *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+          ></ng-container>
+        </div>
+      </div>
+    </div>
+    <div class="relative mb-6">
+      <h3 class="mb-4">Équipements</h3>
       <div class="absolute top-0 right-2 flex">
         <app-reroll-button
-          (onClick)="rollCategoryTraits(category)"
+          (onClick)="rollCategoryTraits(equipmentsCategory)"
         ></app-reroll-button>
         <app-lock-button
-          (onClick)="toggleCategoryLock(category)"
-          [isLocked]="category.locked"
+          (onClick)="toggleCategoryLock(equipmentsCategory)"
+          [isLocked]="equipmentsCategory.locked"
         ></app-lock-button>
       </div>
-      <div *ngFor="let trait of category.traits" class="mb-3">
+      <div *ngFor="let trait of equipmentsCategory.traits" class="mb-3">
         <ng-container
           *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
         ></ng-container>
