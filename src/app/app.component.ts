@@ -17,20 +17,6 @@ TODO :
 - Séparer Cheveux & pilosité ?
  */
 export class AppComponent implements OnInit {
-  categories: any[] = [
-    {
-      name: 'Caractéristiques',
-      traits: coreTraits,
-    },
-    {
-      name: 'Équipements',
-      traits: equipments,
-    },
-    {
-      name: 'Attributs physiques',
-      traits: physicalTraits,
-    },
-  ]
   coreTraitsCategory = {
     name: 'Caractéristiques',
     traits: coreTraits,
@@ -47,6 +33,11 @@ export class AppComponent implements OnInit {
     locked: false,
   }
 
+  categories: any[] = [
+    this.coreTraitsCategory,
+    this.equipmentsCategory,
+    this.physicalTraitsCategory,
+  ]
   constructor() {}
   ngOnInit() {}
 
