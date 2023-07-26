@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core'
 import * as _ from 'lodash'
-import { physicalTraits } from 'src/assets/attributes/physicaltraits'
-import { roles } from 'src/assets/attributes/role'
-import { coreTraits } from 'src/assets/attributes/coretraits'
-import { equipments } from 'src/assets/attributes/equipment'
+import { physicalTraits } from 'src/assets/traits/physicaltraits'
+import { roles } from 'src/assets/traits/role'
+import { coreTraits } from 'src/assets/traits/coretraits'
+import { equipments } from 'src/assets/traits/equipment'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -40,26 +40,26 @@ export class AppComponent implements OnInit {
   constructor() {}
   ngOnInit() {}
 
-  rollAllAttributes() {
+  rollAllTraits() {
     this.categories.forEach((category) => {
-      category.traits
-        .filter((trait) => !trait.locked)
-        .forEach((trait) => {
-          trait.selected = _.sample(
-            trait.attributes.filter(
-              (attribute) => attribute !== trait.selected,
-            ),
-          )
-        })
+      if (!category.locked) {
+        this.rollCategoryTraits(category)
+      }
     })
   }
 
-  rollAttributes(trait) {
-    if (!trait.locked) {
-      trait.selected = _.sample(
-        trait.attributes.filter((attribute) => attribute !== trait.selected),
-      )
-    }
+  rollCategoryTraits(category) {
+    category.traits.forEach((trait) => {
+      if (!trait.locked) {
+        this.rollTrait(trait)
+      }
+    })
+  }
+
+  rollTrait(trait) {
+    trait.selected = _.sample(
+      trait.attributes.filter((attribute) => attribute !== trait.selected),
+    )
   }
 
   toggleTraitLock(trait) {
