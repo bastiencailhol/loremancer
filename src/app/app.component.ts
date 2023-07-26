@@ -65,4 +65,7 @@ export class AppComponent implements OnInit {
   toggleTraitLock(trait) {
     trait.locked = !trait.locked
   }
+  toggleCategoryLock(category) {
+    category.locked = !category.locked
+  }
 }

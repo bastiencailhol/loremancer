@@ -29,8 +29,17 @@
     Générer
   </button>
   <div class="grid grid-cols-2 gap-6">
-    <div *ngFor="let category of categories" class="mb-6">
+    <div *ngFor="let category of categories" class="relative mb-6">
       <h3 class="mb-4">{{ category.name }}</h3>
+      <div class="absolute top-0 right-2 flex">
+        <app-reroll-button
+          (onClick)="rollCategoryTraits(category)"
+        ></app-reroll-button>
+        <app-lock-button
+          (onClick)="toggleCategoryLock(category)"
+          [isLocked]="category.locked"
+        ></app-lock-button>
+      </div>
       <div *ngFor="let trait of category.traits" class="mb-3">
         <ng-container
           *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
@@ -50,96 +59,11 @@
       class="absolute top-0 right-2 flex"
       style="transform: translateY(-50%)"
     >
-      <button
-        type="button"
-        class="
-          flex
-          justify-center
-          items-center
-          bg-gray-200
-          hover:bg-gray-300
-          text-gray-600
-          transition
-          ease-in
-          duration-200
-          text-center text-base
-          font-semibold
-          w-7
-          h-7
-          rounded-lg
-          mr-1
-        "
-        (click)="rollTrait(trait)"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-          />
-        </svg>
-      </button>
-      <button
-        type="button"
-        [ngClass]="
-          trait.locked
-            ? 'bg-gray-600 hover:bg-gray-700 text-white'
-            : 'bg-gray-200 hover:bg-gray-300 text-gray-600'
-        "
-        class="
-          flex
-          justify-center
-          items-center
-          transition
-          ease-in
-          duration-200
-          text-center text-base
-          font-semibold
-          w-7
-          h-7
-          rounded-lg
-        "
-        (click)="toggleTraitLock(trait)"
-      >
-        <svg
-          *ngIf="trait.locked; else unlockIcon"
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-5 w-5"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
-          />
-        </svg>
-        <ng-template #unlockIcon>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M8 11V7a4 4 0 118 0m-4 8v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2z"
-            />
-          </svg>
-        </ng-template>
-      </button>
+      <app-reroll-button (onClick)="rollTrait(trait)"></app-reroll-button>
+      <app-lock-button
+        (onClick)="toggleTraitLock(trait)"
+        [isLocked]="trait.locked"
+      ></app-lock-button>
     </div>
   </div>
 </ng-template>
