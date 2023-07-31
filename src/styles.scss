@@ -16,14 +16,29 @@
   }
   h4 {
     @apply text-xl;
+    @apply uppercase;
+    @apply font-semibold;
   }
   h5 {
     @apply text-lg;
   }
   h6 {
     @apply text-base;
+    @apply uppercase;
+    @apply text-xs;
+    @apply tracking-wider;
   }
   a {
     @apply text-blue-600 underline;
+  }
+}
+
+@layer components {
+  .card {
+    border: theme('borderWidth.2') solid theme('colors.black');
+    background-color: theme('colors.white');
+    border-radius: theme('borderRadius.2xl');
+    padding: theme('spacing.3');
+    box-shadow: -3px 3px theme('colors.black');
   }
 }

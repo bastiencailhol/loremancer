@@ -1,21 +1,13 @@
 <button
   type="button"
-  [ngClass]="
-    isLocked
-      ? 'bg-gray-600 hover:bg-gray-700 text-white'
-      : 'bg-gray-200 hover:bg-gray-300 text-gray-600'
-  "
+  [ngClass]="isLocked ? 'bg-black text-white' : 'bg-transparent text-black'"
   class="
     flex
     justify-center
     items-center
-    transition
-    ease-in
-    duration-200
     text-center text-base
     font-semibold
-    w-7
-    h-7
+    p-1
     rounded-lg
   "
   (click)="onButtonClick()"

@@ -31,45 +31,62 @@
   </div>
 </div>
 <div class="container mx-auto px-4 py-5">
-  <div class="grid grid-cols-3 gap-6">
+  <div class="grid grid-cols-3 gap-12">
     <div class="col-span-1">
-      <div class="relative mb-6">
-        <h3 class="mb-4">Caractéristiques</h3>
-        <div class="absolute top-0 right-2 flex">
-          <app-reroll-button
-            (onClick)="rollCategoryTraits(coreTraitsCategory)"
-          ></app-reroll-button>
-          <app-lock-button
-            (onClick)="toggleCategoryLock(coreTraitsCategory)"
-            [isLocked]="coreTraitsCategory.locked"
-          ></app-lock-button>
+      <div class="relative mb-8">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Caractéristiques</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button
+              (onClick)="rollCategoryTraits(coreTraitsCategory)"
+            ></app-reroll-button>
+            <app-lock-button
+              (onClick)="toggleCategoryLock(coreTraitsCategory)"
+              [isLocked]="coreTraitsCategory.locked"
+            ></app-lock-button>
+          </div>
         </div>
-        <div *ngFor="let trait of coreTraitsCategory.traits" class="mb-3">
-          <ng-container
-            *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
-          ></ng-container>
+        <div class="card">
+          <div
+            *ngFor="let trait of coreTraitsCategory.traits; let isLast = last"
+            [class.mb-6]="!isLast"
+          >
+            <ng-container
+              *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+            ></ng-container>
+          </div>
         </div>
       </div>
-      <div class="relative mb-6">
-        <h3 class="mb-4">Attributs physiques</h3>
-        <div class="absolute top-0 right-2 flex">
-          <app-reroll-button
-            (onClick)="rollCategoryTraits(physicalTraitsCategory)"
-          ></app-reroll-button>
-          <app-lock-button
-            (onClick)="toggleCategoryLock(physicalTraitsCategory)"
-            [isLocked]="physicalTraitsCategory.locked"
-          ></app-lock-button>
+      <div class="relative mb-8">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Attributs physiques</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button
+              (onClick)="rollCategoryTraits(physicalTraitsCategory)"
+            ></app-reroll-button>
+            <app-lock-button
+              (onClick)="toggleCategoryLock(physicalTraitsCategory)"
+              [isLocked]="physicalTraitsCategory.locked"
+            ></app-lock-button>
+          </div>
         </div>
-        <div *ngFor="let trait of physicalTraitsCategory.traits" class="mb-3">
-          <ng-container
-            *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
-          ></ng-container>
+        <div class="card">
+          <div
+            *ngFor="
+              let trait of physicalTraitsCategory.traits;
+              let isLast = last
+            "
+            [class.mb-6]="!isLast"
+          >
+            <ng-container
+              *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+            ></ng-container>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-span-2 relative mb-6">
-      <h3 class="mb-4">Équipements</h3>
+    <div class="col-span-2 relative mb-8">
+      <h4 class="mb-4">Équipements</h4>
       <div class="absolute top-0 right-2 flex">
         <app-reroll-button
           (onClick)="rollCategoryTraits(equipmentsCategory)"
@@ -79,7 +96,7 @@
           [isLocked]="equipmentsCategory.locked"
         ></app-lock-button>
       </div>
-      <div *ngFor="let trait of equipmentsCategory.traits" class="mb-3">
+      <div *ngFor="let trait of equipmentsCategory.traits" class="card mb-3">
         <ng-container
           *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
         ></ng-container>
@@ -89,15 +106,14 @@
 </div>
 
 <ng-template #randomizedTrait let-trait="trait">
-  <h5 class="uppercase text-xs font-semibold text-gray-500">
+  <h6 class="">
     {{ trait.name }}
-  </h5>
-  <div class="relative px-4 py-2 border border-gray-200 rounded-lg">
-    <p class="font-semibold" style="min-height: 24px">{{ trait.selected }}</p>
-    <div
-      class="absolute top-0 right-2 flex"
-      style="transform: translateY(-50%)"
-    >
+  </h6>
+  <div class="flex">
+    <p class="flex-grow text-lg font-semibold" style="min-height: 24px">
+      {{ trait.selected }}
+    </p>
+    <div class="flex gap-1">
       <app-reroll-button (onClick)="rollTrait(trait)"></app-reroll-button>
       <app-lock-button
         (onClick)="toggleTraitLock(trait)"
