@@ -52,7 +52,10 @@
             [class.mb-6]="!isLast"
           >
             <ng-container
-              *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+              *ngTemplateOutlet="
+                randomizedTrait;
+                context: { category: coreTraitsCategory, trait: trait }
+              "
             ></ng-container>
           </div>
         </div>
@@ -79,7 +82,10 @@
             [class.mb-6]="!isLast"
           >
             <ng-container
-              *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+              *ngTemplateOutlet="
+                randomizedTrait;
+                context: { category: physicalTraitsCategory, trait: trait }
+              "
             ></ng-container>
           </div>
         </div>
@@ -98,14 +104,17 @@
       </div>
       <div *ngFor="let trait of equipmentsCategory.traits" class="card mb-3">
         <ng-container
-          *ngTemplateOutlet="randomizedTrait; context: { trait: trait }"
+          *ngTemplateOutlet="
+            randomizedTrait;
+            context: { category: equipmentsCategory, trait: trait }
+          "
         ></ng-container>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #randomizedTrait let-trait="trait">
+<ng-template #randomizedTrait let-category="category" let-trait="trait">
   <h6 class="">
     {{ trait.name }}
   </h6>
@@ -116,7 +125,7 @@
     <div class="flex gap-1">
       <app-reroll-button (onClick)="rollTrait(trait)"></app-reroll-button>
       <app-lock-button
-        (onClick)="toggleTraitLock(trait)"
+        (onClick)="toggleTraitLock(category, trait)"
         [isLocked]="trait.locked"
       ></app-lock-button>
     </div>

@@ -63,10 +63,24 @@ export class AppComponent implements OnInit {
     )
   }
 
-  toggleTraitLock(trait) {
+  toggleTraitLock(category, trait) {
     trait.locked = !trait.locked
+    this.setCategoryLock(category, this.checkIfEveryTraitIsLocked(category))
   }
+
   toggleCategoryLock(category) {
     category.locked = !category.locked
+    category.traits.forEach((trait) => {
+      trait.locked = category.locked
+    })
+  }
+  setCategoryLock(category, value) {
+    category.locked = value
+  }
+
+  checkIfEveryTraitIsLocked(category) {
+    return category.traits
+      .map((trait) => trait.locked)
+      .every((traitIsLocked) => traitIsLocked)
   }
 }
