@@ -1,27 +1,7 @@
 export const equipments = [
   {
-    name: 'Head',
-    icon: 'head',
-    color: '#E6F3DD',
-    attributes: [
-      'Chapeau',
-      'Casquette',
-      'Berêt',
-      'Casque',
-      'Couronne',
-      'Bandana',
-      'Tiare',
-      '',
-    ],
-  },
-  {
-    name: 'Hands',
-    icon: 'hands',
-    color: '#F7F2E6',
-    attributes: ['Gants en cuir', 'Bracelets', 'Mains nues', 'Gantelets'],
-  },
-  {
     name: 'Weapon',
+    dimensions: 'row-span-5',
     icon: 'weapon',
     color: '#F7E5E5',
     attributes: [
@@ -41,7 +21,40 @@ export const equipments = [
     ],
   },
   {
+    name: 'Head',
+    dimensions: 'row-span-2',
+    icon: 'head',
+    color: '#E6F3DD',
+    attributes: [
+      'Chapeau',
+      'Casquette',
+      'Berêt',
+      'Casque',
+      'Couronne',
+      'Bandana',
+      'Tiare',
+      '',
+    ],
+  },
+  {
+    name: 'Jewels',
+    dimensions: 'row-span-2',
+    icon: 'jewels',
+    color: '#E6F7EB',
+    attributes: [
+      'Bagues',
+      'Pendentif',
+      'Chaîne',
+      'Piercings',
+      'Montre à gousset',
+      'Bracelets',
+      'Masque',
+      'Lunettes',
+    ],
+  },
+  {
     name: 'Body',
+    dimensions: 'row-span-3',
     icon: 'body',
     color: '#D9F5E6',
     attributes: [
@@ -58,6 +71,7 @@ export const equipments = [
   },
   {
     name: 'Back',
+    dimensions: 'row-span-5',
     icon: 'back',
     color: '#E6E6F7',
     attributes: [
@@ -71,7 +85,15 @@ export const equipments = [
     ],
   },
   {
+    name: 'Hands',
+    dimensions: 'row-span-2',
+    icon: 'hands',
+    color: '#F7F2E6',
+    attributes: ['Gants en cuir', 'Bracelets', 'Mains nues', 'Gantelets'],
+  },
+  {
     name: 'Belt',
+    dimensions: 'row-span-2',
     icon: 'belt',
     color: '#E1EAF5',
     attributes: [
@@ -83,7 +105,15 @@ export const equipments = [
     ],
   },
   {
+    name: 'Accessories',
+    dimensions: 'row-span-5',
+    icon: 'accessories',
+    color: '#F3F7E6',
+    attributes: ['Fioles', 'Bourse', "Arme d'apparât", 'Grimoire', 'Sac'],
+  },
+  {
     name: 'Legs',
+    dimensions: 'row-span-3',
     icon: 'legs',
     color: '#F4DFED',
     attributes: [
@@ -97,41 +127,8 @@ export const equipments = [
     ],
   },
   {
-    name: 'Feet',
-    icon: 'feet',
-    color: '#F5EFDF',
-    attributes: [
-      'Bottes',
-      'Chaussures',
-      'Talons',
-      'Pieds nus',
-      'Cuissardes',
-      'Solerets',
-    ],
-  },
-  {
-    name: 'Accessories',
-    icon: 'accessories',
-    color: '#F3F7E6',
-    attributes: ['Fioles', 'Bourse', "Arme d'apparât", 'Grimoire', 'Sac'],
-  },
-  {
-    name: 'Jewels',
-    icon: 'jewels',
-    color: '#E6F7EB',
-    attributes: [
-      'Bagues',
-      'Pendentif',
-      'Chaîne',
-      'Piercings',
-      'Montre à gousset',
-      'Bracelets',
-      'Masque',
-      'Lunettes',
-    ],
-  },
-  {
     name: 'Pet',
+    dimensions: 'row-span-5',
     icon: 'pet',
     color: '#F7E6E7',
     attributes: [
@@ -148,6 +145,20 @@ export const equipments = [
       'Serpent',
       'Élémentaire',
       'Mini-dragon',
+    ],
+  },
+  {
+    name: 'Feet',
+    dimensions: 'row-span-2',
+    icon: 'feet',
+    color: '#F5EFDF',
+    attributes: [
+      'Bottes',
+      'Chaussures',
+      'Talons',
+      'Pieds nus',
+      'Cuissardes',
+      'Solerets',
     ],
   },
 ]

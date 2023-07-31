@@ -54,7 +54,7 @@
           >
             <ng-container
               *ngTemplateOutlet="
-                randomizedTrait;
+                genericTrait;
                 context: { category: coreTraitsCategory, trait: trait }
               "
             ></ng-container>
@@ -85,7 +85,7 @@
           >
             <ng-container
               *ngTemplateOutlet="
-                randomizedTrait;
+                genericTrait;
                 context: { category: physicalTraitsCategory, trait: trait }
               "
             ></ng-container>
@@ -107,16 +107,18 @@
           ></app-lock-button>
         </div>
       </div>
-      <div *ngFor="let trait of equipmentsCategory.traits" class="card mb-3">
-        <ng-container
-          *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"
-        ></ng-container>
+      <div class="grid grid-cols-3 grid-rows-5 gap-4">
+        <ng-container *ngFor="let trait of equipmentsCategory.traits">
+          <ng-container
+            *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"
+          ></ng-container>
+        </ng-container>
       </div>
     </div>
   </div>
 </div>
 
-<ng-template #randomizedTrait let-category="category" let-trait="trait">
+<ng-template #genericTrait let-category="category" let-trait="trait">
   <h6 class="">
     {{ trait.name }}
   </h6>
@@ -138,7 +140,7 @@
 </ng-template>
 
 <ng-template #equipmentTrait let-trait="trait">
-  <div class="flex">
+  <div class="card flex {{ trait.dimensions }}">
     <div
       class="flex items-center rounded-lg px-3"
       [style.backgroundColor]="trait.color"
