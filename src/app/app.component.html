@@ -38,6 +38,7 @@
           <h4 class="flex-grow">Caractéristiques</h4>
           <div class="flex gap-1 px-3">
             <app-reroll-button
+              *ngIf="!coreTraitsCategory.locked"
               (onClick)="rollCategoryTraits(coreTraitsCategory)"
             ></app-reroll-button>
             <app-lock-button
@@ -65,6 +66,7 @@
           <h4 class="flex-grow">Attributs physiques</h4>
           <div class="flex gap-1 px-3">
             <app-reroll-button
+              *ngIf="!physicalTraitsCategory.locked"
               (onClick)="rollCategoryTraits(physicalTraitsCategory)"
             ></app-reroll-button>
             <app-lock-button
@@ -95,6 +97,7 @@
       <h4 class="mb-4">Équipements</h4>
       <div class="absolute top-0 right-2 flex">
         <app-reroll-button
+          *ngIf="!equipmentsCategory.locked"
           (onClick)="rollCategoryTraits(equipmentsCategory)"
         ></app-reroll-button>
         <app-lock-button
@@ -123,7 +126,10 @@
       {{ trait.selected }}
     </p>
     <div class="flex gap-1">
-      <app-reroll-button (onClick)="rollTrait(trait)"></app-reroll-button>
+      <app-reroll-button
+        *ngIf="!trait.locked"
+        (onClick)="rollTrait(trait)"
+      ></app-reroll-button>
       <app-lock-button
         (onClick)="toggleTraitLock(category, trait)"
         [isLocked]="trait.locked"

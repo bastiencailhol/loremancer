@@ -43,24 +43,26 @@ export class AppComponent implements OnInit {
 
   rollAllTraits() {
     this.categories.forEach((category) => {
-      if (!category.locked) {
+      {
         this.rollCategoryTraits(category)
       }
     })
   }
 
   rollCategoryTraits(category) {
-    category.traits.forEach((trait) => {
-      if (!trait.locked) {
+    if (!category.locked) {
+      category.traits.forEach((trait) => {
         this.rollTrait(trait)
-      }
-    })
+      })
+    }
   }
 
   rollTrait(trait) {
-    trait.selected = _.sample(
-      trait.attributes.filter((attribute) => attribute !== trait.selected),
-    )
+    if (!trait.locked) {
+      trait.selected = _.sample(
+        trait.attributes.filter((attribute) => attribute !== trait.selected),
+      )
+    }
   }
 
   toggleTraitLock(category, trait) {
