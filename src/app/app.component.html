@@ -1,33 +1,36 @@
-<div class="bg-gray-300 py-6">
-  <div class="container mx-auto px-4">
-    <h1 class="mb-3">Fantasy Character Design Ideator</h1>
-
-    <p>You'll never have the blank page again</p>
+<div class="container mx-auto flex justify-between">
+  <div class="banner flex items-baseline gap-x-8 text-white pl-4 pr-20 py-8">
+    <h1 class="font-bold tracking-wide">✨ Sparkles</h1>
+    <p class="font-medium tracking-wider">
+      Your creative companion to ignite your hero design ideas.
+    </p>
+  </div>
+  <div>
+    <button
+      type="button"
+      (click)="rollAllTraits()"
+      class="
+        py-2
+        px-4
+        mb-5
+        bg-indigo-600
+        hover:bg-indigo-700
+        text-white
+        w-full
+        transition
+        ease-in
+        duration-200
+        text-center text-base
+        font-semibold
+        shadow-md
+        rounded-lg
+      "
+    >
+      Générer
+    </button>
   </div>
 </div>
 <div class="container mx-auto px-4 py-5">
-  <button
-    type="button"
-    (click)="rollAllTraits()"
-    class="
-      py-2
-      px-4
-      mb-5
-      bg-indigo-600
-      hover:bg-indigo-700
-      text-white
-      w-full
-      transition
-      ease-in
-      duration-200
-      text-center text-base
-      font-semibold
-      shadow-md
-      rounded-lg
-    "
-  >
-    Générer
-  </button>
   <div class="grid grid-cols-3 gap-6">
     <div class="col-span-1">
       <div class="relative mb-6">
