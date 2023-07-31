@@ -1,0 +1,24 @@
+<button
+  type="button"
+  (click)="onButtonClick()"
+  class="
+    py-2
+    px-4
+    mb-5
+    bg-indigo-600
+    hover:bg-indigo-700
+    text-white
+    w-full
+    text-center text-base
+    font-semibold
+    shadow-md
+    rounded-lg
+    flex
+    gap-3
+  "
+>
+  {{ versions[version].text }}
+
+  <img class="default" src="assets/icons/magic wand sparkles.svg" alt="" />
+  <img class="active hidden" src="assets/icons/magic wand.svg" alt="" />
+</button>

@@ -5,12 +5,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RerollButtonComponent } from './Components/reroll-button/reroll-button.component';
 import { LockButtonComponent } from './Components/lock-button/lock-button.component';
+import { GenerateButtonComponent } from './Components/generate-button/generate-button.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     RerollButtonComponent,
-    LockButtonComponent
+    LockButtonComponent,
+    GenerateButtonComponent
   ],
   imports: [
     BrowserModule,

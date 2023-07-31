@@ -6,28 +6,7 @@
     </p>
   </div>
   <div>
-    <button
-      type="button"
-      (click)="rollAllTraits()"
-      class="
-        py-2
-        px-4
-        mb-5
-        bg-indigo-600
-        hover:bg-indigo-700
-        text-white
-        w-full
-        transition
-        ease-in
-        duration-200
-        text-center text-base
-        font-semibold
-        shadow-md
-        rounded-lg
-      "
-    >
-      Générer
-    </button>
+    <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
   </div>
 </div>
 <div class="container mx-auto px-4 py-5">
