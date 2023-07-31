@@ -155,7 +155,7 @@
         *ngIf="!trait.locked"
         (onClick)="rollTrait(trait)"
       ></app-reroll-button>
-      <div *ngIf="trait.locked"></div>
+      <div *ngIf="trait.locked" class="h-7 w-7"></div>
       <app-lock-button
         (onClick)="toggleTraitLock(equipmentsCategory, trait)"
         [isLocked]="trait.locked"
