@@ -33,7 +33,7 @@
 <div class="container mx-auto px-4 py-5">
   <div class="grid grid-cols-3 gap-12">
     <div class="col-span-1">
-      <div class="relative mb-8">
+      <div class="relative mb-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Caractéristiques</h4>
           <div class="flex gap-1 px-3">
@@ -61,7 +61,7 @@
           </div>
         </div>
       </div>
-      <div class="relative mb-8">
+      <div class="relative mb-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Attributs physiques</h4>
           <div class="flex gap-1 px-3">
@@ -93,7 +93,7 @@
         </div>
       </div>
     </div>
-    <div class="col-span-2 relative mb-8">
+    <div class="col-span-2 relative mb-10">
       <div class="flex">
         <h4 class="flex-grow mb-3">Équipements</h4>
         <div class="flex gap-1 px-3">
@@ -107,7 +107,7 @@
           ></app-lock-button>
         </div>
       </div>
-      <div class="grid grid-cols-3 grid-rows-5 gap-4">
+      <div class="grid grid-cols-3 grid-rows-12 gap-4">
         <ng-container *ngFor="let trait of equipmentsCategory.traits">
           <ng-container
             *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"
@@ -142,7 +142,7 @@
 <ng-template #equipmentTrait let-trait="trait">
   <div class="card flex {{ trait.dimensions }}">
     <div
-      class="flex items-center rounded-lg px-3"
+      class="flex items-center rounded-lg px-2"
       [style.backgroundColor]="trait.color"
     >
       <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="w-9 h-9" />
@@ -150,11 +150,12 @@
     <p class="flex-grow text-lg font-semibold self-center text-center">
       {{ trait.selected }}
     </p>
-    <div class="flex flex-col justify-between">
+    <div class="flex flex-col justify-between gap-2">
       <app-reroll-button
         *ngIf="!trait.locked"
         (onClick)="rollTrait(trait)"
       ></app-reroll-button>
+      <div *ngIf="trait.locked"></div>
       <app-lock-button
         (onClick)="toggleTraitLock(equipmentsCategory, trait)"
         [isLocked]="trait.locked"

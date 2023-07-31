@@ -19,7 +19,7 @@ export const physicalTraits = [
       'Body buildé',
       'Fit',
       'Obèse',
-      '',
+      '-',
     ],
   },
   {
