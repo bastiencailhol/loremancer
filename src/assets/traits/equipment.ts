@@ -1,6 +1,8 @@
 export const equipments = [
   {
-    name: 'Tête',
+    name: 'Head',
+    icon: 'head',
+    color: '#E6F3DD',
     attributes: [
       'Chapeau',
       'Casquette',
@@ -13,11 +15,15 @@ export const equipments = [
     ],
   },
   {
-    name: 'Mains',
+    name: 'Hands',
+    icon: 'hands',
+    color: '#F7F2E6',
     attributes: ['Gants en cuir', 'Bracelets', 'Mains nues', 'Gantelets'],
   },
   {
-    name: 'Arme',
+    name: 'Weapon',
+    icon: 'weapon',
+    color: '#F7E5E5',
     attributes: [
       'Épée longue',
       'Épée courte',
@@ -35,7 +41,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Corps',
+    name: 'Body',
+    icon: 'body',
+    color: '#D9F5E6',
     attributes: [
       'Plastron',
       'Grigandine',
@@ -49,7 +57,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Dos',
+    name: 'Back',
+    icon: 'back',
+    color: '#E6E6F7',
     attributes: [
       'Cape',
       'Capuche',
@@ -61,7 +71,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Ceinture',
+    name: 'Belt',
+    icon: 'belt',
+    color: '#E1EAF5',
     attributes: [
       'Fourreau',
       'Ceinturon',
@@ -71,7 +83,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Jambes',
+    name: 'Legs',
+    icon: 'legs',
+    color: '#F4DFED',
     attributes: [
       'Jupe',
       'Pantalon droit',
@@ -83,7 +97,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Pieds',
+    name: 'Feet',
+    icon: 'feet',
+    color: '#F5EFDF',
     attributes: [
       'Bottes',
       'Chaussures',
@@ -94,11 +110,15 @@ export const equipments = [
     ],
   },
   {
-    name: 'Acessoires',
+    name: 'Accessories',
+    icon: 'accessories',
+    color: '#F3F7E6',
     attributes: ['Fioles', 'Bourse', "Arme d'apparât", 'Grimoire', 'Sac'],
   },
   {
-    name: 'Bijoux',
+    name: 'Jewels',
+    icon: 'jewels',
+    color: '#E6F7EB',
     attributes: [
       'Bagues',
       'Pendentif',
@@ -111,7 +131,9 @@ export const equipments = [
     ],
   },
   {
-    name: 'Familier',
+    name: 'Pet',
+    icon: 'pet',
+    color: '#F7E6E7',
     attributes: [
       'Nuée de rats',
       'Araignée géante',

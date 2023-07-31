@@ -1,7 +1,7 @@
 <div class="container mx-auto flex justify-between">
   <div class="banner flex items-baseline gap-x-8 text-white pl-4 pr-20 py-8">
     <h1 class="font-bold tracking-wide">✨ Sparkles</h1>
-    <p class="font-medium tracking-wider">
+    <p class="font-medium tracking-widest">
       Your creative companion to ignite your hero design ideas.
     </p>
   </div>
@@ -94,23 +94,22 @@
       </div>
     </div>
     <div class="col-span-2 relative mb-8">
-      <h4 class="mb-4">Équipements</h4>
-      <div class="absolute top-0 right-2 flex">
-        <app-reroll-button
-          *ngIf="!equipmentsCategory.locked"
-          (onClick)="rollCategoryTraits(equipmentsCategory)"
-        ></app-reroll-button>
-        <app-lock-button
-          (onClick)="toggleCategoryLock(equipmentsCategory)"
-          [isLocked]="equipmentsCategory.locked"
-        ></app-lock-button>
+      <div class="flex">
+        <h4 class="flex-grow mb-3">Équipements</h4>
+        <div class="flex gap-1 px-3">
+          <app-reroll-button
+            *ngIf="!equipmentsCategory.locked"
+            (onClick)="rollCategoryTraits(equipmentsCategory)"
+          ></app-reroll-button>
+          <app-lock-button
+            (onClick)="toggleCategoryLock(equipmentsCategory)"
+            [isLocked]="equipmentsCategory.locked"
+          ></app-lock-button>
+        </div>
       </div>
       <div *ngFor="let trait of equipmentsCategory.traits" class="card mb-3">
         <ng-container
-          *ngTemplateOutlet="
-            randomizedTrait;
-            context: { category: equipmentsCategory, trait: trait }
-          "
+          *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"
         ></ng-container>
       </div>
     </div>
@@ -132,6 +131,30 @@
       ></app-reroll-button>
       <app-lock-button
         (onClick)="toggleTraitLock(category, trait)"
+        [isLocked]="trait.locked"
+      ></app-lock-button>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #equipmentTrait let-trait="trait">
+  <div class="flex">
+    <div
+      class="flex items-center rounded-lg px-3"
+      [style.backgroundColor]="trait.color"
+    >
+      <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="w-9 h-9" />
+    </div>
+    <p class="flex-grow text-lg font-semibold self-center text-center">
+      {{ trait.selected }}
+    </p>
+    <div class="flex flex-col justify-between">
+      <app-reroll-button
+        *ngIf="!trait.locked"
+        (onClick)="rollTrait(trait)"
+      ></app-reroll-button>
+      <app-lock-button
+        (onClick)="toggleTraitLock(equipmentsCategory, trait)"
         [isLocked]="trait.locked"
       ></app-lock-button>
     </div>
