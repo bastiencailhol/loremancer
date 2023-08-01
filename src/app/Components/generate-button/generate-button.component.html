@@ -1,21 +1,8 @@
 <button
   type="button"
   (click)="onButtonClick()"
-  class="
-    py-2
-    px-4
-    mb-5
-    bg-indigo-600
-    hover:bg-indigo-700
-    text-white
-    w-full
-    text-center text-base
-    font-semibold
-    shadow-md
-    rounded-lg
-    flex
-    gap-3
-  "
+  class="cta-button flex gap-3"
+  [style.backgroundColor]="versions[version].color"
 >
   {{ versions[version].text }}
 

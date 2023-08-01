@@ -41,4 +41,13 @@
     padding: theme('spacing.3');
     box-shadow: -3px 3px theme('colors.black');
   }
+
+  .cta-button {
+    box-shadow: -3px 3px theme('colors.black');
+    border-radius: theme('borderRadius.2xl');
+    border: theme('borderWidth.2') solid theme('colors.black');
+    padding: theme('spacing.3');
+    @apply font-semibold;
+    @apply text-2xl;
+  }
 }
