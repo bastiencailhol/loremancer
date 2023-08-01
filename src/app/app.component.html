@@ -1,7 +1,7 @@
-<div class="container mx-auto flex justify-between pr-4">
+<div class="container mx-auto flex justify-between items-end pr-4">
   <div class="banner flex items-baseline gap-x-8 text-white pl-4 pr-20 py-8">
     <h1 class="font-bold tracking-wide">✨ Sparkles</h1>
-    <p class="font-medium tracking-widest">
+    <p class="font-sans tracking-wider">
       Your creative companion to ignite your hero design ideas.
     </p>
   </div>
@@ -102,7 +102,10 @@
     {{ trait.name }}
   </h6>
   <div class="flex">
-    <p class="flex-grow text-lg font-semibold" style="min-height: 24px">
+    <p
+      class="flex-grow text-xl font-medium tracking-wide"
+      style="min-height: 24px"
+    >
       {{ trait.selected }}
     </p>
     <div class="flex gap-1">
@@ -126,7 +129,16 @@
     >
       <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="w-9 h-9" />
     </div>
-    <p class="flex-grow text-lg font-semibold self-center text-center">
+    <p
+      class="
+        flex-grow
+        text-xl
+        font-medium
+        self-center
+        text-center
+        tracking-wide
+      "
+    >
       {{ trait.selected }}
     </p>
     <div class="flex flex-col justify-between gap-2">

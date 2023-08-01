@@ -22,7 +22,7 @@ export class GenerateButtonComponent {
 
   versions: Version[] = [
     {
-      text: 'Unleash the Magic',
+      text: 'Unleash the Magic!',
       color: '#FFE959',
     },
     {

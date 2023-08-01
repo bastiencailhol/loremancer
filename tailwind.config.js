@@ -90,6 +90,7 @@ module.exports = {
     backgroundColor: (theme) => theme('colors'),
     backgroundImage: {
       none: 'none',
+      doodles: "url('assets/img/fantasy-doodles.jpg')",
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
       'gradient-to-tr':
         'linear-gradient(to top right, var(--tw-gradient-stops))',
@@ -254,31 +255,8 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {
-      sans: [
-        'inter',
-        'ui-sans-serif',
-        'system-ui',
-        '-apple-system',
-        'BlinkMacSystemFont',
-        '"Segoe UI"',
-        'Roboto',
-        '"Helvetica Neue"',
-        'Arial',
-        '"Noto Sans"',
-        'sans-serif',
-        '"Apple Color Emoji"',
-        '"Segoe UI Emoji"',
-        '"Segoe UI Symbol"',
-        '"Noto Color Emoji"',
-      ],
-      serif: [
-        'ui-serif',
-        'Georgia',
-        'Cambria',
-        '"Times New Roman"',
-        'Times',
-        'serif',
-      ],
+      sans: ['Montserrat', 'sans-serif'],
+      serif: ['Alegreya', 'serif'],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
