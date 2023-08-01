@@ -4,6 +4,12 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core'
+import * as _ from 'lodash'
+
+interface Version {
+  text: string
+  color: string
+}
 
 @Component({
   selector: 'app-generate-button',
@@ -14,38 +20,60 @@ import {
 export class GenerateButtonComponent {
   @Output() onClick = new EventEmitter()
 
-  versions = [
+  versions: Version[] = [
     {
-      text: 'Make the magic',
+      text: 'Unleash the Magic',
       color: '#FFE959',
     },
     {
-      text: 'Ok, maybe something else',
+      text: 'Hmmm… something else?',
       color: '#FFA553',
     },
     {
-      text: 'Nah, let’s try again',
+      text: 'Try again',
       color: '#B0F6FF',
     },
     {
-      text: '…and again',
+      text: 'Not quite right…',
       color: '#FF8ACD',
     },
     {
-      text: 'And again and again',
+      text: 'One more time',
       color: '#76F7AE',
     },
+    {
+      text: 'Seeking Perfection…',
+      color: '#FBBDAE',
+    },
+    {
+      text: 'The adventure continues!',
+      color: '#A4C3E7',
+    },
+    {
+      text: 'Keep exploring',
+      color: '#FFC48C',
+    },
+    {
+      text: 'Another fantasy awaits!',
+      color: '#A3E7C4',
+    },
+    {
+      text: 'Nah… another quest!',
+      color: '#E5A3FF',
+    },
+    {
+      text: "Let's dig deeper…",
+      color: '#FFC4E5',
+    },
   ]
-  version = 0
+  version: Version | undefined = this.versions[0]
   buttonState = 'default'
 
   onButtonClick() {
     this.onClick.emit()
-    if (this.version !== this.versions.length - 1) {
-      this.version += 1
-    } else {
-      this.version -= 1
-    }
+    this.version = _.sample(
+      this.versions.filter((version) => version !== this.version),
+    )
   }
 
   setButtonState(state: string) {

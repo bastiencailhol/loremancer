@@ -2,9 +2,9 @@
   type="button"
   (click)="onButtonClick()"
   class="cta-button flex gap-3"
-  [style.backgroundColor]="versions[version].color"
+  [style.backgroundColor]="version?.color"
 >
-  {{ versions[version].text }}
+  {{ version?.text }}
 
   <img class="default" src="assets/icons/magic wand sparkles.svg" alt="" />
   <img class="active hidden" src="assets/icons/magic wand.svg" alt="" />
