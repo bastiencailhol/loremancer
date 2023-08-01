@@ -1,16 +1,25 @@
 export const physicalTraits = [
   {
     name: 'Gender',
-    attributes: ['Male', 'Female', 'Queer'],
+    attributes: ['Male', 'Female', 'Non-binary'],
   },
   {
     name: 'Age',
-    attributes: ['Child', 'Young', 'Adult', 'Mature', 'Elderly'],
+    attributes: [
+      'Child',
+      'Young',
+      'Teenager',
+      'Adult',
+      'Mature',
+      'Elderly',
+      'Centenarian',
+    ],
   },
   {
     name: 'Physique',
     attributes: [
-      'Tall and thin',
+      'Slender',
+      'Tall',
       'Colossus',
       'Dwarf',
       'Hunchback',
@@ -22,7 +31,11 @@ export const physicalTraits = [
       'Fit',
       'Obese',
       'Fat',
-      'Overweight',
+      'Chubby',
+      'Portly',
+      'Stocky',
+      'Paunchy',
+      'Average',
     ],
   },
   {
@@ -33,6 +46,16 @@ export const physicalTraits = [
       'Very long hair',
       'Short hair',
       'Balding',
+      'Buzz cut',
+      'Afro',
+      'Dreadlocks',
+      'Ponytail',
+      'Braids',
+      'Mullet',
+      'Curly',
+      'Wavy',
+      'Messy',
+      'Tonsure',
     ],
   },
   {
@@ -56,6 +79,9 @@ export const physicalTraits = [
       'Hairy',
       'Wrinkles',
       'Freckles',
+      'Piercings',
+      'Heterochromia',
+      'Fangs',
     ],
   },
   {
@@ -73,6 +99,9 @@ export const physicalTraits = [
       'Noble',
       'Cunning',
       'Mad',
+      'Anxious',
+      'Calm',
+      'Confident',
     ],
   },
 ]

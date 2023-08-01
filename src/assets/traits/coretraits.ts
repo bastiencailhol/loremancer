@@ -27,7 +27,7 @@ export const coreTraits = [
       'Priest',
       'Engineer',
       'Alchemist',
-      'Monster Hunter',
+      'Monster hunter',
       'Necromancer',
     ],
   },

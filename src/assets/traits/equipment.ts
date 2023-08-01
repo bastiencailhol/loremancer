@@ -81,7 +81,6 @@ export const equipments = [
       'Rings',
       'Amulet',
       'Chain',
-      'Piercings',
       'Pocket watch',
       'Bracelets',
       'Glasses',
