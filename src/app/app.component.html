@@ -102,12 +102,12 @@
     {{ trait.name }}
   </h6>
   <div class="flex">
-    <p
-      class="flex-grow text-xl font-medium tracking-wide"
-      style="min-height: 24px"
-    >
-      {{ trait.selected }}
-    </p>
+    <ng-container
+      *ngTemplateOutlet="
+        attributeSelect;
+        context: { trait: trait, addClass: '-m-2 px-2' }
+      "
+    ></ng-container>
     <div class="flex gap-1">
       <app-reroll-button
         *ngIf="!trait.locked"
@@ -127,20 +127,18 @@
       class="flex items-center rounded-lg px-2"
       [style.backgroundColor]="trait.color"
     >
-      <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="w-9 h-9" />
+      <img
+        src="./assets/icons/{{ trait.icon }}.svg"
+        alt=""
+        class="min-w-9 h-9"
+      />
     </div>
-    <p
-      class="
-        flex-grow
-        text-xl
-        font-medium
-        self-center
-        text-center
-        tracking-wide
+    <ng-container
+      *ngTemplateOutlet="
+        attributeSelect;
+        context: { trait: trait, addClass: 'px-3' }
       "
-    >
-      {{ trait.selected }}
-    </p>
+    ></ng-container>
     <div class="flex flex-col justify-between gap-2">
       <app-reroll-button
         *ngIf="!trait.locked"
@@ -152,5 +150,38 @@
         [isLocked]="trait.locked"
       ></app-lock-button>
     </div>
+  </div>
+</ng-template>
+
+<ng-template #attributeSelect let-trait="trait" let-addClass="addClass">
+  <div class="flex-grow min-w-0 flex">
+    <select
+      class="
+        max-w-full
+        min-w-full
+        appearance-none
+        focus:ring-0
+        border-none
+        bg-none
+        whitespace-normal
+        break-words
+        p-0
+        text-xl
+        font-medium
+        self-center
+        tracking-wide
+        cursor-pointer
+        {{ addClass }}
+      "
+      name="{{ trait.name }}"
+      [(ngModel)]="trait.selected"
+    >
+      <option
+        *ngFor="let attribute of trait.attributes"
+        value="{{ attribute }}"
+      >
+        {{ attribute }}
+      </option>
+    </select>
   </div>
 </ng-template>

@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core'
-import { sample } from 'lodash.sample'
+import sample from 'lodash.sample'
 
 interface Version {
   text: string
