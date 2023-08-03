@@ -43,9 +43,7 @@ export class AppComponent implements OnInit {
 
   rollAllTraits() {
     this.categories.forEach((category) => {
-      {
-        this.rollCategoryTraits(category)
-      }
+      this.rollCategoryTraits(category)
     })
   }
 
