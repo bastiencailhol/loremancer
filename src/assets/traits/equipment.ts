@@ -1,7 +1,7 @@
 export const equipments = [
   {
     name: 'Weapon',
-    dimensions: 'row-start-1 row-end-6',
+    dimensions: 'md:row-start-1 md:row-end-6',
     icon: 'weapon',
     color: '#F7E5E5',
     attributes: [
@@ -58,7 +58,7 @@ export const equipments = [
   },
   {
     name: 'Head',
-    dimensions: 'row-start-1 row-end-3',
+    dimensions: 'md:row-start-1 md:row-end-3',
     icon: 'head',
     color: '#E6F3DD',
     attributes: [
@@ -97,7 +97,7 @@ export const equipments = [
   },
   {
     name: 'Jewels',
-    dimensions: 'row-start-1 row-end-3',
+    dimensions: 'md:row-start-1 md:row-end-3',
     icon: 'jewels',
     color: '#E6F7EB',
     attributes: [
@@ -120,7 +120,7 @@ export const equipments = [
   },
   {
     name: 'Body',
-    dimensions: 'row-start-3 row-end-6',
+    dimensions: 'md:row-start-3 md:row-end-6',
     icon: 'body',
     color: '#D9F5E6',
     attributes: [
@@ -152,7 +152,7 @@ export const equipments = [
   },
   {
     name: 'Shoulders',
-    dimensions: 'row-start-3 row-end-8',
+    dimensions: 'md:row-start-3 md:row-end-8',
     icon: 'back',
     color: '#E6E6F7',
     attributes: [
@@ -182,7 +182,7 @@ export const equipments = [
   },
   {
     name: 'Hands',
-    dimensions: 'row-start-6 row-end-8',
+    dimensions: 'md:row-start-6 md:row-end-8',
     icon: 'hands',
     color: '#F7F2E6',
     attributes: [
@@ -200,7 +200,7 @@ export const equipments = [
   },
   {
     name: 'Belt',
-    dimensions: 'row-start-6 row-end-8',
+    dimensions: 'md:row-start-6 md:row-end-8',
     icon: 'belt',
     color: '#E1EAF5',
     attributes: [
@@ -226,7 +226,7 @@ export const equipments = [
   },
   {
     name: 'Accessories',
-    dimensions: 'row-start-8 row-end-13',
+    dimensions: 'md:row-start-8 md:row-end-13',
     icon: 'accessories',
     color: '#F3F7E6',
     attributes: [
@@ -255,7 +255,7 @@ export const equipments = [
   },
   {
     name: 'Legs',
-    dimensions: 'row-start-8 row-end-11',
+    dimensions: 'md:row-start-8 md:row-end-11',
     icon: 'legs',
     color: '#F4DFED',
     attributes: [
@@ -277,7 +277,7 @@ export const equipments = [
   },
   {
     name: 'Pet',
-    dimensions: 'row-start-8 row-end-13',
+    dimensions: 'md:row-start-8 md:row-end-13',
     icon: 'pet',
     color: '#F7E6E7',
     attributes: [
@@ -322,7 +322,7 @@ export const equipments = [
   },
   {
     name: 'Feet',
-    dimensions: 'row-start-11 row-end-13',
+    dimensions: 'md:row-start-11 md:row-end-13',
     icon: 'feet',
     color: '#F5EFDF',
     attributes: [
