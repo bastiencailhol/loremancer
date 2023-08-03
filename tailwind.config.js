@@ -1,7 +1,7 @@
 const colors = require('tailwindcss/colors')
 
 module.exports = {
-  content: ['./pages/**/*.{html,js}', './components/**/*.{html,js}'],
+  content: ['./src/**/*.{html,ts}'],
   presets: [],
   darkMode: 'class', // or 'media' or 'class'
   i18n: {

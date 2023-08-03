@@ -4,7 +4,7 @@ import {
   EventEmitter,
   Output,
 } from '@angular/core'
-import * as _ from 'lodash'
+import { sample } from 'lodash.sample'
 
 interface Version {
   text: string
@@ -71,7 +71,7 @@ export class GenerateButtonComponent {
 
   onButtonClick() {
     this.onClick.emit()
-    this.version = _.sample(
+    this.version = sample(
       this.versions.filter((version) => version !== this.version),
     )
   }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core'
-import * as _ from 'lodash'
+import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
@@ -59,7 +59,7 @@ export class AppComponent implements OnInit {
 
   rollTrait(trait) {
     if (!trait.locked) {
-      trait.selected = _.sample(
+      trait.selected = sample(
         trait.attributes.filter((attribute) => attribute !== trait.selected),
       )
     }
