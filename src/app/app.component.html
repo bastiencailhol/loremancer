@@ -194,6 +194,7 @@
       "
       name="{{ trait.name }}"
       [(ngModel)]="trait.selected"
+      (ngModelChange)="updateUrl(trait)"
     >
       <option
         *ngFor="let attribute of trait.attributes"

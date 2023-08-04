@@ -3,19 +3,21 @@ import { BrowserModule } from '@angular/platform-browser'
 
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
-import { RerollButtonComponent } from './Components/reroll-button/reroll-button.component'
-import { LockButtonComponent } from './Components/lock-button/lock-button.component'
-import { GenerateButtonComponent } from './Components/generate-button/generate-button.component'
 import { FormsModule } from '@angular/forms'
+import { GenerateButtonModule } from './Components/generate-button/generate-button.module'
+import { LockButtonModule } from './Components/lock-button/lock-button.module'
+import { RerollButtonModule } from './Components/reroll-button/reroll-button.module'
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    RerollButtonComponent,
-    LockButtonComponent,
-    GenerateButtonComponent,
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    GenerateButtonModule,
+    LockButtonModule,
+    RerollButtonModule,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })
