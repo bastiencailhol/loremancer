@@ -39,15 +39,7 @@
 </div>
 <div class="container mx-auto px-4">
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
-    <div
-      class="
-        xl:col-span-1
-        grid grid-cols-1
-        md:grid-cols-2
-        xl:grid-cols-1
-        gap-x-12
-      "
-    >
+    <div class="xl:col-span-1 gap-x-12">
       <div class="mb-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Archetype</h4>
@@ -62,11 +54,8 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card">
-          <div
-            *ngFor="let trait of coreTraitsCategory.traits; let isLast = last"
-            [class.mb-6]="!isLast"
-          >
+        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          <div *ngFor="let trait of coreTraitsCategory.traits">
             <ng-container
               *ngTemplateOutlet="
                 genericTrait;
@@ -90,14 +79,8 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card">
-          <div
-            *ngFor="
-              let trait of physicalTraitsCategory.traits;
-              let isLast = last
-            "
-            [class.mb-6]="!isLast"
-          >
+        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          <div *ngFor="let trait of physicalTraitsCategory.traits">
             <ng-container
               *ngTemplateOutlet="
                 genericTrait;
