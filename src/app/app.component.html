@@ -3,10 +3,8 @@
     container
     mx-auto
     flex flex-col
-    md:flex-row
+    lg:flex-row lg:items-end
     justify-between
-    items-start
-    md:items-end
     px-4
     mb-10
     gap-4
@@ -17,21 +15,25 @@
     class="
       banner
       flex flex-col
-      lg:flex-row lg:items-center
-      xl:items-baseline
-      gap-x-8 gap-y-2
+      2xl:flex-row 2xl:items-end
+      items-start
+      gap-x-8
       text-white
       pr-4
       sm:pr-20
       py-8
     "
   >
-    <h1 class="font-bold tracking-wide whitespace-nowrap">✨ Sparkles</h1>
+    <img
+      src="assets/icons/logo_full.svg"
+      alt=""
+      class="2xl:translate-y-[10px]"
+    />
     <p class="font-sans tracking-wider">
       Your creative companion to ignite your hero design ideas.
     </p>
   </div>
-  <div class="">
+  <div class="self-end">
     <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
   </div>
 </div>
