@@ -190,10 +190,14 @@
         self-center
         tracking-wide
         cursor-pointer
+        disabled:cursor-default
+        disabled:opacity-100
         {{ addClass }}
       "
       name="{{ trait.name }}"
       [(ngModel)]="trait.selected"
+      (ngModelChange)="updateUrl(trait)"
+      [disabled]="trait.locked"
     >
       <option
         *ngFor="let attribute of trait.attributes"

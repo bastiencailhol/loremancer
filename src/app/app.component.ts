@@ -3,19 +3,12 @@ import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
+import { ActivatedRoute, Router } from '@angular/router'
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-/*
-TODO :
-- Migrer les categories dans un fichier de définition
-- Compléter les listes
-- Renseigner listes manquantes
-- Ajouter des icônes pour chaque catégorie
-- Séparer Cheveux & pilosité ?
- */
 export class AppComponent implements OnInit {
   coreTraitsCategory = {
     name: 'Caractéristiques',
@@ -38,8 +31,20 @@ export class AppComponent implements OnInit {
     this.equipmentsCategory,
     this.physicalTraitsCategory,
   ]
-  constructor() {}
-  ngOnInit() {}
+
+  queryParams: any = {}
+  constructor(private router: Router, private route: ActivatedRoute) {}
+  ngOnInit() {
+    this.route.queryParams.subscribe((queryParams) => {
+      const traits: any = this.categories.reduce(
+        (acc, category) => [...acc, ...category.traits],
+        [],
+      )
+      traits.forEach((trait) => {
+        trait.selected = queryParams[trait.name]
+      })
+    })
+  }
 
   rollAllTraits() {
     this.categories.forEach((category) => {
@@ -60,7 +65,12 @@ export class AppComponent implements OnInit {
       trait.selected = sample(
         trait.attributes.filter((attribute) => attribute !== trait.selected),
       )
+      this.updateUrl(trait)
     }
+  }
+  updateUrl(trait) {
+    this.queryParams = { ...this.queryParams, [trait.name]: trait.selected }
+    this.router.navigate([''], { queryParams: this.queryParams })
   }
 
   toggleTraitLock(category, trait) {
