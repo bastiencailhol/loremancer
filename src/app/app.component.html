@@ -3,10 +3,8 @@
     container
     mx-auto
     flex flex-col
-    md:flex-row
+    lg:flex-row lg:items-end
     justify-between
-    items-start
-    md:items-end
     px-4
     mb-10
     gap-4
@@ -17,35 +15,31 @@
     class="
       banner
       flex flex-col
-      lg:flex-row lg:items-center
-      xl:items-baseline
-      gap-x-8 gap-y-2
+      2xl:flex-row 2xl:items-end
+      items-start
+      gap-x-8
       text-white
       pr-4
       sm:pr-20
       py-8
     "
   >
-    <h1 class="font-bold tracking-wide whitespace-nowrap">✨ Sparkles</h1>
+    <img
+      src="assets/icons/logo_full.svg"
+      alt=""
+      class="2xl:translate-y-[10px]"
+    />
     <p class="font-sans tracking-wider">
-      Your creative companion to ignite your hero design ideas.
+      Your creative companion to ignite your hero design process.
     </p>
   </div>
-  <div class="">
+  <div class="self-end">
     <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
   </div>
 </div>
 <div class="container mx-auto px-4">
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
-    <div
-      class="
-        xl:col-span-1
-        grid grid-cols-1
-        md:grid-cols-2
-        xl:grid-cols-1
-        gap-x-12
-      "
-    >
+    <div class="xl:col-span-1 gap-x-12">
       <div class="mb-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Archetype</h4>
@@ -60,11 +54,8 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card">
-          <div
-            *ngFor="let trait of coreTraitsCategory.traits; let isLast = last"
-            [class.mb-6]="!isLast"
-          >
+        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          <div *ngFor="let trait of coreTraitsCategory.traits">
             <ng-container
               *ngTemplateOutlet="
                 genericTrait;
@@ -88,14 +79,8 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card">
-          <div
-            *ngFor="
-              let trait of physicalTraitsCategory.traits;
-              let isLast = last
-            "
-            [class.mb-6]="!isLast"
-          >
+        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+          <div *ngFor="let trait of physicalTraitsCategory.traits">
             <ng-container
               *ngTemplateOutlet="
                 genericTrait;
