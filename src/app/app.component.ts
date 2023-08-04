@@ -36,6 +36,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router, private route: ActivatedRoute) {}
   ngOnInit() {
     this.route.queryParams.subscribe((queryParams) => {
+      this.queryParams = queryParams
       const traits: any = this.categories.reduce(
         (acc, category) => [...acc, ...category.traits],
         [],
@@ -71,6 +72,10 @@ export class AppComponent implements OnInit {
   updateUrl(trait) {
     this.queryParams = { ...this.queryParams, [trait.name]: trait.selected }
     this.router.navigate([''], { queryParams: this.queryParams })
+  }
+
+  clearAllUrlParams() {
+    this.router.navigate([''], {})
   }
 
   toggleTraitLock(category, trait) {
