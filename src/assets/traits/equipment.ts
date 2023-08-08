@@ -3,7 +3,7 @@ export const equipments = [
     name: 'Weapon',
     dimensions: 'md:row-start-1 md:row-end-6',
     icon: 'weapon',
-    color: '#F7E5E5',
+    color: 'F7E5E5',
     attributes: [
       '-',
       'Arquebus',
@@ -60,7 +60,7 @@ export const equipments = [
     name: 'Head',
     dimensions: 'md:row-start-1 md:row-end-3',
     icon: 'head',
-    color: '#E6F3DD',
+    color: 'E6F3DD',
     attributes: [
       '-',
       'Bandana',
@@ -99,7 +99,7 @@ export const equipments = [
     name: 'Jewels',
     dimensions: 'md:row-start-1 md:row-end-3',
     icon: 'jewels',
-    color: '#E6F7EB',
+    color: 'E6F7EB',
     attributes: [
       '-',
       'Amulet',
@@ -122,7 +122,7 @@ export const equipments = [
     name: 'Body',
     dimensions: 'md:row-start-3 md:row-end-6',
     icon: 'body',
-    color: '#D9F5E6',
+    color: 'D9F5E6',
     attributes: [
       'Bare torso',
       'Breastplate',
@@ -154,7 +154,7 @@ export const equipments = [
     name: 'Shoulders',
     dimensions: 'md:row-start-3 md:row-end-8',
     icon: 'back',
-    color: '#E6E6F7',
+    color: 'E6E6F7',
     attributes: [
       '-',
       'Backpack',
@@ -184,7 +184,7 @@ export const equipments = [
     name: 'Hands',
     dimensions: 'md:row-start-6 md:row-end-8',
     icon: 'hands',
-    color: '#F7F2E6',
+    color: 'F7F2E6',
     attributes: [
       'Bare Hands',
       'Bracelets',
@@ -202,7 +202,7 @@ export const equipments = [
     name: 'Belt',
     dimensions: 'md:row-start-6 md:row-end-8',
     icon: 'belt',
-    color: '#E1EAF5',
+    color: 'E1EAF5',
     attributes: [
       '-',
       'Baldric',
@@ -228,7 +228,7 @@ export const equipments = [
     name: 'Accessories',
     dimensions: 'md:row-start-8 md:row-end-13',
     icon: 'accessories',
-    color: '#F3F7E6',
+    color: 'F3F7E6',
     attributes: [
       '-',
       'Coin pouch',
@@ -257,7 +257,7 @@ export const equipments = [
     name: 'Legs',
     dimensions: 'md:row-start-8 md:row-end-11',
     icon: 'legs',
-    color: '#F4DFED',
+    color: 'F4DFED',
     attributes: [
       'Baggy pants',
       'Cargo pants',
@@ -279,7 +279,7 @@ export const equipments = [
     name: 'Pet',
     dimensions: 'md:row-start-8 md:row-end-13',
     icon: 'pet',
-    color: '#F7E6E7',
+    color: 'F7E6E7',
     attributes: [
       '-',
       'Baby wyvern',
@@ -324,7 +324,7 @@ export const equipments = [
     name: 'Feet',
     dimensions: 'md:row-start-11 md:row-end-13',
     icon: 'feet',
-    color: '#F5EFDF',
+    color: 'F5EFDF',
     attributes: [
       'Bare feet',
       'Footwraps',

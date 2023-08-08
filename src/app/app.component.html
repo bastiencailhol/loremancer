@@ -55,16 +55,18 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-          <div *ngFor="let trait of coreTraitsCategory.traits">
-            <ng-container
-              *ngTemplateOutlet="
-                genericTrait;
-                context: { category: coreTraitsCategory, trait: trait }
-              "
-            ></ng-container>
+        <app-card>
+          <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div *ngFor="let trait of coreTraitsCategory.traits">
+              <ng-container
+                *ngTemplateOutlet="
+                  genericTrait;
+                  context: { category: coreTraitsCategory, trait: trait }
+                "
+              ></ng-container>
+            </div>
           </div>
-        </div>
+        </app-card>
       </div>
       <div class="mb-10">
         <div class="flex mb-3">
@@ -80,16 +82,18 @@
             ></app-lock-button>
           </div>
         </div>
-        <div class="card grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-          <div *ngFor="let trait of physicalTraitsCategory.traits">
-            <ng-container
-              *ngTemplateOutlet="
-                genericTrait;
-                context: { category: physicalTraitsCategory, trait: trait }
-              "
-            ></ng-container>
+        <app-card size="xl">
+          <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div *ngFor="let trait of physicalTraitsCategory.traits">
+              <ng-container
+                *ngTemplateOutlet="
+                  genericTrait;
+                  context: { category: physicalTraitsCategory, trait: trait }
+                "
+              ></ng-container>
+            </div>
           </div>
-        </div>
+        </app-card>
       </div>
     </div>
     <div class="xl:col-span-2 relative mb-10">
@@ -142,35 +146,42 @@
 </ng-template>
 
 <ng-template #equipmentTrait let-trait="trait">
-  <div class="card flex {{ trait.dimensions }}">
-    <div
-      class="flex items-center rounded-lg px-2"
-      [style.backgroundColor]="trait.color"
-    >
-      <img
-        src="./assets/icons/{{ trait.icon }}.svg"
-        alt=""
-        class="min-w-9 h-9"
-      />
+  <app-card class="{{ trait.dimensions }}">
+    <div class="flex h-full">
+      <div
+        class="flex items-center rounded-lg px-2"
+        [ngStyle]="{
+          'background-image':
+            'url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=' +
+            trait.color +
+            ')'
+        }"
+      >
+        <img
+          src="./assets/icons/{{ trait.icon }}.svg"
+          alt=""
+          class="min-w-9 h-9"
+        />
+      </div>
+      <ng-container
+        *ngTemplateOutlet="
+          attributeSelect;
+          context: { trait: trait, addClass: 'px-3' }
+        "
+      ></ng-container>
+      <div class="flex flex-col justify-between gap-2">
+        <app-reroll-button
+          *ngIf="!trait.locked"
+          (onClick)="rollTrait(trait)"
+        ></app-reroll-button>
+        <div *ngIf="trait.locked" class="h-7 w-7"></div>
+        <app-lock-button
+          (onClick)="toggleTraitLock(equipmentsCategory, trait)"
+          [isLocked]="trait.locked"
+        ></app-lock-button>
+      </div>
     </div>
-    <ng-container
-      *ngTemplateOutlet="
-        attributeSelect;
-        context: { trait: trait, addClass: 'px-3' }
-      "
-    ></ng-container>
-    <div class="flex flex-col justify-between gap-2">
-      <app-reroll-button
-        *ngIf="!trait.locked"
-        (onClick)="rollTrait(trait)"
-      ></app-reroll-button>
-      <div *ngIf="trait.locked" class="h-7 w-7"></div>
-      <app-lock-button
-        (onClick)="toggleTraitLock(equipmentsCategory, trait)"
-        [isLocked]="trait.locked"
-      ></app-lock-button>
-    </div>
-  </div>
+  </app-card>
 </ng-template>
 
 <ng-template #attributeSelect let-trait="trait" let-addClass="addClass">
@@ -185,6 +196,7 @@
         bg-none
         whitespace-normal
         break-words
+        bg-transparent
         p-0
         text-xl
         font-medium
