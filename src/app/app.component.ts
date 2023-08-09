@@ -4,47 +4,61 @@ import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
 import { ActivatedRoute, Router } from '@angular/router'
+
+interface Category {
+  name: string
+  traits: typeof coreTraits
+  locked: boolean
+}
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
-  coreTraitsCategory = {
-    name: 'Caractéristiques',
-    traits: coreTraits,
-    locked: false,
-  }
-  equipmentsCategory = {
-    name: 'Équipements',
-    traits: equipments,
-    locked: false,
-  }
-  physicalTraitsCategory = {
-    name: 'Attributs physiques',
-    traits: physicalTraits,
-    locked: false,
-  }
+  coreTraitsCategory!: Category
+  equipmentsCategory!: Category
+  physicalTraitsCategory!: Category
 
-  categories: any[] = [
-    this.coreTraitsCategory,
-    this.equipmentsCategory,
-    this.physicalTraitsCategory,
-  ]
+  categories: Category[] = []
 
   queryParams: any = {}
   constructor(private router: Router, private route: ActivatedRoute) {}
   ngOnInit() {
+    this.initCategories()
     this.route.queryParams.subscribe((queryParams) => {
       this.queryParams = queryParams
       const traits: any = this.categories.reduce(
-        (acc, category) => [...acc, ...category.traits],
+        (acc: typeof coreTraits, category) => [...acc, ...category.traits],
         [],
       )
       traits.forEach((trait) => {
         trait.selected = queryParams[trait.name]
       })
     })
+  }
+
+  initCategories() {
+    this.coreTraitsCategory = {
+      name: 'Caractéristiques',
+      traits: JSON.parse(JSON.stringify(coreTraits)),
+      locked: false,
+    }
+    this.equipmentsCategory = {
+      name: 'Équipements',
+      traits: JSON.parse(JSON.stringify(equipments)),
+      locked: false,
+    }
+    this.physicalTraitsCategory = {
+      name: 'Attributs physiques',
+      traits: JSON.parse(JSON.stringify(physicalTraits)),
+      locked: false,
+    }
+    this.categories = [
+      this.coreTraitsCategory,
+      this.equipmentsCategory,
+      this.physicalTraitsCategory,
+    ]
   }
 
   rollAllTraits() {
@@ -76,6 +90,7 @@ export class AppComponent implements OnInit {
 
   clearAllUrlParams() {
     this.router.navigate([''], {})
+    this.initCategories()
   }
 
   toggleTraitLock(category, trait) {
