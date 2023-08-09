@@ -3,7 +3,7 @@
   &::after {
     content: '';
     background-image: url('../assets/img/dark-paper-texture.jpg');
-    filter: brightness(1.2) blur(0.5px);
+    filter: brightness(1.2);
     position: absolute;
     top: 0;
     bottom: -5px;
