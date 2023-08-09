@@ -1,18 +1,29 @@
-button svg {
-  position: absolute;
-  top: 0;
-  height: 100%;
-  left: 0;
-  width: 100%;
-  z-index: -1;
-}
 button {
   @apply font-bold;
   @apply text-2xl;
   @apply tracking-wider;
   transition: 0.005s;
+  svg {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    left: 0;
+    width: 100%;
+    z-index: -1;
+  }
+  .hover-shadow {
+    background: hsla(208, 60%, 70%, 0.2);
+    @apply blur-sm;
+    opacity: 0;
+    transition: 0.05s;
+  }
   &:hover {
-    transform: translate(-1px, -1px) skewY(-0.2deg);
+    .hover-shadow {
+      opacity: 1;
+    }
+    .button-bg path {
+      fill: inherit;
+    }
   }
   &:active {
     transform: translateY(1px);

@@ -7,12 +7,11 @@
 
   <img class="default" src="assets/icons/magic wand sparkles.svg" alt="" />
   <img class="active hidden" src="assets/icons/magic wand.svg" alt="" />
-  <div class="absolute -top-1 -bottom-1 -left-1 -right-1 -z-10">
+  <div class="button-bg absolute -top-1 -bottom-1 -left-1 -right-1 -z-10">
     <svg
       width="866"
       height="414"
       viewBox="0 0 866 414"
-      fill="none"
       xmlns="http://www.w3.org/2000/svg"
       preserveAspectRatio="none"
       [ngStyle]="{
@@ -22,7 +21,8 @@
           '80) drop-shadow(0 1px 2px hsla(0, 0%, 0%, 0.08)) 
           drop-shadow(0 5px 16px hsla(0, 0%, 0%, 0.03)) drop-shadow(0 5px 16px ' +
           version?.color +
-          '30)'
+          '30)',
+        fill: version?.lighterColor
       }"
     >
       <path
@@ -30,5 +30,8 @@
         [attr.fill]="version?.color"
       />
     </svg>
+    <div
+      class="hover-shadow absolute top-1 -bottom-1 left-0 right-0 -z-20"
+    ></div>
   </div>
 </button>
