@@ -5,7 +5,7 @@ svg {
   left: 0;
   width: 100%;
   z-index: -1;
-  filter: drop-shadow(0 1px 1px hsla(0, 0%, 0%, 0.05))
-    drop-shadow(0 1px 2px hsla(0, 0%, 0%, 0.05))
-    drop-shadow(0 5px 16px hsla(0, 0%, 0%, 0.06));
+  filter: drop-shadow(0 1px 1px hsla(208, 60%, 0%, 0.06))
+    drop-shadow(0 1px 2px hsla(208, 60%, 20%, 0.06))
+    drop-shadow(0 5px 16px hsla(208, 60%, 70%, 0.15));
 }

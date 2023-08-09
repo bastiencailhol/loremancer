@@ -87,7 +87,8 @@ module.exports = {
     backgroundColor: (theme) => theme('colors'),
     backgroundImage: {
       none: 'none',
-      doodles: "url('assets/img/fantasy-doodles.jpg')",
+      paper: "url('assets/img/paper-texture.jpg')",
+      'dark-paper': "url('assets/img/dark-paper-texture.jpg')",
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
       'gradient-to-tr':
         'linear-gradient(to top right, var(--tw-gradient-stops))',

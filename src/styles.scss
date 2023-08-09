@@ -41,23 +41,3 @@
     @apply text-blue-600 underline;
   }
 }
-
-@layer components {
-  .cta-button {
-    box-shadow: -3px 3px theme('colors.black');
-    border-radius: theme('borderRadius.2xl');
-    border: theme('borderWidth.2') solid theme('colors.black');
-    padding: theme('spacing.3');
-    @apply font-bold;
-    @apply text-2xl;
-    @apply tracking-wider;
-    &:hover {
-      transform: translate(1px, -1px);
-      box-shadow: -4px 4px theme('colors.black');
-    }
-    &:active {
-      transform: translate(-1px, 1px);
-      box-shadow: -2px 2px theme('colors.black');
-    }
-  }
-}

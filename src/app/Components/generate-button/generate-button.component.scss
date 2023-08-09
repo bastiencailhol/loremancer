@@ -1,8 +1,26 @@
-button:active {
-  img.active {
-    display: block;
+button svg {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 0;
+  width: 100%;
+  z-index: -1;
+}
+button {
+  @apply font-bold;
+  @apply text-2xl;
+  @apply tracking-wider;
+  transition: 0.005s;
+  &:hover {
+    transform: translate(-1px, -1px) skewY(-0.2deg);
   }
-  img.default {
-    display: none;
+  &:active {
+    transform: translateY(1px);
+    img.active {
+      display: block;
+    }
+    img.default {
+      display: none;
+    }
   }
 }

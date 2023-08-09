@@ -21,7 +21,8 @@
       text-white
       pr-4
       sm:pr-20
-      py-8
+      pt-6
+      pb-10
     "
   >
     <img
@@ -33,6 +34,11 @@
     <p class="font-sans tracking-wider">
       Your creative companion to ignite your hero design process.
     </p>
+    <img src="assets/img/ink-1.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-2.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-3.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-4.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-5.svg" alt="" class="ink-drop" />
   </div>
   <div class="self-end">
     <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
@@ -110,7 +116,7 @@
           ></app-lock-button>
         </div>
       </div>
-      <div class="grid md:grid-cols-3 grid-rows-12 gap-4">
+      <div class="grid md:grid-cols-3 grid-rows-12 gap-5">
         <ng-container *ngFor="let trait of equipmentsCategory.traits">
           <ng-container
             *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"

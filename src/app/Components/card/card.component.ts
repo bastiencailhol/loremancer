@@ -7,7 +7,9 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent {
+  @Input() addClass = ''
   @Input() size: 'sm' | 'xl' = 'sm'
+  @Input() color: string | undefined = 'white'
 
   variant = Math.floor(Math.random() * 2) + 1
 }
