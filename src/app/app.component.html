@@ -155,7 +155,11 @@
     <ng-container
       *ngTemplateOutlet="
         attributeSelect;
-        context: { trait: trait, addClass: '-m-2 px-2' }
+        context: {
+          category: category,
+          trait: trait,
+          addClass: '-m-2 px-2'
+        }
       "
     ></ng-container>
     <div class="flex gap-1">
@@ -192,7 +196,11 @@
       <ng-container
         *ngTemplateOutlet="
           attributeSelect;
-          context: { trait: trait, addClass: 'px-3' }
+          context: {
+            category: equipmentsCategory,
+            trait: trait,
+            addClass: 'px-3'
+          }
         "
       ></ng-container>
       <div class="flex flex-col justify-between gap-2">
