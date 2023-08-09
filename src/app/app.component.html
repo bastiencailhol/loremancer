@@ -6,8 +6,7 @@
     lg:flex-row lg:items-end
     justify-between
     px-4
-    mb-10
-    gap-4
+    gap-x-4 gap-y-8
     relative
   "
 >
@@ -22,7 +21,7 @@
       pr-4
       sm:pr-20
       pt-6
-      pb-10
+      pb-12
     "
   >
     <img
@@ -43,11 +42,27 @@
   <div class="self-end">
     <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
   </div>
+
+  <img
+    src="assets/img/ink-1.svg"
+    alt=""
+    class="
+      absolute
+      -z-40
+      opacity-30
+      top-1/2
+      left-full
+      xl:left-[70%]
+      w-48
+      -translate-x-1/2
+      -scale-x-100
+    "
+  />
 </div>
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 mb-10">
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
     <div class="xl:col-span-1 gap-x-12">
-      <div class="mb-10">
+      <div class="mt-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Archetype</h4>
           <div class="flex gap-1 px-3">
@@ -74,7 +89,7 @@
           </div>
         </app-card>
       </div>
-      <div class="mb-10">
+      <div class="mt-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Physical traits</h4>
           <div class="flex gap-1 px-3">
@@ -102,7 +117,7 @@
         </app-card>
       </div>
     </div>
-    <div class="xl:col-span-2 relative mb-10">
+    <div class="xl:col-span-2 relative mt-10">
       <div class="flex">
         <h4 class="flex-grow mb-3">Equipments</h4>
         <div class="flex gap-1 px-3">

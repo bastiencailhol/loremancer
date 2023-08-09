@@ -43,3 +43,13 @@
     }
   }
 }
+
+.bg-ink-drop {
+  position: absolute;
+  z-index: -1;
+  left: 50%;
+  bottom: 0;
+  opacity: 0.5;
+  width: 200px;
+  transform: scaleX(-1);
+}
