@@ -26,7 +26,10 @@
       />
     </svg>
   </div>
-  <div *ngSwitchCase="'xl'" class="absolute -top-2 -bottom-2 -left-2 -right-2">
+  <div
+    *ngSwitchCase="'xl'"
+    class="absolute -top-2 -bottom-2 -left-2 -right-2 -z-10"
+  >
     <svg
       [ngSwitch]="variant"
       preserveAspectRatio="none"
