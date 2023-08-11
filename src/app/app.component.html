@@ -53,7 +53,6 @@
       opacity-30
       top-1/2
       left-full
-      xl:left-[70%]
       w-48
       -translate-x-1/2
       -scale-x-100
@@ -135,7 +134,10 @@
       <div class="grid md:grid-cols-3 grid-rows-12 gap-5">
         <ng-container *ngFor="let trait of equipmentsCategory.traits">
           <ng-container
-            *ngTemplateOutlet="equipmentTrait; context: { trait: trait }"
+            *ngTemplateOutlet="
+              equipmentTrait;
+              context: { category: equipmentsCategory, trait: trait }
+            "
           ></ng-container>
         </ng-container>
       </div>
@@ -151,7 +153,11 @@
     <ng-container
       *ngTemplateOutlet="
         attributeSelect;
-        context: { trait: trait, addClass: '-m-2 px-2' }
+        context: {
+          category: category,
+          trait: trait,
+          addClass: '-m-2 px-2'
+        }
       "
     ></ng-container>
     <div class="flex gap-1">
@@ -188,7 +194,11 @@
       <ng-container
         *ngTemplateOutlet="
           attributeSelect;
-          context: { trait: trait, addClass: 'px-3' }
+          context: {
+            category: equipmentsCategory,
+            trait: trait,
+            addClass: 'px-3'
+          }
         "
       ></ng-container>
       <div class="flex flex-col justify-between gap-2">
@@ -206,7 +216,12 @@
   </app-card>
 </ng-template>
 
-<ng-template #attributeSelect let-trait="trait" let-addClass="addClass">
+<ng-template
+  #attributeSelect
+  let-category="category"
+  let-trait="trait"
+  let-addClass="addClass"
+>
   <div class="flex-grow min-w-0 flex">
     <select
       class="
@@ -231,8 +246,7 @@
       "
       name="{{ trait.name }}"
       [(ngModel)]="trait.selected"
-      (ngModelChange)="updateUrl(trait)"
-      [disabled]="trait.locked"
+      (ngModelChange)="updateUrl(trait); toggleTraitLock(category, trait, true)"
     >
       <option
         *ngFor="let attribute of trait.attributes"
