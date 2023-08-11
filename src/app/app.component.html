@@ -246,8 +246,7 @@
       "
       name="{{ trait.name }}"
       [(ngModel)]="trait.selected"
-      (ngModelChange)="updateUrl(trait); toggleTraitLock(category, trait)"
-      [disabled]="trait.locked"
+      (ngModelChange)="updateUrl(trait); toggleTraitLock(category, trait, true)"
     >
       <option
         *ngFor="let attribute of trait.attributes"

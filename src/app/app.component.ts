@@ -93,8 +93,12 @@ export class AppComponent implements OnInit {
     this.initCategories()
   }
 
-  toggleTraitLock(category, trait) {
-    trait.locked = !trait.locked
+  toggleTraitLock(category, trait, value?: boolean) {
+    if (value !== undefined) {
+      trait.locked = value
+    } else {
+      trait.locked = !trait.locked
+    }
     this.setCategoryLock(category, this.checkIfEveryTraitIsLocked(category))
   }
 
