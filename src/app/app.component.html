@@ -52,6 +52,7 @@
       -z-40
       opacity-30
       top-1/2
+      xl:left-[70%]
       left-full
       w-48
       -translate-x-1/2
@@ -76,17 +77,15 @@
             ></app-lock-button>
           </div>
         </div>
-        <app-card size="xl">
-          <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            <ng-container *ngFor="let trait of contextCategory.traits">
-              <ng-container
-                *ngTemplateOutlet="
-                  genericTrait;
-                  context: { category: contextCategory, trait: trait }
-                "
-              ></ng-container>
-            </ng-container>
-          </div>
+        <app-card>
+          <ng-container *ngFor="let trait of contextCategory.traits">
+            <ng-container
+              *ngTemplateOutlet="
+                genericTrait;
+                context: { category: contextCategory, trait: trait }
+              "
+            ></ng-container>
+          </ng-container>
         </app-card>
       </div>
       <div class="mt-10">
