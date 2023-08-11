@@ -80,7 +80,7 @@ export class GenerateButtonComponent {
     {
       text: 'Nah… another quest!',
       color: '#ABC2FF',
-      lighterColor: '#E6A8FE',
+      lighterColor: '#B2C7FF',
       darkerColor: '#25617F',
     },
     {
