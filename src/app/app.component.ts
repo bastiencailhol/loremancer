@@ -3,10 +3,11 @@ import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
+
 import { ActivatedRoute, Router } from '@angular/router'
+import { context } from 'src/assets/traits/context'
 
 interface Category {
-  name: string
   traits: typeof coreTraits
   locked: boolean
 }
@@ -19,6 +20,7 @@ export class AppComponent implements OnInit {
   coreTraitsCategory!: Category
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
+  contextCategory!: Category
 
   categories: Category[] = []
 
@@ -40,24 +42,26 @@ export class AppComponent implements OnInit {
 
   initCategories() {
     this.coreTraitsCategory = {
-      name: 'Caractéristiques',
       traits: JSON.parse(JSON.stringify(coreTraits)),
       locked: false,
     }
-    this.equipmentsCategory = {
-      name: 'Équipements',
-      traits: JSON.parse(JSON.stringify(equipments)),
+    this.physicalTraitsCategory = {
+      traits: JSON.parse(JSON.stringify(physicalTraits)),
       locked: false,
     }
-    this.physicalTraitsCategory = {
-      name: 'Attributs physiques',
-      traits: JSON.parse(JSON.stringify(physicalTraits)),
+    this.contextCategory = {
+      traits: JSON.parse(JSON.stringify(context)),
+      locked: false,
+    }
+    this.equipmentsCategory = {
+      traits: JSON.parse(JSON.stringify(equipments)),
       locked: false,
     }
     this.categories = [
       this.coreTraitsCategory,
-      this.equipmentsCategory,
       this.physicalTraitsCategory,
+      this.contextCategory,
+      this.equipmentsCategory,
     ]
   }
 

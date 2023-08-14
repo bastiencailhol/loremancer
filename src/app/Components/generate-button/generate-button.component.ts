@@ -24,19 +24,19 @@ export class GenerateButtonComponent {
 
   versions: Version[] = [
     {
-      text: 'Unleash the Magic!',
+      text: 'Unleash the magic!',
       color: '#FCFF65',
       lighterColor: '#FBFD77',
       darkerColor: '#7F7E25',
     },
     {
-      text: 'Hmmm… something else?',
+      text: 'Hmmm… try anew?',
       color: '#FFC95E',
       lighterColor: '#FECC67',
       darkerColor: '#7F5E25',
     },
     {
-      text: 'Try again',
+      text: 'Give it another go',
       color: '#8DFFF2',
       lighterColor: '#9AFDF3',
       darkerColor: '#255F7F',
@@ -48,43 +48,43 @@ export class GenerateButtonComponent {
       darkerColor: '#7F2561',
     },
     {
-      text: 'One more time',
+      text: 'One more attempt',
       color: '#8DFFC2',
       lighterColor: '#9AFDC8',
       darkerColor: '#257F5F',
     },
     {
-      text: 'Seeking Perfection…',
+      text: 'Seeking perfection',
       color: '#FF9595',
       lighterColor: '#FE9B9B',
       darkerColor: '#7E2525',
     },
     {
-      text: 'The adventure continues!',
+      text: 'Adventure goes on!',
       color: '#80E8FF',
       lighterColor: '#8FEAFD',
       darkerColor: '#255F7F',
     },
     {
-      text: 'Keep exploring',
+      text: 'Keep exploring…',
       color: '#FFB388',
       lighterColor: '#FEB78F',
       darkerColor: '#7F4F25',
     },
     {
-      text: 'Another fantasy awaits!',
+      text: 'New fantasy awaits',
       color: '#BFFF80',
       lighterColor: '#C5FD8F',
       darkerColor: '#4F7F25',
     },
     {
-      text: 'Nah… another quest!',
+      text: 'Nah… another quest',
       color: '#ABC2FF',
       lighterColor: '#B2C7FF',
       darkerColor: '#25617F',
     },
     {
-      text: "Let's dig deeper…",
+      text: 'Need to dig deeper',
       color: '#FFA9F2',
       lighterColor: '#FEAEF3',
       darkerColor: '#7F2561',

@@ -52,6 +52,7 @@
       -z-40
       opacity-30
       top-1/2
+      xl:left-[70%]
       left-full
       w-48
       -translate-x-1/2
@@ -62,6 +63,31 @@
 <div class="container mx-auto px-4 mb-10">
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
     <div class="xl:col-span-1 gap-x-12">
+      <div class="mt-10">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Context</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button
+              *ngIf="!contextCategory.locked"
+              (onClick)="rollCategoryTraits(contextCategory)"
+            ></app-reroll-button>
+            <app-lock-button
+              (onClick)="toggleCategoryLock(contextCategory)"
+              [isLocked]="contextCategory.locked"
+            ></app-lock-button>
+          </div>
+        </div>
+        <app-card>
+          <ng-container *ngFor="let trait of contextCategory.traits">
+            <ng-container
+              *ngTemplateOutlet="
+                genericTrait;
+                context: { category: contextCategory, trait: trait }
+              "
+            ></ng-container>
+          </ng-container>
+        </app-card>
+      </div>
       <div class="mt-10">
         <div class="flex mb-3">
           <h4 class="flex-grow">Archetype</h4>
@@ -78,14 +104,14 @@
         </div>
         <app-card>
           <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            <div *ngFor="let trait of coreTraitsCategory.traits">
+            <ng-container *ngFor="let trait of coreTraitsCategory.traits">
               <ng-container
                 *ngTemplateOutlet="
                   genericTrait;
                   context: { category: coreTraitsCategory, trait: trait }
                 "
               ></ng-container>
-            </div>
+            </ng-container>
           </div>
         </app-card>
       </div>
@@ -105,70 +131,74 @@
         </div>
         <app-card size="xl">
           <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
-            <div *ngFor="let trait of physicalTraitsCategory.traits">
+            <ng-container *ngFor="let trait of physicalTraitsCategory.traits">
               <ng-container
                 *ngTemplateOutlet="
                   genericTrait;
                   context: { category: physicalTraitsCategory, trait: trait }
                 "
               ></ng-container>
-            </div>
+            </ng-container>
           </div>
         </app-card>
       </div>
     </div>
-    <div class="xl:col-span-2 relative mt-10">
-      <div class="flex">
-        <h4 class="flex-grow mb-3">Equipments</h4>
-        <div class="flex gap-1 px-3">
-          <app-reroll-button
-            *ngIf="!equipmentsCategory.locked"
-            (onClick)="rollCategoryTraits(equipmentsCategory)"
-          ></app-reroll-button>
-          <app-lock-button
-            (onClick)="toggleCategoryLock(equipmentsCategory)"
-            [isLocked]="equipmentsCategory.locked"
-          ></app-lock-button>
+    <div class="xl:col-span-2 relative">
+      <div class="mt-10">
+        <div class="flex">
+          <h4 class="flex-grow mb-3">Equipments</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button
+              *ngIf="!equipmentsCategory.locked"
+              (onClick)="rollCategoryTraits(equipmentsCategory)"
+            ></app-reroll-button>
+            <app-lock-button
+              (onClick)="toggleCategoryLock(equipmentsCategory)"
+              [isLocked]="equipmentsCategory.locked"
+            ></app-lock-button>
+          </div>
         </div>
-      </div>
-      <div class="grid md:grid-cols-3 grid-rows-12 gap-5">
-        <ng-container *ngFor="let trait of equipmentsCategory.traits">
-          <ng-container
-            *ngTemplateOutlet="
-              equipmentTrait;
-              context: { category: equipmentsCategory, trait: trait }
-            "
-          ></ng-container>
-        </ng-container>
+        <div class="grid md:grid-cols-3 grid-rows-12 gap-5">
+          <ng-container *ngFor="let trait of equipmentsCategory.traits">
+            <ng-container
+              *ngTemplateOutlet="
+                equipmentTrait;
+                context: { category: equipmentsCategory, trait: trait }
+              "
+            ></ng-container>
+          </ng-container>
+        </div>
       </div>
     </div>
   </div>
 </div>
 
 <ng-template #genericTrait let-category="category" let-trait="trait">
-  <h6 class="">
-    {{ trait.name }}
-  </h6>
-  <div class="flex">
-    <ng-container
-      *ngTemplateOutlet="
-        attributeSelect;
-        context: {
-          category: category,
-          trait: trait,
-          addClass: '-m-2 px-2'
-        }
-      "
-    ></ng-container>
-    <div class="flex gap-1">
-      <app-reroll-button
-        *ngIf="!trait.locked"
-        (onClick)="rollTrait(trait)"
-      ></app-reroll-button>
-      <app-lock-button
-        (onClick)="toggleTraitLock(category, trait)"
-        [isLocked]="trait.locked"
-      ></app-lock-button>
+  <div class="flex flex-col">
+    <h6 class="">
+      {{ trait.name }}
+    </h6>
+    <div class="flex">
+      <ng-container
+        *ngTemplateOutlet="
+          attributeSelect;
+          context: {
+            category: category,
+            trait: trait,
+            addClass: '-m-2 px-2'
+          }
+        "
+      ></ng-container>
+      <div class="flex-none flex gap-1">
+        <app-reroll-button
+          *ngIf="!trait.locked"
+          (onClick)="rollTrait(trait)"
+        ></app-reroll-button>
+        <app-lock-button
+          (onClick)="toggleTraitLock(category, trait)"
+          [isLocked]="trait.locked"
+        ></app-lock-button>
+      </div>
     </div>
   </div>
 </ng-template>
@@ -222,9 +252,10 @@
   let-trait="trait"
   let-addClass="addClass"
 >
-  <div class="flex-grow min-w-0 flex">
+  <div class="flex-grow min-w-0">
     <select
       class="
+        min-h-full
         max-w-full
         min-w-full
         appearance-none
@@ -236,8 +267,8 @@
         bg-transparent
         p-0
         text-xl
+        leading-tight
         font-medium
-        self-center
         tracking-wide
         cursor-pointer
         disabled:cursor-default
