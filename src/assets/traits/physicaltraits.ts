@@ -5,15 +5,7 @@ export const physicalTraits = [
   },
   {
     name: 'Age',
-    attributes: [
-      'Adult',
-      'Centenarian',
-      'Child',
-      'Elderly',
-      'Mature',
-      'Teenager',
-      'Young',
-    ],
+    attributes: ['Teenager', 'Adult', 'Mature', 'Elderly', 'Centenarian'],
   },
   {
     name: 'Body type',
