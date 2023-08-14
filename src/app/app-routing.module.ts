@@ -1,9 +1,14 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { CharacterSheetModule } from './Pages/character-sheet/character-sheet.module'
 
 const routes: Routes = [
-  { path: 'character-sheet', loadChildren: () => CharacterSheetModule },
+  {
+    path: 'character-sheet',
+    loadChildren: () =>
+      import('./Pages/character-sheet/character-sheet.module').then(
+        (m) => m.CharacterSheetModule,
+      ),
+  },
   { path: '', redirectTo: '/character-sheet', pathMatch: 'full' },
 ]
 
