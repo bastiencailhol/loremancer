@@ -24,16 +24,19 @@ export class CharacterSheetComponent implements OnInit {
   categories: Category[] = []
 
   queryParams: any = {}
-  constructor(private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+  ) {}
   ngOnInit() {
     this.initCategories()
-    this.route.queryParams.subscribe((queryParams) => {
+    this.route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
       const traits: any = this.categories.reduce(
         (acc: typeof coreTraits, category) => [...acc, ...category.traits],
         [],
       )
-      traits.forEach((trait) => {
+      traits.forEach(trait => {
         trait.selected = queryParams[trait.name]
       })
     })
@@ -65,14 +68,14 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   rollAllTraits() {
-    this.categories.forEach((category) => {
+    this.categories.forEach(category => {
       this.rollCategoryTraits(category)
     })
   }
 
   rollCategoryTraits(category) {
     if (!category.locked) {
-      category.traits.forEach((trait) => {
+      category.traits.forEach(trait => {
         this.rollTrait(trait)
       })
     }
@@ -81,7 +84,7 @@ export class CharacterSheetComponent implements OnInit {
   rollTrait(trait) {
     if (!trait.locked) {
       trait.selected = sample(
-        trait.attributes.filter((attribute) => attribute !== trait.selected),
+        trait.attributes.filter(attribute => attribute !== trait.selected),
       )
       this.updateUrl(trait)
     }
@@ -107,7 +110,7 @@ export class CharacterSheetComponent implements OnInit {
 
   toggleCategoryLock(category) {
     category.locked = !category.locked
-    category.traits.forEach((trait) => {
+    category.traits.forEach(trait => {
       trait.locked = category.locked
     })
   }
@@ -117,7 +120,7 @@ export class CharacterSheetComponent implements OnInit {
 
   checkIfEveryTraitIsLocked(category) {
     return category.traits
-      .map((trait) => trait.locked)
-      .every((traitIsLocked) => traitIsLocked)
+      .map(trait => trait.locked)
+      .every(traitIsLocked => traitIsLocked)
   }
 }

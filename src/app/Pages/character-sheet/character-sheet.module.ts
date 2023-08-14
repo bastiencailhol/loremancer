@@ -7,6 +7,7 @@ import { LockButtonModule } from 'src/app/Components/lock-button/lock-button.mod
 import { RerollButtonModule } from 'src/app/Components/reroll-button/reroll-button.module'
 import { CommonModule } from '@angular/common'
 import { CharacterSheetRouterModule } from './character-sheet-routing.module'
+import { SettingsButtonModule } from 'src/app/Components/settings-button/settings-button.module'
 
 @NgModule({
   declarations: [CharacterSheetComponent],
@@ -18,6 +19,7 @@ import { CharacterSheetRouterModule } from './character-sheet-routing.module'
     LockButtonModule,
     RerollButtonModule,
     CardModule,
+    SettingsButtonModule,
   ],
   exports: [CharacterSheetComponent],
 })

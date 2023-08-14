@@ -1,0 +1,20 @@
+<button
+  class="
+    text-md
+    font-semibold font-sans
+    tracking-wider
+    flex
+    items-center
+    gap-2
+    px-4
+    py-2
+  "
+  (click)="settingsDialog.showModal()"
+>
+  Settings<img class="opacity-90" src="assets/icons/settings.svg" alt="" />
+</button>
+<dialog #settingsDialog>
+  <h2>Settings</h2>
+  <button (click)="close()">close</button>
+  <button (click)="save()">save</button>
+</dialog>
