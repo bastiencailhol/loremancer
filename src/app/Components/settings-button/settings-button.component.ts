@@ -6,6 +6,7 @@ import {
   OnInit,
   ViewChild,
 } from '@angular/core'
+import { FormControl, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-settings-button',
@@ -15,6 +16,11 @@ import {
 export class SettingsButtonComponent {
   @ViewChild('settingsDialog')
   settingsDialog!: ElementRef<HTMLDialogElement>
+  settings = new FormGroup({
+    typeOfRace: new FormControl(''),
+    showContext: new FormControl(false),
+    showImageRefs: new FormControl(false),
+  })
 
   @HostListener('click', ['$event'])
   onDialogClick(event: MouseEvent) {
@@ -27,7 +33,7 @@ export class SettingsButtonComponent {
     this.settingsDialog.nativeElement.close()
   }
   save() {
-    console.log('save')
+    console.log('save', this.settings.value)
     this.settingsDialog.nativeElement.close()
   }
 }
