@@ -69,12 +69,11 @@ export class SettingsButtonComponent implements OnInit {
     this.settings.reset()
   }
   save() {
-    const newQueryParams = {
-      ...this.queryParams,
-      ...this.settings.value,
-    }
     const navigationExtras: NavigationExtras = {
-      queryParams: newQueryParams,
+      queryParams: {
+        ...this.queryParams,
+        ...this.settings.value,
+      },
     }
     this.router.navigate([], navigationExtras)
     this.settingsDialog.nativeElement.close()

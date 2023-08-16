@@ -4,7 +4,7 @@ import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import { coreTraits } from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
 
-import { ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
 import { context } from 'src/assets/traits/context'
 
 interface Category {
@@ -16,7 +16,11 @@ interface Category {
   styleUrls: ['./character-sheet.component.scss'],
 })
 export class CharacterSheetComponent implements OnInit {
-  showContext: boolean
+  settings: {
+    typeOfRace: string
+    showContext: boolean
+    showImageRefs: boolean
+  }
   coreTraitsCategory!: Category
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
@@ -40,7 +44,11 @@ export class CharacterSheetComponent implements OnInit {
       traits.forEach(trait => {
         trait.selected = queryParams[trait.name]
       })
-      this.showContext = queryParams.showContext === 'true'
+      this.settings = {
+        typeOfRace: queryParams.typeOfRace,
+        showContext: queryParams.showContext === 'true',
+        showImageRefs: queryParams.showImageRefs === 'true',
+      }
     })
   }
 
@@ -97,7 +105,12 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   clearAllUrlParams() {
-    this.router.navigate([], {})
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        ...this.settings,
+      },
+    }
+    this.router.navigate([], navigationExtras)
     this.initCategories()
   }
 
