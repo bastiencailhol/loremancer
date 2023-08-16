@@ -26,7 +26,11 @@ export class SettingsButtonComponent implements OnInit {
     typeOfRace: FormControl<string>
     showContext: FormControl<boolean>
     showImageRefs: FormControl<boolean>
-  }>
+  }> = new FormGroup({
+    typeOfRace: new FormControl(),
+    showContext: new FormControl(),
+    showImageRefs: new FormControl(),
+  })
   queryParams: Params = {}
 
   constructor(
@@ -34,7 +38,9 @@ export class SettingsButtonComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  initializeForm() {
     this.route.queryParams.subscribe((queryParams: Params) => {
       this.queryParams = queryParams
       this.settings = new FormGroup({
@@ -53,9 +59,14 @@ export class SettingsButtonComponent implements OnInit {
       this.close()
     }
   }
+
+  openDialog() {
+    this.initializeForm()
+    this.settingsDialog.nativeElement.showModal()
+  }
   close() {
-    console.log('close')
     this.settingsDialog.nativeElement.close()
+    this.settings.reset()
   }
   save() {
     const newQueryParams = {
