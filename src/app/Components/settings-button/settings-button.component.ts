@@ -1,9 +1,8 @@
 import {
-  AfterViewInit,
   Component,
   ElementRef,
   HostListener,
-  OnInit,
+  Input,
   ViewChild,
 } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
@@ -19,10 +18,11 @@ import {
   templateUrl: './settings-button.component.html',
   styleUrls: ['./settings-button.component.scss'],
 })
-export class SettingsButtonComponent implements OnInit {
+export class SettingsButtonComponent {
   @ViewChild('settingsDialog')
   settingsDialog!: ElementRef<HTMLDialogElement>
-  settings: FormGroup<{
+  @Input() settings
+  settingsForm: FormGroup<{
     typeOfRace: FormControl<string>
     showContext: FormControl<boolean>
     showImageRefs: FormControl<boolean>
@@ -38,18 +38,11 @@ export class SettingsButtonComponent implements OnInit {
     private router: Router,
   ) {}
 
-  ngOnInit() {}
-
   initializeForm() {
-    this.route.queryParams.subscribe((queryParams: Params) => {
-      this.queryParams = queryParams
-      this.settings = new FormGroup({
-        typeOfRace: new FormControl(this.queryParams.typeOfRace || ''),
-        showContext: new FormControl(this.queryParams.showContext === 'true'),
-        showImageRefs: new FormControl(
-          this.queryParams.showImageRefs === 'true',
-        ),
-      })
+    this.settingsForm = new FormGroup({
+      typeOfRace: new FormControl(this.settings.typeOfRace),
+      showContext: new FormControl(this.settings.showContext),
+      showImageRefs: new FormControl(this.settings.showImageRefs),
     })
   }
 
@@ -66,13 +59,13 @@ export class SettingsButtonComponent implements OnInit {
   }
   close() {
     this.settingsDialog.nativeElement.close()
-    this.settings.reset()
+    this.settingsForm.reset()
   }
   save() {
     const navigationExtras: NavigationExtras = {
       queryParams: {
         ...this.queryParams,
-        ...this.settings.value,
+        ...this.settingsForm.value,
       },
     }
     this.router.navigate([], navigationExtras)

@@ -37,18 +37,21 @@ export class CharacterSheetComponent implements OnInit {
     this.initCategories()
     this.route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
-      const traits: any = this.categories.reduce(
-        (acc: typeof coreTraits, category) => [...acc, ...category.traits],
-        [],
-      )
-      traits.forEach(trait => {
-        trait.selected = queryParams[trait.name]
-      })
+
       this.settings = {
-        typeOfRace: queryParams.typeOfRace,
-        showContext: queryParams.showContext === 'true',
-        showImageRefs: queryParams.showImageRefs === 'true',
+        typeOfRace: queryParams.typeOfRace || 'fantasy',
+        showContext:
+          queryParams.showContext !== undefined
+            ? queryParams.showContext === 'true'
+            : true,
+        showImageRefs:
+          queryParams.showImageRefs !== undefined
+            ? queryParams.showImageRefs === 'true'
+            : true,
       }
+    })
+    this.router.navigate([], {
+      queryParams: { ...this.queryParams, ...this.settings },
     })
   }
 
@@ -75,6 +78,13 @@ export class CharacterSheetComponent implements OnInit {
       this.contextCategory,
       this.equipmentsCategory,
     ]
+    const traits: any = this.categories.reduce(
+      (acc: typeof coreTraits, category) => [...acc, ...category.traits],
+      [],
+    )
+    traits.forEach(trait => {
+      trait.selected = this.queryParams[trait.name]
+    })
   }
 
   rollAllTraits() {
@@ -111,7 +121,6 @@ export class CharacterSheetComponent implements OnInit {
       },
     }
     this.router.navigate([], navigationExtras)
-    this.initCategories()
   }
 
   toggleTraitLock(category, trait, value?: boolean) {

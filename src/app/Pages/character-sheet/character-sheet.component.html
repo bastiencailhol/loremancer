@@ -33,7 +33,7 @@
     <img src="assets/img/ink-5.svg" alt="" class="ink-drop" />
   </div>
   <div class="flex flex-col justify-between items-end gap-2">
-    <app-settings-button></app-settings-button>
+    <app-settings-button [settings]="settings"></app-settings-button>
 
     <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
   </div>
