@@ -16,6 +16,7 @@ interface Category {
   styleUrls: ['./character-sheet.component.scss'],
 })
 export class CharacterSheetComponent implements OnInit {
+  showContext: boolean
   coreTraitsCategory!: Category
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
@@ -39,6 +40,7 @@ export class CharacterSheetComponent implements OnInit {
       traits.forEach(trait => {
         trait.selected = queryParams[trait.name]
       })
+      this.showContext = queryParams.showContext === 'true'
     })
   }
 
@@ -91,11 +93,11 @@ export class CharacterSheetComponent implements OnInit {
   }
   updateUrl(trait) {
     this.queryParams = { ...this.queryParams, [trait.name]: trait.selected }
-    this.router.navigate([''], { queryParams: this.queryParams })
+    this.router.navigate([], { queryParams: this.queryParams })
   }
 
   clearAllUrlParams() {
-    this.router.navigate([''], {})
+    this.router.navigate([], {})
     this.initCategories()
   }
 
