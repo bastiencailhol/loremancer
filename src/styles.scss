@@ -49,4 +49,8 @@
       @apply backdrop-blur-sm;
     }
   }
+
+  input[type='checkbox'] {
+    @apply rounded-sm border-2 outline-none checked:bg-black hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+  }
 }
