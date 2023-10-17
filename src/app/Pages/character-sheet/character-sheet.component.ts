@@ -49,9 +49,7 @@ export class CharacterSheetComponent implements OnInit {
             ? queryParams.showImageRefs === 'true'
             : true,
       }
-    })
-    this.router.navigate([], {
-      queryParams: { ...this.queryParams, ...this.settings },
+      this.initTraits()
     })
   }
 
@@ -78,6 +76,9 @@ export class CharacterSheetComponent implements OnInit {
       this.contextCategory,
       this.equipmentsCategory,
     ]
+  }
+  
+  initTraits() {
     const traits: any = this.categories.reduce(
       (acc: typeof coreTraits, category) => [...acc, ...category.traits],
       [],
