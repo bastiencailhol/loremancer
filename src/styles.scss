@@ -40,4 +40,20 @@
   a {
     @apply text-blue-600 underline;
   }
+
+  dialog {
+    @apply container;
+    @apply max-w-2xl;
+    &::backdrop {
+      @apply bg-black/20;
+      @apply backdrop-blur-sm;
+    }
+  }
+
+  input[type='checkbox'] {
+    @apply rounded-sm border-2 outline-none checked:bg-black hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+  }
+  input[type='radio'] {
+    @apply border-2 outline-none checked:bg-black hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+  }
 }

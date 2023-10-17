@@ -1,0 +1,221 @@
+<div class="
+    container
+    mx-auto
+    flex flex-col
+    lg:flex-row
+    justify-between
+    px-4
+    gap-x-4 gap-y-8
+    relative
+  ">
+  <div class="
+      banner
+      flex flex-col
+      2xl:flex-row 2xl:items-end
+      items-start
+      gap-x-8
+      text-white
+      pr-4
+      pt-6
+      pb-8
+      sm:pr-20
+      2xl:pb-12
+    ">
+    <img src="assets/icons/logo_full.svg" alt="" class="2xl:translate-y-[10px] cursor-pointer"
+      (click)="clearAllUrlParams()" />
+    <p class="font-sans tracking-wider">
+      Your creative companion to ignite your hero design process.
+    </p>
+    <img src="assets/img/ink-1.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-2.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-3.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-4.svg" alt="" class="ink-drop" />
+    <img src="assets/img/ink-5.svg" alt="" class="ink-drop" />
+  </div>
+  <div class="flex flex-col justify-between items-end gap-2">
+    <app-settings-button [settings]="settings"></app-settings-button>
+
+    <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
+  </div>
+  <img src="assets/img/ink-1.svg" alt="" class="
+      absolute
+      -z-40
+      opacity-30
+      top-1/2
+      xl:left-[70%]
+      left-full
+      w-48
+      -translate-x-1/2
+      -scale-x-100
+    " />
+</div>
+<div class="container mx-auto px-4 mb-10">
+  <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
+    <div class="xl:col-span-1 gap-x-12">
+      <div *ngIf="settings.showContext" class="mt-10">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Context</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button *ngIf="!contextCategory.locked"
+              (onClick)="rollCategoryTraits(contextCategory)"></app-reroll-button>
+            <app-lock-button (onClick)="toggleCategoryLock(contextCategory)"
+              [isLocked]="contextCategory.locked"></app-lock-button>
+          </div>
+        </div>
+        <app-card>
+          <ng-container *ngFor="let trait of contextCategory.traits">
+            <ng-container *ngTemplateOutlet="
+                genericTrait;
+                context: { category: contextCategory, trait: trait }
+              "></ng-container>
+          </ng-container>
+        </app-card>
+      </div>
+      <div class="mt-10">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Archetype</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button *ngIf="!coreTraitsCategory.locked"
+              (onClick)="rollCategoryTraits(coreTraitsCategory)"></app-reroll-button>
+            <app-lock-button (onClick)="toggleCategoryLock(coreTraitsCategory)"
+              [isLocked]="coreTraitsCategory.locked"></app-lock-button>
+          </div>
+        </div>
+        <app-card>
+          <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <ng-container *ngFor="let trait of coreTraitsCategory.traits">
+              <ng-container *ngTemplateOutlet="
+                  genericTrait;
+                  context: { category: coreTraitsCategory, trait: trait }
+                "></ng-container>
+            </ng-container>
+          </div>
+        </app-card>
+      </div>
+      <div class="mt-10">
+        <div class="flex mb-3">
+          <h4 class="flex-grow">Physical traits</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button *ngIf="!physicalTraitsCategory.locked"
+              (onClick)="rollCategoryTraits(physicalTraitsCategory)"></app-reroll-button>
+            <app-lock-button (onClick)="toggleCategoryLock(physicalTraitsCategory)"
+              [isLocked]="physicalTraitsCategory.locked"></app-lock-button>
+          </div>
+        </div>
+        <app-card size="xl">
+          <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <ng-container *ngFor="let trait of physicalTraitsCategory.traits">
+              <ng-container *ngTemplateOutlet="
+                  genericTrait;
+                  context: { category: physicalTraitsCategory, trait: trait }
+                "></ng-container>
+            </ng-container>
+          </div>
+        </app-card>
+      </div>
+    </div>
+    <div class="xl:col-span-2 relative">
+      <div class="mt-10">
+        <div class="flex">
+          <h4 class="flex-grow mb-3">Equipments</h4>
+          <div class="flex gap-1 px-3">
+            <app-reroll-button *ngIf="!equipmentsCategory.locked"
+              (onClick)="rollCategoryTraits(equipmentsCategory)"></app-reroll-button>
+            <app-lock-button (onClick)="toggleCategoryLock(equipmentsCategory)"
+              [isLocked]="equipmentsCategory.locked"></app-lock-button>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 grid-rows-12 gap-5">
+          <ng-container *ngFor="let trait of equipmentsCategory.traits">
+            <ng-container *ngTemplateOutlet="
+                equipmentTrait;
+                context: { category: equipmentsCategory, trait: trait }
+              "></ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #genericTrait let-category="category" let-trait="trait">
+  <div class="flex flex-col">
+    <h6 class="">
+      {{ trait.name }}
+    </h6>
+    <div class="flex">
+      <ng-container *ngTemplateOutlet="
+          attributeSelect;
+          context: {
+            category: category,
+            trait: trait,
+            addClass: '-m-2 px-2'
+          }
+        "></ng-container>
+      <div class="flex-none flex gap-1">
+        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <app-lock-button (onClick)="toggleTraitLock(category, trait)" [isLocked]="trait.locked"></app-lock-button>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #equipmentTrait let-trait="trait">
+  <app-card class="{{ trait.dimensions }}">
+    <div class="flex h-full">
+      <div class="flex items-center rounded-lg px-2" [ngStyle]="{
+          'background-image':
+            'url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=' +
+            trait.color +
+            ')'
+        }">
+        <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="min-w-9 h-9" />
+      </div>
+      <ng-container *ngTemplateOutlet="
+          attributeSelect;
+          context: {
+            category: equipmentsCategory,
+            trait: trait,
+            addClass: 'px-3'
+          }
+        "></ng-container>
+      <div class="flex flex-col justify-between gap-2">
+        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <div *ngIf="trait.locked" class="h-7 w-7"></div>
+        <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
+          [isLocked]="trait.locked"></app-lock-button>
+      </div>
+    </div>
+  </app-card>
+</ng-template>
+
+<ng-template #attributeSelect let-category="category" let-trait="trait" let-addClass="addClass">
+  <div class="flex-grow min-w-0">
+    <select class="
+        min-h-full
+        max-w-full
+        min-w-full
+        appearance-none
+        focus:ring-0
+        border-none
+        bg-none
+        bg-transparent
+        whitespace-normal
+        break-words
+        p-0
+        text-xl
+        leading-tight
+        font-medium
+        tracking-wide
+        cursor-pointer
+        disabled:cursor-default
+        disabled:opacity-100
+        {{ addClass }}
+      " name="{{ trait.name }}" [(ngModel)]="trait.selected"
+      (ngModelChange)="updateUrl(trait); toggleTraitLock(category, trait, true)">
+      <option *ngFor="let attribute of trait.attributes" value="{{ attribute }}">
+        {{ attribute }}
+      </option>
+    </select>
+  </div>
+</ng-template>
