@@ -116,6 +116,7 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   clearAllUrlParams() {
+    this.initCategories()
     const navigationExtras: NavigationExtras = {
       queryParams: {
         ...this.settings,
