@@ -77,7 +77,7 @@ export class CharacterSheetComponent implements OnInit {
       this.equipmentsCategory,
     ]
   }
-  
+
   initTraits() {
     const traits: any = this.categories.reduce(
       (acc: typeof coreTraits, category) => [...acc, ...category.traits],
