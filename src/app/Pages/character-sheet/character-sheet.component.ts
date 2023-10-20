@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core'
 import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
-import { coreTraits } from 'src/assets/traits/coretraits'
+import {
+  coreTraits,
+  fantasy,
+  anphibians,
+  arthropods,
+  birds,
+  cnidarians,
+  fish,
+  mammals,
+  molluscs,
+  reptiles,
+  worms,
+} from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
 
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
@@ -34,7 +46,6 @@ export class CharacterSheetComponent implements OnInit {
     private route: ActivatedRoute,
   ) {}
   ngOnInit() {
-    this.initCategories()
     this.route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
 
@@ -49,11 +60,30 @@ export class CharacterSheetComponent implements OnInit {
             ? queryParams.showImageRefs === 'true'
             : true,
       }
+      if (!this.categories.length) {
+        this.initCategories()
+      }
       this.initTraits()
     })
   }
 
   initCategories() {
+    if (this.settings.typeOfRace === 'fantasy') {
+      coreTraits.find(trait => trait.name === 'Race').attributes = fantasy
+    } else if (this.settings.typeOfRace === 'animals') {
+      coreTraits.find(trait => trait.name === 'Race').attributes = [
+        ...anphibians,
+        ...arthropods,
+        ...birds,
+        ...cnidarians,
+        ...fish,
+        ...mammals,
+        ...molluscs,
+        ...reptiles,
+        ...worms,
+      ].sort()
+    }
+    console.log(coreTraits)
     this.coreTraitsCategory = {
       traits: JSON.parse(JSON.stringify(coreTraits)),
       locked: false,
@@ -77,6 +107,8 @@ export class CharacterSheetComponent implements OnInit {
       this.equipmentsCategory,
     ]
   }
+
+  getRaces() {}
 
   initTraits() {
     const traits: any = this.categories.reduce(
