@@ -8,7 +8,7 @@ import {
   arthropods,
   birds,
   cnidarians,
-  fish,
+  fishes,
   mammals,
   molluscs,
   reptiles,
@@ -29,7 +29,7 @@ interface Category {
 })
 export class CharacterSheetComponent implements OnInit {
   settings: {
-    typeOfRace: string
+    race: string
     showContext: boolean
     showImageRefs: boolean
   }
@@ -41,6 +41,9 @@ export class CharacterSheetComponent implements OnInit {
   categories: Category[] = []
 
   queryParams: any = {}
+
+  categoriesLoaded = false
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
@@ -50,7 +53,7 @@ export class CharacterSheetComponent implements OnInit {
       this.queryParams = queryParams
 
       this.settings = {
-        typeOfRace: queryParams.typeOfRace || 'fantasy',
+        race: queryParams.race || 'fantasy',
         showContext:
           queryParams.showContext !== undefined
             ? queryParams.showContext === 'true'
@@ -60,7 +63,7 @@ export class CharacterSheetComponent implements OnInit {
             ? queryParams.showImageRefs === 'true'
             : true,
       }
-      if (!this.categories.length) {
+      if (!this.categoriesLoaded) {
         this.initCategories()
       }
       this.initTraits()
@@ -68,22 +71,22 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   initCategories() {
-    if (this.settings.typeOfRace === 'fantasy') {
+    if (this.settings.race === 'fantasy') {
       coreTraits.find(trait => trait.name === 'Race').attributes = fantasy
-    } else if (this.settings.typeOfRace === 'animals') {
+    } else {
+      const races = this.settings.race.split(',')
       coreTraits.find(trait => trait.name === 'Race').attributes = [
-        ...anphibians,
-        ...arthropods,
-        ...birds,
-        ...cnidarians,
-        ...fish,
-        ...mammals,
-        ...molluscs,
-        ...reptiles,
-        ...worms,
+        ...(races.includes('anphibians') ? anphibians : []),
+        ...(races.includes('arthropods') ? arthropods : []),
+        ...(races.includes('birds') ? birds : []),
+        ...(races.includes('cnidarians') ? cnidarians : []),
+        ...(races.includes('fishes') ? fishes : []),
+        ...(races.includes('mammals') ? mammals : []),
+        ...(races.includes('molluscs') ? molluscs : []),
+        ...(races.includes('reptiles') ? reptiles : []),
+        ...(races.includes('worms') ? worms : []),
       ].sort()
     }
-    console.log(coreTraits)
     this.coreTraitsCategory = {
       traits: JSON.parse(JSON.stringify(coreTraits)),
       locked: false,
@@ -107,8 +110,6 @@ export class CharacterSheetComponent implements OnInit {
       this.equipmentsCategory,
     ]
   }
-
-  getRaces() {}
 
   initTraits() {
     const traits: any = this.categories.reduce(

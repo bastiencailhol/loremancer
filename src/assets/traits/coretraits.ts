@@ -129,7 +129,6 @@ export const birds = [
   'Hummingbird',
   'Ibis',
   'Kingfisher',
-  'Kingfisher',
   'Kiwi ',
   'Lyrebird',
   'Magpie',
@@ -165,7 +164,7 @@ export const cnidarians = [
   "Portuguese Man o' War",
 ]
 
-export const fish = [
+export const fishes = [
   'Anglerfish',
   'Blobfish',
   'Blue marlin',

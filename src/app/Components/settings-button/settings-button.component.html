@@ -17,12 +17,40 @@
     <div class="mt-3">
       <h6>Type of race</h6>
       <div class="flex gap-5">
-        <!-- <p>Type of race: </p> -->
         <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
           <input type="radio" formControlName="typeOfRace" value="fantasy" />Fantasy
         </label>
         <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
           <input type="radio" formControlName="typeOfRace" value="animals" />Animals
+        </label>
+      </div>
+      <div class="flex flex-wrap gap-x-5" formGroupName="includeRace">
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="anphibians" />Anphibians
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="arthropods" />Arthropods
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="birds" />Birds
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="cnidarians" />Cnidarians/echinoderms
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="fishes" />Fishes
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="mammals" />Mammals
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="molluscs" />Molluscs
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="reptiles" />Reptiles
+        </label>
+        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+          <input type="checkbox" formControlName="worms" />Worms
         </label>
       </div>
     </div>
