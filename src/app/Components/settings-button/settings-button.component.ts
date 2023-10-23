@@ -7,7 +7,7 @@ import {
   Output,
   ViewChild,
 } from '@angular/core'
-import { FormArray, FormControl, FormGroup } from '@angular/forms'
+import { FormControl, FormGroup } from '@angular/forms'
 import {
   ActivatedRoute,
   NavigationExtras,
@@ -47,7 +47,10 @@ export class SettingsButtonComponent {
     showContext: new FormControl(),
     showImageRefs: new FormControl(),
   })
+
   queryParams: Params = {}
+
+  lastcheckedRace = ''
 
   constructor(
     private route: ActivatedRoute,
@@ -96,6 +99,24 @@ export class SettingsButtonComponent {
     }
   }
 
+  isLastCheckedRace(race) {
+    return false
+  }
+
+  handleCheckboxChange() {
+    const formValues = this.settingsForm.getRawValue()
+    const checkedRaces = Object.keys(formValues.includeRace).filter(
+      key => formValues.includeRace[key],
+    )
+
+    if (checkedRaces.length === 1) {
+      this.settingsForm.get('includeRace').get(checkedRaces[0]).disable()
+      this.lastcheckedRace = checkedRaces[0]
+    } else if (this.lastcheckedRace) {
+      this.settingsForm.get('includeRace').get(this.lastcheckedRace).enable()
+    }
+  }
+
   @HostListener('click', ['$event'])
   onDialogClick(event: MouseEvent) {
     if ((event.target as any).nodeName === 'DIALOG') {
@@ -116,7 +137,7 @@ export class SettingsButtonComponent {
     this.settingsForm.reset()
   }
   save() {
-    const formValues = this.settingsForm.value
+    const formValues = this.settingsForm.getRawValue()
 
     const navigationExtras: NavigationExtras = {
       queryParams: {

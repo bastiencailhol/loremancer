@@ -17,50 +17,66 @@
     <div class="mt-3">
       <h6>Type of race</h6>
       <div class="flex gap-5">
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+        <label class="flex items-center gap-[6px] text-lg">
           <input type="radio" formControlName="typeOfRace" value="fantasy" />Fantasy
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+        <label class="flex items-center gap-[6px] text-lg">
           <input type="radio" formControlName="typeOfRace" value="animals" />Animals
         </label>
       </div>
       <div *ngIf="settingsForm.get('typeOfRace').value === 'animals'" class="flex flex-wrap gap-x-5"
         formGroupName="includeRace">
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="anphibians" />Anphibians
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'anphibians' === lastcheckedRace">
+          <input type="checkbox" formControlName="anphibians"
+            (change)="handleCheckboxChange('anphibians')" /><span>Anphibians</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="arthropods" />Arthropods
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'arthropods' === lastcheckedRace">
+          <input type="checkbox" formControlName="arthropods"
+            (change)="handleCheckboxChange('arthropods')" /><span>Arthropods</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="birds" />Birds
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'birds' === lastcheckedRace">
+          <input type="checkbox" formControlName="birds" (change)="handleCheckboxChange('birds')" /><span>Birds</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="cnidarians" />Cnidarians/echinoderms
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'cnidarians' === lastcheckedRace">
+          <input type="checkbox" formControlName="cnidarians"
+            (change)="handleCheckboxChange('cnidarians')" /><span>Cnidarians/echinoderms</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="fishes" />Fishes
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'fishes' === lastcheckedRace">
+          <input type="checkbox" formControlName="fishes"
+            (change)="handleCheckboxChange('fishes')" /><span>Fishes</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="mammals" />Mammals
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'mammals' === lastcheckedRace">
+          <input type="checkbox" formControlName="mammals"
+            (change)="handleCheckboxChange('mammals')" /><span>Mammals</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="molluscs" />Molluscs
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'molluscs' === lastcheckedRace">
+          <input type="checkbox" formControlName="molluscs"
+            (change)="handleCheckboxChange('molluscs')" /><span>Molluscs</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="reptiles" />Reptiles
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'reptiles' === lastcheckedRace">
+          <input type="checkbox" formControlName="reptiles"
+            (change)="handleCheckboxChange('reptiles')" /><span>Reptiles</span>
         </label>
-        <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
-          <input type="checkbox" formControlName="worms" />Worms
+        <label class="flex items-center gap-[6px] text-lg"
+          [class.hover:cursor-not-allowed]="'worms' === lastcheckedRace">
+          <input type="checkbox" formControlName="worms" (change)="handleCheckboxChange('worms')" /><span>Worms</span>
         </label>
       </div>
     </div>
     <div class="mt-3">
       <h6>Display</h6>
-      <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+      <label class="flex items-center gap-[6px] text-lg">
         <input type="checkbox" formControlName="showContext" />Context section
       </label>
-      <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
+      <label class="flex items-center gap-[6px] text-lg">
         <input type="checkbox" formControlName="showImageRefs" />Image references
       </label>
     </div>

@@ -51,9 +51,12 @@
   }
 
   input[type='checkbox'] {
-    @apply rounded-sm border-2 outline-none checked:bg-black hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+    @apply rounded-sm border-2 outline-none checked:bg-black hover:cursor-pointer hover:checked:bg-black focus:ring-transparent focus:checked:bg-black disabled:cursor-not-allowed;
   }
   input[type='radio'] {
-    @apply border-2 outline-none checked:bg-black hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+    @apply border-2 outline-none checked:bg-black hover:cursor-pointer hover:checked:bg-black focus:ring-transparent focus:checked:bg-black;
+  }
+  label {
+    @apply hover:cursor-pointer;
   }
 }
