@@ -109,6 +109,7 @@ export class CharacterSheetComponent implements OnInit {
       this.contextCategory,
       this.equipmentsCategory,
     ]
+    this.categoriesLoaded = true
   }
 
   initTraits() {
