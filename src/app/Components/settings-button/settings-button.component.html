@@ -24,7 +24,8 @@
           <input type="radio" formControlName="typeOfRace" value="animals" />Animals
         </label>
       </div>
-      <div class="flex flex-wrap gap-x-5" formGroupName="includeRace">
+      <div *ngIf="settingsForm.get('typeOfRace').value === 'animals'" class="flex flex-wrap gap-x-5"
+        formGroupName="includeRace">
         <label class="flex items-center gap-[6px] hover:cursor-pointer text-lg">
           <input type="checkbox" formControlName="anphibians" />Anphibians
         </label>
