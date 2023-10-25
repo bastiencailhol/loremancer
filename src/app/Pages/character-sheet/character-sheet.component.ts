@@ -1,7 +1,19 @@
 import { Component, OnInit } from '@angular/core'
 import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
-import { coreTraits } from 'src/assets/traits/coretraits'
+import {
+  coreTraits,
+  fantasy,
+  anphibians,
+  arthropods,
+  birds,
+  cnidarians,
+  fishes,
+  mammals,
+  molluscs,
+  reptiles,
+  worms,
+} from 'src/assets/traits/coretraits'
 import { equipments } from 'src/assets/traits/equipment'
 
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
@@ -17,7 +29,7 @@ interface Category {
 })
 export class CharacterSheetComponent implements OnInit {
   settings: {
-    typeOfRace: string
+    race: string
     showContext: boolean
     showImageRefs: boolean
   }
@@ -29,17 +41,19 @@ export class CharacterSheetComponent implements OnInit {
   categories: Category[] = []
 
   queryParams: any = {}
+
+  categoriesLoaded = false
+
   constructor(
     private router: Router,
     private route: ActivatedRoute,
   ) {}
   ngOnInit() {
-    this.initCategories()
     this.route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
 
       this.settings = {
-        typeOfRace: queryParams.typeOfRace || 'fantasy',
+        race: queryParams.race || 'fantasy',
         showContext:
           queryParams.showContext !== undefined
             ? queryParams.showContext === 'true'
@@ -49,11 +63,30 @@ export class CharacterSheetComponent implements OnInit {
             ? queryParams.showImageRefs === 'true'
             : true,
       }
+      if (!this.categoriesLoaded) {
+        this.initCategories()
+      }
       this.initTraits()
     })
   }
 
   initCategories() {
+    if (this.settings.race === 'fantasy') {
+      coreTraits.find(trait => trait.name === 'Race').attributes = fantasy
+    } else {
+      const races = this.settings.race.split(',')
+      coreTraits.find(trait => trait.name === 'Race').attributes = [
+        ...(races.includes('anphibians') ? anphibians : []),
+        ...(races.includes('arthropods') ? arthropods : []),
+        ...(races.includes('birds') ? birds : []),
+        ...(races.includes('cnidarians') ? cnidarians : []),
+        ...(races.includes('fishes') ? fishes : []),
+        ...(races.includes('mammals') ? mammals : []),
+        ...(races.includes('molluscs') ? molluscs : []),
+        ...(races.includes('reptiles') ? reptiles : []),
+        ...(races.includes('worms') ? worms : []),
+      ].sort()
+    }
     this.coreTraitsCategory = {
       traits: JSON.parse(JSON.stringify(coreTraits)),
       locked: false,
@@ -76,8 +109,9 @@ export class CharacterSheetComponent implements OnInit {
       this.contextCategory,
       this.equipmentsCategory,
     ]
+    this.categoriesLoaded = true
   }
-  
+
   initTraits() {
     const traits: any = this.categories.reduce(
       (acc: typeof coreTraits, category) => [...acc, ...category.traits],
