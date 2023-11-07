@@ -1,79 +1,113 @@
 export const physicalTraits = [
   {
     name: 'Gender',
-    attributes: ['Female', 'Male', 'Non-binary'],
+    attributes: ['Female', 'Male', 'Other'],
   },
   {
     name: 'Age',
-    attributes: ['Teenager', 'Adult', 'Mature', 'Elderly', 'Centenarian'],
+    attributes: ['Kid', 'Adult', 'Mature', 'Elderly', 'Centenarian'],
   },
   {
     name: 'Body type',
     attributes: [
-      'Average',
-      'Bodybuilder',
-      'Chubby',
-      'Colossus',
-      'Dwarf',
-      'Fat',
-      'Fit',
-      'Hunchback',
-      'Muscular',
-      'Obese',
-      'Paunchy',
-      'Slender',
-      'Stocky',
-      'Tall',
-      'Thin',
+      'Athletic', // Athlétique
+      'Average', // Moyen(ne)
+      'Bodybuilder', // Culturiste
+      'Chubby', // Enrobé(e)
+      'Colossus', // Colosse
+      'Dwarf', // Nain(e)
+      'Fat', // Gros(se)
+      'Fit', // En forme
+      'Hunchback', // Bossu(e)
+      'Muscular', // Musclé(e)
+      'Obese', // Obèse
+      'Paunchy', // Bedonnant(e)
+      'Pear-shaped', // En forme de poire
+      'Skinny', // Mince
+      'Slender', // Mince
+      'Stocky', // Trapu(e)
+      'Tall', // Grand(e)
     ],
   },
   {
     name: 'Hairstyle',
     attributes: [
-      'Afro',
-      'Bald',
-      'Balding',
-      'Braids',
-      'Buzz cut',
-      'Curly',
-      'Dreadlocks',
-      'Long hair',
-      'Messy',
-      'Mullet',
-      'Ponytail',
-      'Short hair',
-      'Tonsure',
-      'Very long hair',
-      'Wavy',
+      'Afro', // Afro
+      'Bald', // Chauve
+      'Balding', // Début de calvitie
+      'Bangs', // Frange
+      'Bob', // Carré
+      'Bowl cut', // Coupe au bol
+      'Braids', // Tresses
+      'Bun', // Chignon
+      'Buzz cut', // Coupe à la brosse
+      'Curly', // Bouclé
+      'Dreadlocks', // Dreadlocks
+      'Faux Hawk', // Faux-hawk
+      'Long hair', // Cheveux longs
+      'Messy', // Coiffure ébouriffée
+      'Mohawk', // Crête iroquoise
+      'Mullet', // Mulet
+      'Pageboy', // Carré plongeant
+      'Pigtails', // Couettes
+      'Pompadour', // Rockabilly
+      'Ponytail', // Queue de cheval
+      'Short hair', // Cheveux courts
+      'Spiky hair', // Cheveux hérissés
+      'Tonsure', // Tonsure
+      'Top knot', // Chignon haut
+      'Very long hair', // Cheveux très longs
+      'Wavy', // Ondulé
     ],
   },
   {
     name: 'Particular feature',
     attributes: [
-      '-',
-      'Beard',
-      'Big eyes',
-      'Big lips',
-      'Big nose',
-      'Big teeth',
-      'Bushy eyebrows',
-      'Earrings',
-      'Fangs',
-      'Freckles',
-      'Glasses',
-      'Hairy',
-      'Heterochromia',
-      'Missing eye',
-      'Mustache',
-      'No neck',
-      'Nose ring',
-      'One-armed',
-      'One-legged',
-      'Piercings',
-      'Scars',
-      'Square chin',
-      'Tattoos',
-      'Wrinkles',
+      '-', // -
+      'Acne', // Acné
+      'Beard', // Barbe
+      'Big eyes', // Grands yeux
+      'Big eyes', // Grands yeux
+      'Big nose', // Gros nez
+      'Big teeth', // Grosses dents
+      'Blind', // Aveugle
+      'Body painting', // Peinture corporelle
+      'Bushy eyebrows', // Sourcils épais
+      'Chiseled face', // Visage ciselée
+      'Crippled', // Estropié
+      'Crooked teeth', // Dents de travers
+      'Dark circles', // Cernes
+      'Double chin', // Double menton
+      'Earrings', // Boucles d'oreilles
+      'Fangs', // Crocs
+      'Freckles', // Taches de rousseur
+      'Frontal bossing', // Bosse sur le front
+      'Full lips', // Lèvres pulpeuses
+      'Glasses', // Lunettes
+      'Hairy', // Poilu
+      'Heterochromia', // Hétérochromie
+      'High forehead', // Front haut
+      'Horns', // Cornes
+      'Makeup', // Maquillage
+      'Missing eye', // Œil manquant
+      'Missing teeth', // Dents manquantes
+      'Mole', // Grain de beauté
+      'Mustache', // Moustache
+      'Mustache', // Moustache
+      'No neck', // Pas de cou
+      'Nose ring', // Anneau de nez
+      'One-armed', // Un bras
+      'One-legged', // Une jambe
+      'Piercings', // Piercings
+      'Prominent brow ridge', // Arcades sourcilières proéminentes
+      'Roman nose', // Nez aquilin
+      'Scarifications', // Scarifications
+      'Scars', // Cicatrices
+      'Square chin', // Menton carré
+      'Tattoos', // Tatouages
+      'Thick eyebrows', // Sourcils épais
+      'Wide-set eyes', // Yeux écartés
+      'Wrinkles', // Rides
     ],
   },
   // {
