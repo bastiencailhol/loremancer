@@ -293,7 +293,7 @@ export const equipments = [
   {
     name: 'Hips',
     dimensions: 'md:row-start-6 md:row-end-8',
-    icon: 'hips',
+    icon: 'belt',
     color: 'E1EAF5',
     attributes: [
       '-',
