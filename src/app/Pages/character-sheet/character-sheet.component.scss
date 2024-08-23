@@ -1,46 +1,25 @@
 .banner {
   position: relative;
-  &::after {
-    content: '';
-    background-image: url('/assets/img/dark-paper-texture.jpg');
-    filter: brightness(1.2);
-    position: absolute;
-    top: 0;
-    bottom: -5px;
-    left: -9999px;
-    right: 0;
-    z-index: -1;
-    border-bottom-right-radius: 100px;
-    transform: skewX(-27deg) skewY(1deg);
-    transform-origin: right;
-    box-shadow: inset -9px -6px 10px 0px #00000075,
-      inset -9px -6px 70px 0px #00012391;
-  }
+  // &::after {
+  //   content: '';
+  //   background-image: url('/assets/img/dark-paper-texture.jpg');
+  //   filter: brightness(1.2);
+  //   position: absolute;
+  //   top: 0;
+  //   bottom: -5px;
+  //   left: -9999px;
+  //   right: 0;
+  //   z-index: -1;
+  //   border-bottom-right-radius: 100px;
+  //   transform: skewX(-27deg) skewY(1deg);
+  //   transform-origin: right;
+  //   box-shadow: inset -9px -6px 10px 0px #00000075,
+  //     inset -9px -6px 70px 0px #00012391;
+  // }
 
   img.ink-drop {
     position: absolute;
     z-index: -1;
-    &[src='assets/img/ink-1.svg'] {
-      bottom: -38px;
-      left: 2%;
-      width: 200px;
-    }
-    &[src='assets/img/ink-2.svg'] {
-      top: -13px;
-      right: -60px;
-    }
-    &[src='assets/img/ink-3.svg'] {
-      top: -15px;
-      right: -50px;
-    }
-    &[src='assets/img/ink-4.svg'] {
-      bottom: -13px;
-      right: 31px;
-    }
-    &[src='assets/img/ink-5.svg'] {
-      bottom: -5px;
-      left: -36px;
-    }
   }
 }
 
