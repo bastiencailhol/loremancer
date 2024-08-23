@@ -1,16 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
-@import url('https://fonts.googleapis.com/css2?family=Alegreya:wght@500;600;700&family=Montserrat:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
 @layer base {
+  @font-face {
+    font-family: 'Recoleta';
+    src: url(assets/fonts/Recoleta-Regular.ttf) format('truetype');
+    font-weight: 400;
+  }
+  @font-face {
+    font-family: 'Recoleta';
+    src: url(assets/fonts/Recoleta-Medium.ttf) format('truetype');
+    font-weight: 500;
+  }
+  @font-face {
+    font-family: 'Recoleta';
+    src: url(assets/fonts/Recoleta-SemiBold.ttf) format('truetype');
+    font-weight: 600;
+  }
+  @font-face {
+    font-family: 'Recoleta';
+    src: url(assets/fonts/Recoleta-Bold.ttf) format('truetype');
+    font-weight: 700;
+  }
+  @font-face {
+    font-family: 'Recoleta';
+    src: url(assets/fonts/Recoleta-Black.ttf) format('truetype');
+    font-weight: 900;
+  }
   h2,
   h3,
   h4,
   h5,
   h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Recoleta', sans-serif;
   }
   h1 {
     @apply text-5xl;
@@ -24,12 +49,12 @@
   }
   h4 {
     @apply text-xl;
-    @apply uppercase;
-    @apply font-semibold;
-    @apply tracking-wide;
   }
   h5 {
     @apply text-lg;
+    @apply font-medium;
+    @apply tracking-wide;
+    @apply uppercase;
   }
   h6 {
     @apply text-base;

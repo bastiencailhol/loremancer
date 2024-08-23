@@ -253,8 +253,8 @@ module.exports = {
       DEFAULT: '1',
     },
     fontFamily: {
-      sans: ['Montserrat', 'sans-serif'],
-      serif: ['Alegreya', 'serif'],
+      sans: ['Work Sans', 'sans-serif'],
+      serif: ['Recoleta', 'serif'],
       mono: [
         'ui-monospace',
         'SFMono-Regular',
