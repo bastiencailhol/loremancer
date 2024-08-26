@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core'
 import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import {
@@ -18,6 +18,7 @@ import { equipments } from 'src/assets/traits/equipment'
 
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
 import { context } from 'src/assets/traits/context'
+import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
 
 interface Category {
   traits: typeof coreTraits
@@ -27,7 +28,8 @@ interface Category {
   templateUrl: './character-sheet.component.html',
   styleUrls: ['./character-sheet.component.scss'],
 })
-export class CharacterSheetComponent implements OnInit {
+export class CharacterSheetComponent implements OnInit, AfterViewInit {
+  @ViewChild(GenerateButtonComponent) generateButtonComponent!: GenerateButtonComponent
   settings: {
     race: string
     showContext: boolean
@@ -68,6 +70,10 @@ export class CharacterSheetComponent implements OnInit {
       }
       this.initTraits()
     })
+  }
+
+  ngAfterViewInit() {
+
   }
 
   initCategories() {
@@ -151,6 +157,7 @@ export class CharacterSheetComponent implements OnInit {
 
   clearAllUrlParams() {
     this.initCategories()
+    this.generateButtonComponent.resetVersion()
     const navigationExtras: NavigationExtras = {
       queryParams: {
         ...this.settings,

@@ -1,5 +1,6 @@
 button {
   transition: 0.005s;
+  @apply rounded-full;
   svg {
     position: absolute;
     top: 0;
@@ -7,21 +8,6 @@ button {
     left: 0;
     width: 100%;
     z-index: -1;
-  }
-  .hover-shadow {
-    background: hsla(208, 60%, 70%, 0.2);
-    @apply blur-none;
-    opacity: 0;
-    transition: 0.05s;
-  }
-  &:hover {
-    .hover-shadow {
-      @apply blur-sm;
-      opacity: 1;
-    }
-    .button-bg path {
-      fill: inherit;
-    }
   }
   &:active {
     transform: translateY(1px);

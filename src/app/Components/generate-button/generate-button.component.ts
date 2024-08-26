@@ -1,7 +1,9 @@
 import {
   ChangeDetectionStrategy,
+  ChangeDetectorRef,
   Component,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core'
 import sample from 'lodash.sample'
@@ -20,13 +22,14 @@ interface Version {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class GenerateButtonComponent {
+  constructor(private cd: ChangeDetectorRef) {}
   @Output() onClick = new EventEmitter()
 
   versions: Version[] = [
     {
       text: 'Unleash the magic!',
-      color: '#FCFF65',
-      lighterColor: '#FBFD77',
+      color: '#FBF472',
+      lighterColor: '#F9ED86',
       darkerColor: '#7F7E25',
     },
     {
@@ -90,8 +93,8 @@ export class GenerateButtonComponent {
       darkerColor: '#7F2561',
     },
   ]
-
   version: Version | undefined = this.versions[0]
+
   buttonState = 'default'
 
   onButtonClick() {
@@ -103,5 +106,10 @@ export class GenerateButtonComponent {
 
   setButtonState(state: string) {
     this.buttonState = state
+  }
+
+  public resetVersion() {
+    this.version = this.versions[0]
+    this.cd.detectChanges()
   }
 }
