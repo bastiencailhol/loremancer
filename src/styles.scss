@@ -29,6 +29,10 @@
     font-family: 'Recoleta';
     src: url(assets/fonts/Recoleta-Black.ttf) format('truetype');
     font-weight: 900;
+  }  
+  
+  html {
+    @apply text-stone-800;
   }
   h2,
   h3,

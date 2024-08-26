@@ -31,7 +31,7 @@
   <div class="grid grid-cols-1 xl:grid-cols-3 gap-x-12">
     <div class="xl:col-span-1 gap-x-12">
       <div *ngIf="settings.showContext" class="mt-10">
-        <div class="flex mb-3">
+        <div class="flex mb-2">
           <h5 class="flex-grow">Context</h5>
           <div class="flex gap-1 px-3">
             <app-reroll-button *ngIf="!contextCategory.locked"
@@ -50,7 +50,7 @@
         </app-card>
       </div>
       <div class="mt-10">
-        <div class="flex mb-3">
+        <div class="flex mb-2">
           <h5 class="flex-grow">Archetype</h5>
           <div class="flex gap-1 px-3">
             <app-reroll-button *ngIf="!coreTraitsCategory.locked"
@@ -71,7 +71,7 @@
         </app-card>
       </div>
       <div class="mt-10">
-        <div class="flex mb-3">
+        <div class="flex mb-2">
           <h5 class="flex-grow">Physical traits</h5>
           <div class="flex gap-1 px-3">
             <app-reroll-button *ngIf="!physicalTraitsCategory.locked"
@@ -95,7 +95,7 @@
     <div class="xl:col-span-2 relative">
       <div class="mt-10">
         <div class="flex">
-          <h5 class="flex-grow mb-3">Equipments</h5>
+          <h5 class="flex-grow mb-2">Equipments</h5>
           <div class="flex gap-1 px-3">
             <app-reroll-button *ngIf="!equipmentsCategory.locked"
               (onClick)="rollCategoryTraits(equipmentsCategory)"></app-reroll-button>
