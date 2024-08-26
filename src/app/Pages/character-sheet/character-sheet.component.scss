@@ -1,27 +1,4 @@
-.banner {
-  position: relative;
-  // &::after {
-  //   content: '';
-  //   background-image: url('/assets/img/dark-paper-texture.jpg');
-  //   filter: brightness(1.2);
-  //   position: absolute;
-  //   top: 0;
-  //   bottom: -5px;
-  //   left: -9999px;
-  //   right: 0;
-  //   z-index: -1;
-  //   border-bottom-right-radius: 100px;
-  //   transform: skewX(-27deg) skewY(1deg);
-  //   transform-origin: right;
-  //   box-shadow: inset -9px -6px 10px 0px #00000075,
-  //     inset -9px -6px 70px 0px #00012391;
-  // }
 
-  img.ink-drop {
-    position: absolute;
-    z-index: -1;
-  }
-}
 
 .bg-ink-drop {
   position: absolute;

@@ -8,6 +8,7 @@ import { RerollButtonModule } from 'src/app/Components/reroll-button/reroll-butt
 import { CommonModule } from '@angular/common'
 import { CharacterSheetRouterModule } from './character-sheet-routing.module'
 import { SettingsButtonModule } from 'src/app/Components/settings-button/settings-button.module'
+import { BannerModule } from 'src/app/Components/banner/banner.module'
 
 @NgModule({
   declarations: [CharacterSheetComponent],
@@ -19,6 +20,7 @@ import { SettingsButtonModule } from 'src/app/Components/settings-button/setting
     LockButtonModule,
     RerollButtonModule,
     CardModule,
+    BannerModule,
     SettingsButtonModule,
   ],
   exports: [CharacterSheetComponent],

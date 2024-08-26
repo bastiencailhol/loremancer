@@ -51,13 +51,12 @@
     @apply text-xl;
   }
   h5 {
-    @apply text-lg;
+    @apply text-base;
     @apply font-medium;
     @apply tracking-wider;
     @apply uppercase;
   }
   h6 {
-    @apply text-base;
     @apply uppercase;
     @apply text-xs;
     @apply tracking-wider;
