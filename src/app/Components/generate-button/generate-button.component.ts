@@ -27,13 +27,13 @@ export class GenerateButtonComponent {
 
   versions: Version[] = [
     {
-      text: 'Unleash the magic!',
+      text: 'Summon the fates!',
       color: '#FBF472',
       lighterColor: '#F9ED86',
       darkerColor: '#7F7E25',
     },
     {
-      text: 'Hmmm… try anew?',
+      text: 'Tell another tale',
       color: '#FFC95E',
       lighterColor: '#FECC67',
       darkerColor: '#7F5E25',
@@ -45,7 +45,7 @@ export class GenerateButtonComponent {
       darkerColor: '#255F7F',
     },
     {
-      text: 'Not quite right…',
+      text: 'Seek new horizons',
       color: '#FFAADF',
       lighterColor: '#FEAEE0',
       darkerColor: '#7F2561',
@@ -81,7 +81,7 @@ export class GenerateButtonComponent {
       darkerColor: '#4F7F25',
     },
     {
-      text: 'Nah… another quest',
+      text: 'Quest for more !',
       color: '#ABC2FF',
       lighterColor: '#B2C7FF',
       darkerColor: '#25617F',

@@ -1,10 +1,10 @@
 <div class="relative">
   <button type="button" (click)="onButtonClick()"
-    class="select-none font-bold text-xl tracking-wider flex gap-3 px-6 py-2.5"
-    [style.background]="'radial-gradient(ellipse at bottom, rgba(255,255,255, 0.20), transparent), ' + version.lighterColor"
-    [style.boxShadow]="'0 1px 1px' +
+    class="select-none font-semibold text-2xl tracking-wider flex gap-3 px-6 py-2.5"
+    [style.background]="'radial-gradient(ellipse at bottom, rgba(255,255,255, 0.30), transparent), ' + version.lighterColor"
+    [style.boxShadow]="'inset 0 -1px 1px' +
     version.darkerColor + '40,
-    0 5px 16px -8px hsla(0, 0%, 0%, 0.25), 0 5px 32px' + version.color + '80'">
+    0 10px 10px -16px hsla(0, 0%, 0%, 0.8), 0 5px 32px' + version.color + '80'">
     {{ version.text }}
     <img class="default opacity-90" src="assets/icons/magic wand sparkles.svg" alt="" />
     <img class="active hidden opacity-90" src="assets/icons/magic wand.svg" alt="" />
