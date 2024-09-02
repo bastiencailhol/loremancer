@@ -88,9 +88,9 @@ module.exports = {
     backdropSepia: (theme) => theme('sepia'),
     backgroundColor: (theme) => theme('colors'),
     backgroundImage: {
-      none: 'none',
-      paper: "url('assets/img/paper-texture.jpg')",
-      'dark-paper': "url('assets/img/dark-paper-texture.jpg')",
+      none: 'none', 
+      paper: "linear-gradient(170deg, transparent, #fff3eb3b), url('assets/img/paper-texture.jpg')",
+      'dark-paper': "linear-gradient(45deg, theme(colors.gray.200), theme(colors.gray.200)), url('assets/img/dark-paper-texture.jpg')",
       'gradient-to-t': 'linear-gradient(to top, var(--tw-gradient-stops))',
       'gradient-to-tr':
         'linear-gradient(to top right, var(--tw-gradient-stops))',
