@@ -122,7 +122,7 @@ export const equipments = [
     icon: 'body',
     color: 'D9F5E6',
     attributes: [
-      'Bare torso',
+      '-',
       'Breastplate',
       'Brigandine',
       'Chainmail',
@@ -179,7 +179,7 @@ export const equipments = [
     icon: 'hands',
     color: 'F7F2E6',
     attributes: [
-      'Bare Hands',
+      '-',
       'Bracelets',
       'Chainmail gloves',
       'Gauntlets',
@@ -256,6 +256,7 @@ export const equipments = [
     icon: 'legs',
     color: 'F4DFED',
     attributes: [
+      '-',
       'Baggy pants',
       'Cargo pants',
       'Chainmail leggings',
@@ -323,8 +324,8 @@ export const equipments = [
     icon: 'feet',
     color: 'F5EFDF',
     attributes: [
+      '-',
       'Anklets',
-      'Bare feet',
       'Footwraps',
       'Fur-lined boots',
       'Geta',
