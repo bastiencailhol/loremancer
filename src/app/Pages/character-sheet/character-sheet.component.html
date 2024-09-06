@@ -117,6 +117,23 @@
   </div>
 </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <ng-template #genericTrait let-category="category" let-trait="trait">
   <div class="flex flex-col">
     <h6 class="">
@@ -139,6 +156,9 @@
   </div>
 </ng-template>
 
+
+
+
 <ng-template #equipmentTrait let-trait="trait">
   <app-card class="{{ trait.dimensions }}">
     <div class="flex h-full">
@@ -159,14 +179,17 @@
           }
         "></ng-container>
       <div class="flex flex-col justify-between gap-2">
-        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
-        <div *ngIf="trait.locked" class="h-7 w-7"></div>
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
+        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <div *ngIf="trait.locked" class="h-7 w-7"></div>
       </div>
     </div>
   </app-card>
 </ng-template>
+
+
+
 
 <ng-template #attributeSelect let-category="category" let-trait="trait" let-addClass="addClass">
   <div class="flex-grow min-w-0">
