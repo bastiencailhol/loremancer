@@ -29,7 +29,8 @@ interface Category {
   styleUrls: ['./character-sheet.component.scss'],
 })
 export class CharacterSheetComponent implements OnInit, AfterViewInit {
-  @ViewChild(GenerateButtonComponent) generateButtonComponent!: GenerateButtonComponent
+  @ViewChild(GenerateButtonComponent)
+  generateButtonComponent!: GenerateButtonComponent
   settings: {
     race: string
     showContext: boolean
@@ -72,9 +73,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     })
   }
 
-  ngAfterViewInit() {
-
-  }
+  ngAfterViewInit() {}
 
   initCategories() {
     if (this.settings.race === 'fantasy') {

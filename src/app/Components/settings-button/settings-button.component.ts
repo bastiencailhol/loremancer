@@ -8,12 +8,7 @@ import {
   ViewChild,
 } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
-import {
-  ActivatedRoute,
-  NavigationExtras,
-  Params,
-  Router,
-} from '@angular/router'
+import { NavigationExtras, Params, Router } from '@angular/router'
 
 @Component({
   selector: 'app-settings-button',
@@ -52,10 +47,7 @@ export class SettingsButtonComponent {
 
   lastcheckedRace = ''
 
-  constructor(
-    private route: ActivatedRoute,
-    private router: Router,
-  ) {}
+  constructor(private router: Router) {}
 
   initForm(
     raceArray: Array<string> = [],

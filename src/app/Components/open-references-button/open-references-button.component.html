@@ -1,105 +1,37 @@
-<button class="
-    text-md
-    font-semibold font-sans
-    tracking-wider
+<button type="button" class="
     flex
+    justify-center
     items-center
-    gap-2
-    px-4
-    py-2
+    bg-transparent
+    text-black text-center text-base
+    font-semibold
+    p-1
+    rounded-lg
   " (click)="openDialog()">
-  Settings<img class="opacity-90" src="assets/icons/settings.svg" alt="" />
+  <img src="assets/icons/add-image.svg" alt="" class="opacity-90 hover:opacity-100 h-5 w-5" />
 </button>
-<dialog #settingsDialog class="py-4 px-6 overflow-visible">
+<dialog #referencesDialog>
   <!-- <h6>Character sheet</h6> -->
-  <h2>Settings</h2>
-  <form [formGroup]="settingsForm" class="my-4">
-    <div class="mt-3">
-      <h6>Type of race</h6>
-      <div class="flex gap-5">
-        <label class="flex items-center gap-[6px] text-lg">
-          <input type="radio" formControlName="typeOfRace" value="fantasy" />Fantasy
-        </label>
-        <label class="flex items-center gap-[6px] text-lg">
-          <input type="radio" formControlName="typeOfRace" value="animals" />Animals
-        </label>
+  <div class="flex flex-col">
+    <h2>Image references</h2>
+    <section class="flex-grow max-h-[75dvh] overflow-y-auto">
+      <div class="columns-[3] gap-3">
+        <div *ngFor="let image of traitImages" class="mb-3">
+          <img src="{{image}}" alt="" srcset="">
+        </div>
       </div>
-      <div *ngIf="settingsForm.get('typeOfRace').value === 'animals'" class="flex flex-wrap gap-x-5"
-        formGroupName="includeRace">
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'anphibians' === lastcheckedRace">
-          <input type="checkbox" formControlName="anphibians"
-            (change)="handleCheckboxChange('anphibians')" /><span>Anphibians</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'arthropods' === lastcheckedRace">
-          <input type="checkbox" formControlName="arthropods"
-            (change)="handleCheckboxChange('arthropods')" /><span>Arthropods</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'birds' === lastcheckedRace">
-          <input type="checkbox" formControlName="birds" (change)="handleCheckboxChange('birds')" /><span>Birds</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'cnidarians' === lastcheckedRace">
-          <input type="checkbox" formControlName="cnidarians"
-            (change)="handleCheckboxChange('cnidarians')" /><span>Cnidarians/echinoderms</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'fishes' === lastcheckedRace">
-          <input type="checkbox" formControlName="fishes"
-            (change)="handleCheckboxChange('fishes')" /><span>Fishes</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'mammals' === lastcheckedRace">
-          <input type="checkbox" formControlName="mammals"
-            (change)="handleCheckboxChange('mammals')" /><span>Mammals</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'molluscs' === lastcheckedRace">
-          <input type="checkbox" formControlName="molluscs"
-            (change)="handleCheckboxChange('molluscs')" /><span>Molluscs</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'reptiles' === lastcheckedRace">
-          <input type="checkbox" formControlName="reptiles"
-            (change)="handleCheckboxChange('reptiles')" /><span>Reptiles</span>
-        </label>
-        <label class="flex items-center gap-[6px] text-lg"
-          [class.hover:cursor-not-allowed]="'worms' === lastcheckedRace">
-          <input type="checkbox" formControlName="worms" (change)="handleCheckboxChange('worms')" /><span>Worms</span>
-        </label>
-      </div>
+    </section>
+    <div class="flex justify-center gap-3 -mx-3">
+      <button (click)="close()" class="text-md
+      font-semibold font-sans
+      tracking-wider
+      flex
+      items-center
+      gap-2
+      px-3
+      py-1">Close</button>
     </div>
-    <div class="mt-3">
-      <h6>Display</h6>
-      <label class="flex items-center gap-[6px] text-lg">
-        <input type="checkbox" formControlName="showContext" />Context section
-      </label>
-      <label class="flex items-center gap-[6px] text-lg">
-        <input type="checkbox" formControlName="showImageRefs" />Image references
-      </label>
-    </div>
-  </form>
-  <div class="flex justify-between gap-3 -mx-3">
-    <button (click)="close()" class="text-md
-    font-semibold font-sans
-    tracking-wider
-    flex
-    items-center
-    gap-2
-    px-3
-    py-1">Close</button>
-    <button (click)="save()" class="text-md
-    font-semibold font-sans
-    tracking-wider
-    flex
-    items-center
-    gap-2
-    px-3
-    py-1">Save</button>
   </div>
-
   <div class="absolute -top-1 -bottom-1 -left-1 -right-1 -z-10">
     <svg preserveAspectRatio="none" viewBox="0 0 866 730" fill="none" class="paper-bg"
       xmlns="http://www.w3.org/2000/svg">
@@ -108,4 +40,5 @@
         fill="white" />
     </svg>
   </div>
+
 </dialog>

@@ -10,6 +10,9 @@
 # firebase cache (doesn't work for some reason)
 /.firebase/*
 
+# image references
+/src/assets/img/image-references
+
 # dependencies
 /node_modules
 

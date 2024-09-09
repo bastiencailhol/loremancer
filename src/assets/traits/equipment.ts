@@ -165,7 +165,7 @@ export const equipments = [
     ],
   },
   {
-    name: 'Jewels',
+    name: 'Neck',
     dimensions: 'md:row-start-1 md:row-end-3',
     icon: 'jewels',
     color: 'E6F7EB',
@@ -198,7 +198,7 @@ export const equipments = [
     ],
   },
   {
-    name: 'Body',
+    name: 'Chest',
     dimensions: 'md:row-start-3 md:row-end-6',
     icon: 'body',
     color: 'D9F5E6',
@@ -315,7 +315,7 @@ export const equipments = [
     ],
   },
   {
-    name: 'Belt',
+    name: 'Hips',
     dimensions: 'md:row-start-6 md:row-end-8',
     icon: 'belt',
     color: 'E1EAF5',

@@ -29,8 +29,8 @@
     font-family: 'Recoleta';
     src: url(assets/fonts/Recoleta-Black.ttf) format('truetype');
     font-weight: 900;
-  }  
-  
+  }
+
   html {
     @apply text-stone-800;
   }
@@ -71,6 +71,19 @@
       @apply bg-black/20;
       @apply backdrop-blur-sm;
     }
+    @apply bg-transparent;
+    @apply overflow-visible;
+    @apply fixed;
+    @apply py-4;
+    @apply px-6;
+  }
+
+  .paper-bg {
+    @apply h-full;
+    @apply w-full;
+    filter: drop-shadow(0 1px 1px hsla(208, 60%, 0%, 0.06))
+      drop-shadow(0 16px 6px hsla(208, 60%, 30%, 0.15))
+      drop-shadow(0 16px 18px hsla(208, 60%, 30%, 0.15));
   }
 
   input[type='checkbox'] {
