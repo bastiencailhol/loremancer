@@ -19,10 +19,19 @@ import { equipments } from 'src/assets/traits/equipment'
 import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
 import { context } from 'src/assets/traits/context'
 import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
+import { imageReferencesRootPath } from 'src/environments/environment'
+import itemList from 'src/assets/img/image-references/image catalog.json'
 
 interface Category {
-  traits: typeof coreTraits
-  locked: boolean
+  traits: Trait[]
+  locked?: boolean
+}
+interface Trait {
+  name: string
+  attributes: string[]
+  locked?: boolean
+  selectedAttribute?: string
+  selectedImage?: string
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -36,12 +45,15 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     showContext: boolean
     showImageRefs: boolean
   }
+  contextCategory!: Category
   coreTraitsCategory!: Category
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
-  contextCategory!: Category
 
   categories: Category[] = []
+  leftSideEquipments: Trait[] = []
+  middleSideEquipments: Trait[] = []
+  rightSideEquipments: Trait[] = []
 
   queryParams: any = {}
 
@@ -69,7 +81,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       if (!this.categoriesLoaded) {
         this.initCategories()
       }
-      this.initTraits()
+      this.initSelectedTraits()
     })
   }
 
@@ -108,22 +120,43 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       traits: JSON.parse(JSON.stringify(equipments)),
       locked: false,
     }
+    this.leftSideEquipments = this.equipmentsCategory.traits.filter(
+      trait =>
+        trait.name === 'Weapon' ||
+        trait.name === 'Hands' ||
+        trait.name === 'Accessories',
+    )
+    this.middleSideEquipments = this.equipmentsCategory.traits.filter(
+      trait =>
+        trait.name === 'Head' ||
+        trait.name === 'Chest' ||
+        trait.name === 'Legs' ||
+        trait.name === 'Feet',
+    )
+    this.rightSideEquipments = this.equipmentsCategory.traits.filter(
+      trait =>
+        trait.name === 'Neck' ||
+        trait.name === 'Shoulders' ||
+        trait.name === 'Hips',
+    )
     this.categories = [
       this.coreTraitsCategory,
       this.physicalTraitsCategory,
       this.contextCategory,
       this.equipmentsCategory,
     ]
+
     this.categoriesLoaded = true
   }
 
-  initTraits() {
-    const traits: any = this.categories.reduce(
+  initSelectedTraits() {
+    const traits: Trait[] = this.categories.reduce(
       (acc: typeof coreTraits, category) => [...acc, ...category.traits],
       [],
     )
     traits.forEach(trait => {
-      trait.selected = this.queryParams[trait.name]
+      trait.selectedAttribute = this.queryParams[trait.name]
+      this.rollTraitImage(trait)
     })
   }
 
@@ -133,7 +166,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     })
   }
 
-  rollCategoryTraits(category) {
+  rollCategoryTraits(category: Category) {
     if (!category.locked) {
       category.traits.forEach(trait => {
         this.rollTrait(trait)
@@ -141,16 +174,31 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     }
   }
 
-  rollTrait(trait) {
+  rollTrait(trait: Trait) {
     if (!trait.locked) {
-      trait.selected = sample(
-        trait.attributes.filter(attribute => attribute !== trait.selected),
+      trait.selectedAttribute = sample(
+        trait.attributes.filter(
+          attribute => attribute !== trait.selectedAttribute,
+        ),
       )
+      this.rollTraitImage(trait)
       this.updateUrl(trait)
     }
   }
-  updateUrl(trait) {
-    this.queryParams = { ...this.queryParams, [trait.name]: trait.selected }
+  rollTraitImage(trait: Trait) {
+    const traitImagesPath = `${trait.name}/${trait.selectedAttribute}`
+    const sampledImage = `${imageReferencesRootPath}/${traitImagesPath}/${sample(
+      itemList[traitImagesPath],
+    )}`
+    console.log(traitImagesPath, itemList[traitImagesPath], sampledImage)
+    trait.selectedImage = sampledImage
+  }
+
+  updateUrl(trait: Trait) {
+    this.queryParams = {
+      ...this.queryParams,
+      [trait.name]: trait.selectedAttribute,
+    }
     this.router.navigate([], { queryParams: this.queryParams })
   }
 

@@ -104,13 +104,31 @@
               [isLocked]="equipmentsCategory.locked"></app-lock-button>
           </div>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-          <ng-container *ngFor="let trait of equipmentsCategory.traits">
-            <ng-container *ngTemplateOutlet="
-                equipmentTrait;
-                context: { category: equipmentsCategory, trait: trait }
-              "></ng-container>
-          </ng-container>
+        <div class="grid grid-cols-1 md:grid-cols-3 items-start gap-5">
+          <div class="flex flex-col gap-5">
+            <ng-container *ngFor="let trait of leftSideEquipments">
+              <ng-container *ngTemplateOutlet="
+                  equipmentTrait;
+                  context: { category: equipmentsCategory, trait: trait }
+                "></ng-container>
+            </ng-container>
+          </div>
+          <div class="flex flex-col gap-5">
+            <ng-container *ngFor="let trait of middleSideEquipments">
+              <ng-container *ngTemplateOutlet="
+                  equipmentTrait;
+                  context: { category: equipmentsCategory, trait: trait }
+                "></ng-container>
+            </ng-container>
+          </div>
+          <div class="flex flex-col gap-5">
+            <ng-container *ngFor="let trait of rightSideEquipments">
+              <ng-container *ngTemplateOutlet="
+                  equipmentTrait;
+                  context: { category: equipmentsCategory, trait: trait }
+                "></ng-container>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
@@ -160,8 +178,9 @@
 
 
 <ng-template #equipmentTrait let-trait="trait" let-category="category">
-  <app-card class="{{ trait.dimensions }}">
-    <div class="flex h-full">
+  <app-card [ngClass]="!trait.selectedImage ? trait.dimensions : ''">
+    <img *ngIf="trait.selectedImage" src="{{trait.selectedImage}}" class="mx-auto max-h-[500px]" alt="">
+    <div class="flex" [ngClass]="!trait.selectedImage ? 'h-full' : ''">
       <div class="flex items-center rounded-lg px-2" [ngStyle]="{
           'background-image':
             'url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=' +
@@ -179,10 +198,10 @@
           }
         "></ng-container>
       <div class="flex flex-col justify-between gap-2">
+        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
-        <app-open-references-button [trait]="trait" (onClick)="rollTrait(trait)"></app-open-references-button>
-        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <!-- <app-open-references-button [trait]="trait" (onClick)="rollTrait(trait)"></app-open-references-button> -->
         <div *ngIf="trait.locked" class="h-7 w-7"></div>
       </div>
     </div>
@@ -214,8 +233,8 @@
         disabled:cursor-default
         disabled:opacity-100
         {{ addClass }}
-      " name="{{ trait.name }}" [(ngModel)]="trait.selected"
-      (ngModelChange)="updateUrl(trait); toggleTraitLock(category, trait, true)">
+      " name="{{ trait.name }}" [(ngModel)]="trait.selectedAttribute"
+      (ngModelChange)="this.rollTraitImage(trait); updateUrl(trait); toggleTraitLock(category, trait, true)">
       <option *ngFor="let attribute of trait.attributes" value="{{ attribute }}">
         {{ attribute }}
       </option>
