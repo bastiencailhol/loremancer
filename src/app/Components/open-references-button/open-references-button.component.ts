@@ -40,13 +40,10 @@ export class OpenReferencesButtonComponent {
     this.referencesDialog.nativeElement.close()
   }
   getReferenceImages(trait) {
-    const rooPath = `${imageReferencesRootPath}/${trait.name}/${trait.selected}/`
-    this.traitImages = itemList
-      .filter(
-        img =>
-          img.categories[0] == trait.name &&
-          img.categories[1] == trait.selected,
-      )
-      .map(item => `${rooPath}${item.path}`)
+    const rootPath = `${imageReferencesRootPath}/${trait.name}/${trait.selected}/`
+    const traitImagesPath = `${trait.name}/${trait.selected}`
+    this.traitImages = itemList[traitImagesPath].map(
+      item => `${rootPath}${item}`,
+    )
   }
 }
