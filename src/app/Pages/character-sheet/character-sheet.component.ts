@@ -156,7 +156,9 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     )
     traits.forEach(trait => {
       trait.selectedAttribute = this.queryParams[trait.name]
-      this.rollTraitImage(trait)
+      if (trait.selectedAttribute) {
+        this.rollTraitImage(trait)
+      }
     })
   }
 
