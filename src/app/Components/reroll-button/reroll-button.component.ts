@@ -2,6 +2,7 @@ import {
   ChangeDetectionStrategy,
   Component,
   EventEmitter,
+  Input,
   Output,
 } from '@angular/core'
 
@@ -13,6 +14,7 @@ import {
 })
 export class RerollButtonComponent {
   @Output() onClick = new EventEmitter()
+  @Input() hidden = false
 
   onButtonClick() {
     this.onClick.emit()

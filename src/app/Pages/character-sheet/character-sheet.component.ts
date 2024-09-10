@@ -58,6 +58,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
   queryParams: any = {}
 
   categoriesLoaded = false
+  firstLoad = true
 
   constructor(
     private router: Router,
@@ -82,6 +83,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
         this.initCategories()
       }
       this.initSelectedTraits()
+      this.firstLoad = false
     })
   }
 
@@ -156,7 +158,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     )
     traits.forEach(trait => {
       trait.selectedAttribute = this.queryParams[trait.name]
-      if (trait.selectedAttribute) {
+      if (this.firstLoad && trait.selectedAttribute) {
         this.rollTraitImage(trait)
       }
     })

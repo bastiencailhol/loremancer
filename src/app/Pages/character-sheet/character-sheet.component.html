@@ -178,8 +178,7 @@
 
 
 <ng-template #equipmentTrait let-trait="trait" let-category="category">
-  <app-card [ngClass]="!trait.selectedImage ? trait.dimensions : ''">
-    <img *ngIf="trait.selectedImage" src="{{trait.selectedImage}}" class="mx-auto max-h-[500px]" alt="">
+  <app-card [ngClass]="!trait.selectedImage ? trait.dimensions : ''" addClass="flex flex-col gap-2">
     <div class="flex" [ngClass]="!trait.selectedImage ? 'h-full' : ''">
       <div class="flex items-center rounded-lg px-2" [ngStyle]="{
           'background-image':
@@ -187,7 +186,7 @@
             trait.color +
             ')'
         }">
-        <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class="min-w-9 h-9" />
+        <img src="./assets/icons/{{ trait.icon }}.svg" alt="" class=" min-w-[2rem] min-h-[2rem] w-8 h-8" />
       </div>
       <ng-container *ngTemplateOutlet="
           attributeSelect;
@@ -197,14 +196,18 @@
             addClass: 'px-3'
           }
         "></ng-container>
-      <div class="flex flex-col justify-between gap-2">
-        <app-reroll-button *ngIf="!trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+      <div class="flex flex-col justify-between gap-1">
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
+        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
         <!-- <app-open-references-button [trait]="trait" (onClick)="rollTrait(trait)"></app-open-references-button> -->
-        <div *ngIf="trait.locked" class="h-7 w-7"></div>
       </div>
     </div>
+    <div *ngIf="trait.selectedImage" class="relative">
+      <img src="{{trait.selectedImage}}" class="mx-auto max-h-[500px]" alt="">
+      <app-reroll-button (onClick)="rollTraitImage(trait)" class="absolute top-0 right-0 bg-white"></app-reroll-button>
+    </div>
+
   </app-card>
 </ng-template>
 
