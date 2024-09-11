@@ -5,7 +5,6 @@ export const equipments = [
     icon: 'weapon',
     color: 'F7E5E5',
     attributes: [
-      '-',
       'Ankus',
       'Arquebus',
       'Axe',
@@ -105,7 +104,6 @@ export const equipments = [
     icon: 'head',
     color: 'E6F3DD',
     attributes: [
-      '-',
       'Balaclava',
       'Barbute',
       'Bascinet',
@@ -170,7 +168,6 @@ export const equipments = [
     icon: 'jewels',
     color: 'E6F7EB',
     attributes: [
-      '-',
       'Amulet',
       'Bead necklace',
       'Bevor',
@@ -203,7 +200,6 @@ export const equipments = [
     icon: 'body',
     color: 'D9F5E6',
     attributes: [
-      '-',
       'Bodice',
       'Body jewellery',
       'Bodysuit',
@@ -260,7 +256,6 @@ export const equipments = [
     icon: 'back',
     color: 'E6E6F7',
     attributes: [
-      '-',
       'Baby carrier',
       'Backpack',
       'Cape',
@@ -288,7 +283,6 @@ export const equipments = [
     icon: 'hands',
     color: 'F7F2E6',
     attributes: [
-      '-',
       'Arm guards',
       'Arm harness',
       'Arm wraps',
@@ -320,7 +314,6 @@ export const equipments = [
     icon: 'belt',
     color: 'E1EAF5',
     attributes: [
-      '-',
       'Apron',
       'Baldric',
       'Chain belt',
@@ -355,7 +348,6 @@ export const equipments = [
     icon: 'accessories',
     color: 'F3F7E6',
     attributes: [
-      '-',
       'Banner',
       'Barrel',
       'Basket',
@@ -413,7 +405,6 @@ export const equipments = [
     icon: 'legs',
     color: 'F4DFED',
     attributes: [
-      '-',
       'Breeches',
       'Chausses',
       'Hakama',
@@ -488,7 +479,6 @@ export const equipments = [
     icon: 'feet',
     color: 'F5EFDF',
     attributes: [
-      '-',
       'Anklets',
       'Clogs',
       'Flip-flops',

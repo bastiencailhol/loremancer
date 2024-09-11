@@ -237,8 +237,9 @@
         disabled:opacity-100
         {{ addClass }}
       " name="{{ trait.name }}" [(ngModel)]="trait.selectedAttribute"
-      (ngModelChange)="this.rollTraitImage(trait); updateUrl(trait); toggleTraitLock(category, trait, true)">
-      <option *ngFor="let attribute of trait.attributes" value="{{ attribute }}">
+      (ngModelChange)="onSelectChange(trait, category)">
+      <option [value]="''">-</option>
+      <option *ngFor="let attribute of trait.attributes" [value]="attribute">
         {{ attribute }}
       </option>
     </select>

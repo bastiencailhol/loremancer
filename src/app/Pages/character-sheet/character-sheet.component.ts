@@ -194,8 +194,12 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     const sampledImage = `${imageReferencesRootPath}/${traitImagesPath}/${sample(
       itemList[traitImagesPath],
     )}`
-    console.log(traitImagesPath, itemList[traitImagesPath], sampledImage)
+    // console.log(traitImagesPath, itemList[traitImagesPath], sampledImage)
     trait.selectedImage = sampledImage
+  }
+
+  emptyImageTrait(trait: Trait) {
+    trait.selectedImage = null
   }
 
   updateUrl(trait: Trait) {
@@ -204,6 +208,17 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       [trait.name]: trait.selectedAttribute,
     }
     this.router.navigate([], { queryParams: this.queryParams })
+  }
+  onSelectChange(trait: any, category: any) {
+    if (trait.selectedAttribute === '') {
+      this.emptyImageTrait(trait)
+      this.toggleTraitLock(category, trait, false)
+      console.log(trait)
+    } else {
+      this.rollTraitImage(trait)
+      this.toggleTraitLock(category, trait, true)
+    }
+    this.updateUrl(trait)
   }
 
   clearAllUrlParams() {
