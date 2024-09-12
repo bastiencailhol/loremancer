@@ -23,6 +23,7 @@ import { imageReferencesRootPath } from 'src/environments/environment'
 import itemList from 'src/assets/img/image-references/image-catalog.json'
 
 interface Category {
+  name: String
   traits: Trait[]
   locked?: boolean
 }
@@ -50,7 +51,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
 
-  categories: Map<string, Category>
+  categories: Category[]
   leftSideEquipments: Trait[] = []
   middleSideEquipments: Trait[] = []
   rightSideEquipments: Trait[] = []
@@ -82,7 +83,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       if (!this.categoriesLoaded) {
         this.initCategories()
       }
-      this.initSelectedTraits()
+      this.firstLoad && this.initSelectedTraits()
       this.firstLoad = false
     })
   }
@@ -107,18 +108,22 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       ].sort()
     }
     this.coreTraitsCategory = {
+      name: 'coreTraits',
       traits: JSON.parse(JSON.stringify(coreTraits)),
       locked: false,
     }
     this.physicalTraitsCategory = {
+      name: 'physicalTraits',
       traits: JSON.parse(JSON.stringify(physicalTraits)),
       locked: false,
     }
     this.contextCategory = {
+      name: 'context',
       traits: JSON.parse(JSON.stringify(context)),
       locked: false,
     }
     this.equipmentsCategory = {
+      name: 'equipments',
       traits: JSON.parse(JSON.stringify(equipments)),
       locked: false,
     }
@@ -141,27 +146,25 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
         trait.name === 'Shoulders' ||
         trait.name === 'Hips',
     )
-    this.categories = new Map([
-      ['coreTraits', this.coreTraitsCategory],
-      ['physicalTraits', this.physicalTraitsCategory],
-      ['context', this.contextCategory],
-      ['equipments', this.equipmentsCategory],
-    ])
+    this.categories = [
+      this.coreTraitsCategory,
+      this.physicalTraitsCategory,
+      this.contextCategory,
+      this.equipmentsCategory,
+    ]
 
     this.categoriesLoaded = true
   }
 
   initSelectedTraits() {
-    const traits: Trait[] = []
-    this.categories.forEach(cat => traits.push(...cat.traits))
-    traits.forEach(trait => {
-      trait.selectedAttribute = this.queryParams[trait.name]
-    })
-    if (this.firstLoad) {
-      this.categories.get('equipments').traits.forEach(trait => {
-        trait.selectedAttribute && this.rollTraitImage(trait)
+    this.categories.forEach(category => {
+      category.traits.forEach(trait => {
+        if (this.queryParams[trait.name]) {
+          trait.selectedAttribute = this.queryParams[trait.name]
+          category.name === 'equipments' && this.rollTraitImage(trait)
+        }
       })
-    }
+    })
   }
 
   rollAllTraits() {
@@ -173,26 +176,26 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
   rollCategoryTraits(category: Category) {
     if (!category.locked) {
       category.traits.forEach(trait => {
-        this.rollTrait(trait)
+        this.rollTrait(trait, category.name === 'equipments')
       })
     }
   }
 
-  rollTrait(trait: Trait) {
+  rollTrait(trait: Trait, shouldRollImage = true) {
     if (!trait.locked) {
       trait.selectedAttribute = sample(
         trait.attributes.filter(
           attribute => attribute !== trait.selectedAttribute,
         ),
       )
-      if (trait.name === '') this.rollTraitImage(trait)
+      if (trait.name !== '' && shouldRollImage) this.rollTraitImage(trait)
       this.updateUrl(trait)
     }
   }
   rollTraitImage(trait: Trait) {
     const traitImagesPath = `${trait.selectedAttribute}`
     const sampledImage = sample(itemList[traitImagesPath])
-    const sampledImagePath = `${imageReferencesRootPath}/${traitImagesPath}/${sampledImage.path}`
+    const sampledImagePath = `${imageReferencesRootPath}/${traitImagesPath}/${sampledImage?.path}`
     trait.selectedImage = {
       path: sampledImagePath,
       sourceUrl: sampledImage.source,
