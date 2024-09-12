@@ -204,7 +204,7 @@
       </div>
     </div>
     <div *ngIf="trait.selectedImage" class="relative">
-      <img src="{{trait.selectedImage}}" class="mx-auto max-h-[500px]" alt="">
+      <img src="{{trait.selectedImage.path}}" class="mx-auto max-h-[500px]" alt="">
       <app-reroll-button (onClick)="rollTraitImage(trait)" class="absolute top-0 right-0 bg-white"></app-reroll-button>
     </div>
 

@@ -20,7 +20,7 @@ import { ActivatedRoute, NavigationExtras, Router } from '@angular/router'
 import { context } from 'src/assets/traits/context'
 import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
 import { imageReferencesRootPath } from 'src/environments/environment'
-import itemList from 'src/assets/img/image-references/image catalog.json'
+import itemList from 'src/assets/img/image-references/image-catalog.json'
 
 interface Category {
   traits: Trait[]
@@ -31,7 +31,7 @@ interface Trait {
   attributes: string[]
   locked?: boolean
   selectedAttribute?: string
-  selectedImage?: string
+  selectedImage?: { path: string; sourceUrl: string }
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -50,7 +50,7 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
   equipmentsCategory!: Category
   physicalTraitsCategory!: Category
 
-  categories: Category[] = []
+  categories: Map<string, Category>
   leftSideEquipments: Trait[] = []
   middleSideEquipments: Trait[] = []
   rightSideEquipments: Trait[] = []
@@ -141,27 +141,27 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
         trait.name === 'Shoulders' ||
         trait.name === 'Hips',
     )
-    this.categories = [
-      this.coreTraitsCategory,
-      this.physicalTraitsCategory,
-      this.contextCategory,
-      this.equipmentsCategory,
-    ]
+    this.categories = new Map([
+      ['coreTraits', this.coreTraitsCategory],
+      ['physicalTraits', this.physicalTraitsCategory],
+      ['context', this.contextCategory],
+      ['equipments', this.equipmentsCategory],
+    ])
 
     this.categoriesLoaded = true
   }
 
   initSelectedTraits() {
-    const traits: Trait[] = this.categories.reduce(
-      (acc: typeof coreTraits, category) => [...acc, ...category.traits],
-      [],
-    )
+    const traits: Trait[] = []
+    this.categories.forEach(cat => traits.push(...cat.traits))
     traits.forEach(trait => {
       trait.selectedAttribute = this.queryParams[trait.name]
-      if (this.firstLoad && trait.selectedAttribute) {
-        this.rollTraitImage(trait)
-      }
     })
+    if (this.firstLoad) {
+      this.categories.get('equipments').traits.forEach(trait => {
+        trait.selectedAttribute && this.rollTraitImage(trait)
+      })
+    }
   }
 
   rollAllTraits() {
@@ -185,17 +185,18 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
           attribute => attribute !== trait.selectedAttribute,
         ),
       )
-      this.rollTraitImage(trait)
+      if (trait.name === '') this.rollTraitImage(trait)
       this.updateUrl(trait)
     }
   }
   rollTraitImage(trait: Trait) {
-    const traitImagesPath = `${trait.name}/${trait.selectedAttribute}`
-    const sampledImage = `${imageReferencesRootPath}/${traitImagesPath}/${sample(
-      itemList[traitImagesPath],
-    )}`
-    // console.log(traitImagesPath, itemList[traitImagesPath], sampledImage)
-    trait.selectedImage = sampledImage
+    const traitImagesPath = `${trait.selectedAttribute}`
+    const sampledImage = sample(itemList[traitImagesPath])
+    const sampledImagePath = `${imageReferencesRootPath}/${traitImagesPath}/${sampledImage.path}`
+    trait.selectedImage = {
+      path: sampledImagePath,
+      sourceUrl: sampledImage.source,
+    }
   }
 
   emptyImageTrait(trait: Trait) {
@@ -213,7 +214,6 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
     if (trait.selectedAttribute === '') {
       this.emptyImageTrait(trait)
       this.toggleTraitLock(category, trait, false)
-      console.log(trait)
     } else {
       this.rollTraitImage(trait)
       this.toggleTraitLock(category, trait, true)
