@@ -3,6 +3,7 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+@import '@angular/cdk/overlay-prebuilt.css';
 
 @layer base {
   @font-face {
@@ -94,5 +95,21 @@
   }
   label {
     @apply hover:cursor-pointer;
+  }
+
+  :focus-visible {
+    outline: none;
+  }
+
+  .custom-modal {
+    padding: 50px;
+  }
+  .ripped-paper-bg {
+    border-width: 8px;
+    border-image: url('/assets/img/ripped-paper/ripped_paper-xl-1.svg') 33 fill;
+    &.alt {
+      border-image: url('/assets/img/ripped-paper/ripped_paper-xl-2.svg') 33
+        fill;
+    }
   }
 }

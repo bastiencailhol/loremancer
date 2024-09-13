@@ -200,11 +200,11 @@
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
         <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
-        <!-- <app-open-references-button [trait]="trait" (onClick)="rollTrait(trait)"></app-open-references-button> -->
       </div>
     </div>
     <div *ngIf="trait.selectedImage" class="relative">
-      <img src="{{trait.selectedImage.path}}" class="mx-auto max-h-[500px]" alt="">
+      <img src="{{trait.selectedImage.path}}" class="mx-auto max-h-[500px]" alt=""
+        (click)="openImageGalleryDialog(trait)">
       <app-reroll-button (onClick)="rollTraitImage(trait)" class="absolute top-0 right-0 bg-white"></app-reroll-button>
     </div>
 

@@ -21,6 +21,8 @@ import { context } from 'src/assets/traits/context'
 import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
 import { imageReferencesRootPath } from 'src/environments/environment'
 import itemList from 'src/assets/img/image-references/image-catalog.json'
+import { Dialog } from '@angular/cdk/dialog'
+import { CustomDialogComponent } from 'src/app/Components/dialog/dialog.component'
 
 interface Category {
   name: String
@@ -33,6 +35,14 @@ interface Trait {
   locked?: boolean
   selectedAttribute?: string
   selectedImage?: { path: string; sourceUrl: string }
+}
+export interface DialogData {
+  trait: Trait
+  imageGallery: {
+    path: string
+    mismatchPercentage: number
+    sourceUrl: string
+  }[]
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -64,6 +74,7 @@ export class CharacterSheetComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
+    public dialog: Dialog,
   ) {}
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
@@ -202,6 +213,19 @@ export class CharacterSheetComponent implements OnInit {
 
   emptyImageTrait(trait: Trait) {
     trait.selectedImage = null
+  }
+
+  openImageGalleryDialog(trait: Trait) {
+    // const imageGallery = `${imageReferencesRootPath}/${trait.selectedAttribute}/`
+    const imageGallery = itemList[trait.selectedAttribute]
+    this.dialog.open(CustomDialogComponent, {
+      data: {
+        trait,
+        imageGallery,
+        panelClass: 'custom-modal',
+      },
+      autoFocus: false,
+    })
   }
 
   updateUrl(trait: Trait) {

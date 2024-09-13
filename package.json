@@ -1,5 +1,5 @@
 {
-  "name": "sparkles",
+  "name": "loremancer",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -11,6 +11,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^16.1.6",
+    "@angular/cdk": "^16.2.14",
     "@angular/common": "^16.1.6",
     "@angular/compiler": "^16.1.6",
     "@angular/core": "^16.1.6",

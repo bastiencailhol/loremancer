@@ -1,0 +1,19 @@
+:host {
+  display: block;
+  animation: custom-dialog-enter 0.1s ease-out;
+  max-height: 100vh;
+  overflow-y: auto;
+  @apply max-w-3xl;
+}
+
+@keyframes custom-dialog-enter {
+  from {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+
+  to {
+    transform: none;
+    opacity: 1;
+  }
+}

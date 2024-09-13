@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common'
 import { CharacterSheetRouterModule } from './character-sheet-routing.module'
 import { SettingsButtonModule } from 'src/app/Components/settings-button/settings-button.module'
 import { BannerModule } from 'src/app/Components/banner/banner.module'
-import { OpenReferencesButtonModule } from 'src/app/Components/open-references-button/open-references-button.module'
+import { CustomDialogModule } from 'src/app/Components/dialog/dialog.module'
 
 @NgModule({
   declarations: [CharacterSheetComponent],
@@ -20,10 +20,10 @@ import { OpenReferencesButtonModule } from 'src/app/Components/open-references-b
     GenerateButtonModule,
     LockButtonModule,
     RerollButtonModule,
-    OpenReferencesButtonModule,
     CardModule,
     BannerModule,
     SettingsButtonModule,
+    CustomDialogModule,
   ],
   exports: [CharacterSheetComponent],
 })
