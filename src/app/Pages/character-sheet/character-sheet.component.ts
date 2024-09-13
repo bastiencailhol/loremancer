@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core'
+import { Component, OnInit, ViewChild } from '@angular/core'
 import sample from 'lodash.sample'
 import { physicalTraits } from 'src/assets/traits/physicaltraits'
 import {
@@ -38,7 +38,7 @@ interface Trait {
   templateUrl: './character-sheet.component.html',
   styleUrls: ['./character-sheet.component.scss'],
 })
-export class CharacterSheetComponent implements OnInit, AfterViewInit {
+export class CharacterSheetComponent implements OnInit {
   @ViewChild(GenerateButtonComponent)
   generateButtonComponent!: GenerateButtonComponent
   settings: {
@@ -87,8 +87,6 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
       this.firstLoad = false
     })
   }
-
-  ngAfterViewInit() {}
 
   initCategories() {
     if (this.settings.race === 'fantasy') {
@@ -216,11 +214,10 @@ export class CharacterSheetComponent implements OnInit, AfterViewInit {
   onSelectChange(trait: any, category: any) {
     if (trait.selectedAttribute === '') {
       this.emptyImageTrait(trait)
-      this.toggleTraitLock(category, trait, false)
     } else {
       this.rollTraitImage(trait)
-      this.toggleTraitLock(category, trait, true)
     }
+    this.toggleTraitLock(category, trait, true)
     this.updateUrl(trait)
   }
 
