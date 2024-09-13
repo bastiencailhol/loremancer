@@ -1,6 +1,6 @@
 :host {
   display: block;
-  animation: custom-dialog-enter 0.1s ease-out;
+  animation: custom-dialog-enter 0.1s cubic-bezier(0.25, 0.8, 0.25, 1);
   max-height: 100vh;
   overflow-y: auto;
   @apply max-w-3xl;

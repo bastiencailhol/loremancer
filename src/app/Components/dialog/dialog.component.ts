@@ -14,17 +14,14 @@ import { imageReferencesRootPath } from 'src/environments/environment'
   styleUrls: ['./dialog.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CustomDialogComponent implements OnInit {
+export class CustomDialogComponent {
   imagesRootPath = `${imageReferencesRootPath}/${this.data.trait.selectedAttribute}`
   constructor(
     public dialogRef: DialogRef<CustomDialogComponent>,
     @Inject(DIALOG_DATA) public data: DialogData,
   ) {}
 
-  ngOnInit() {
-    console.log(this.data)
-  }
-  onClose() {
-    this.dialogRef.close()
+  onClose(selectedImage) {
+    this.dialogRef.close(selectedImage)
   }
 }

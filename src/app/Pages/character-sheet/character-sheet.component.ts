@@ -21,7 +21,7 @@ import { context } from 'src/assets/traits/context'
 import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
 import { imageReferencesRootPath } from 'src/environments/environment'
 import itemList from 'src/assets/img/image-references/image-catalog.json'
-import { Dialog } from '@angular/cdk/dialog'
+import { Dialog, DialogRef } from '@angular/cdk/dialog'
 import { CustomDialogComponent } from 'src/app/Components/dialog/dialog.component'
 
 interface Category {
@@ -34,15 +34,16 @@ interface Trait {
   attributes: string[]
   locked?: boolean
   selectedAttribute?: string
-  selectedImage?: { path: string; sourceUrl: string }
+  selectedImage?: ImageRef
+}
+interface ImageRef {
+  path: string
+  mismatchPercentage: number
+  sourceUrl: string
 }
 export interface DialogData {
   trait: Trait
-  imageGallery: {
-    path: string
-    mismatchPercentage: number
-    sourceUrl: string
-  }[]
+  imageGallery: ImageRef[]
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -170,7 +171,7 @@ export class CharacterSheetComponent implements OnInit {
       category.traits.forEach(trait => {
         if (this.queryParams[trait.name]) {
           trait.selectedAttribute = this.queryParams[trait.name]
-          category.name === 'equipments' && this.rollTraitImage(trait)
+          category.name === 'equipments' && this.rollAttributeImage(trait)
         }
       })
     })
@@ -197,18 +198,19 @@ export class CharacterSheetComponent implements OnInit {
           attribute => attribute !== trait.selectedAttribute,
         ),
       )
-      if (trait.name !== '' && shouldRollImage) this.rollTraitImage(trait)
+      if (trait.name !== '' && shouldRollImage) this.rollAttributeImage(trait)
       this.updateUrl(trait)
     }
   }
-  rollTraitImage(trait: Trait) {
-    const traitImagesPath = `${trait.selectedAttribute}`
-    const sampledImage = sample(itemList[traitImagesPath])
-    const sampledImagePath = `${imageReferencesRootPath}/${traitImagesPath}/${sampledImage?.path}`
-    trait.selectedImage = {
-      path: sampledImagePath,
-      sourceUrl: sampledImage.source,
-    }
+  rollAttributeImage(trait: Trait) {
+    trait.selectedImage = sample(itemList[trait.selectedAttribute])
+  }
+  pickAttributeImage(trait: Trait, image: ImageRef) {
+    trait.selectedImage = image
+  }
+
+  getRootImagePath(trait: Trait) {
+    return `${imageReferencesRootPath}/${trait.selectedAttribute}/`
   }
 
   emptyImageTrait(trait: Trait) {
@@ -218,13 +220,18 @@ export class CharacterSheetComponent implements OnInit {
   openImageGalleryDialog(trait: Trait) {
     // const imageGallery = `${imageReferencesRootPath}/${trait.selectedAttribute}/`
     const imageGallery = itemList[trait.selectedAttribute]
-    this.dialog.open(CustomDialogComponent, {
+    const dialogRef = this.dialog.open(CustomDialogComponent, {
       data: {
         trait,
         imageGallery,
-        panelClass: 'custom-modal',
       },
+      backdropClass: 'dialog-backdrop',
       autoFocus: false,
+    })
+    dialogRef.closed.subscribe((selectedImage: ImageRef) => {
+      if (selectedImage) {
+        this.pickAttributeImage(trait, selectedImage)
+      }
     })
   }
 
@@ -239,7 +246,7 @@ export class CharacterSheetComponent implements OnInit {
     if (trait.selectedAttribute === '') {
       this.emptyImageTrait(trait)
     } else {
-      this.rollTraitImage(trait)
+      this.rollAttributeImage(trait)
     }
     this.toggleTraitLock(category, trait, true)
     this.updateUrl(trait)

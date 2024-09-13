@@ -1,3 +1,4 @@
-<div *ngIf="imagesRootPath" class="ripped-paper-bg p-2 my-2 columns-[3] gap-2">
-  <img *ngFor="let image of data.imageGallery" src="{{imagesRootPath + '/' + image.path}}" class="mb-2" alt="">
+<div *ngIf="imagesRootPath" class="ripped-paper-bg p-2 my-2 columns-[3] gap-1">
+  <img *ngFor="let image of data.imageGallery" src="{{imagesRootPath + '/' + image.path}}" class="mb-1" alt=""
+    (click)="dialogRef.close(image)">
 </div>

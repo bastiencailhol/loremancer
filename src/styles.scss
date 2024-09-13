@@ -65,20 +65,6 @@
     @apply text-blue-600 underline;
   }
 
-  dialog {
-    @apply container;
-    @apply max-w-2xl;
-    &::backdrop {
-      @apply bg-black/20;
-      @apply backdrop-blur-sm;
-    }
-    @apply bg-transparent;
-    @apply overflow-visible;
-    @apply fixed;
-    @apply py-4;
-    @apply px-6;
-  }
-
   .paper-bg {
     @apply h-full;
     @apply w-full;
@@ -101,12 +87,16 @@
     outline: none;
   }
 
-  .custom-modal {
-    padding: 50px;
+  .dialog-backdrop {
+    @apply bg-black/50;
+    @apply backdrop-blur-sm;
+    transition: opacity 250ms cubic-bezier(0.25, 0.8, 0.25, 1);
   }
+
   .ripped-paper-bg {
     border-width: 8px;
     border-image: url('/assets/img/ripped-paper/ripped_paper-xl-1.svg') 33 fill;
+    isolation: isolate;
     &.alt {
       border-image: url('/assets/img/ripped-paper/ripped_paper-xl-2.svg') 33
         fill;
