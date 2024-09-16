@@ -1,0 +1,13 @@
+button {
+  transition: 0.005s;
+
+  &:active {
+    transform: translateY(1px);
+    img.active {
+      display: block;
+    }
+    img.default {
+      display: none;
+    }
+  }
+}

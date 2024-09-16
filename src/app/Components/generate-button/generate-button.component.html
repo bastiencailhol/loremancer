@@ -1,13 +1,10 @@
-<div class="relative">
-  <button type="button" (click)="onButtonClick()"
-    class="select-none font-semibold text-2xl tracking-wider flex gap-3 px-6 py-2.5"
-    [style.background]="'radial-gradient(ellipse at bottom, rgba(255,255,255, 0.30), transparent), ' + version.lighterColor"
-    [style.boxShadow]="'inset 0 -1px 1px' +
+<button type="button" (click)="onButtonClick()"
+  class="select-none font-semibold text-2xl tracking-wider flex gap-3 px-6 py-2.5"
+  [style.background]="'radial-gradient(ellipse at bottom, rgba(255,255,255, 0.30), transparent), ' + version.lighterColor"
+  [style.boxShadow]="'inset 0 -1px 1px' +
     version.darkerColor + '40,
     0 4px 8px -8px hsl(208 60% 20% / 0.5), 0 5px 32px' + version.color + '80'">
-    {{ version.text }}
-    <img class="default opacity-90" src="assets/icons/magic wand sparkles.svg" alt="" />
-    <img class="active hidden opacity-90" src="assets/icons/magic wand.svg" alt="" />
-
-  </button>
-</div>
+  {{ version.text }}
+  <img class="default opacity-90" src="assets/icons/wand_up.svg" alt="" />
+  <img class="active hidden opacity-90" src="assets/icons/wand_down.svg" alt="" />
+</button>
