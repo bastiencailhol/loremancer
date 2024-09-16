@@ -1,5 +1,9 @@
 {
   "projects": {
-    "default": "lore-draft"
-  }
+    "default": "lore-mancer",
+    "loremancer default": "lore-mancer"
+  },
+  "targets": {},
+  "etags": {},
+  "dataconnectEmulatorConfig": {}
 }
