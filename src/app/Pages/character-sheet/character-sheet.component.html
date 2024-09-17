@@ -36,7 +36,7 @@
         <div *ngIf="settings.showContext" class="mt-10">
           <div class="flex mb-2">
             <h5 class="flex-grow">Context</h5>
-            <div class="flex items-center gap-1 px-3">
+            <div class="flex items-center px-3">
               <app-reroll-button [hidden]="contextCategory.locked"
                 (onClick)="rollCategoryTraits(contextCategory)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(contextCategory)"
@@ -55,7 +55,7 @@
         <div class="mt-10">
           <div class="flex mb-2">
             <h5 class="flex-grow">Archetype</h5>
-            <div class="flex items-center gap-1 px-3">
+            <div class="flex items-center px-3">
               <app-reroll-button [hidden]="coreTraitsCategory.locked"
                 (onClick)="rollCategoryTraits(coreTraitsCategory)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(coreTraitsCategory)"
@@ -76,7 +76,7 @@
         <div class="mt-10">
           <div class="flex mb-2">
             <h5 class="flex-grow">Physical traits</h5>
-            <div class="flex items-center gap-1 px-3">
+            <div class="flex items-center px-3">
               <app-reroll-button [hidden]="physicalTraitsCategory.locked"
                 (onClick)="rollCategoryTraits(physicalTraitsCategory)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(physicalTraitsCategory)"
@@ -99,7 +99,7 @@
         <div class="mt-10">
           <div class="flex">
             <h5 class="flex-grow mb-2">Equipments</h5>
-            <div class="flex items-center gap-1 px-3">
+            <div class="flex items-center px-3">
               <app-reroll-button [hidden]="equipmentsCategory.locked"
                 (onClick)="rollCategoryTraits(equipmentsCategory)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(equipmentsCategory)"
@@ -169,7 +169,7 @@
             addClass: '-m-2 px-2'
           }
         "></ng-container>
-      <div class="flex-none flex gap-1">
+      <div class="flex-none flex">
         <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
         <app-lock-button (onClick)="toggleTraitLock(category, trait)" [isLocked]="trait.locked"></app-lock-button>
       </div>
@@ -182,7 +182,7 @@
 
 <ng-template #equipmentTrait let-trait="trait" let-category="category">
   <app-card [ngClass]="!trait.selectedImage ? trait.dimensions : ''" addClass="flex flex-col gap-2">
-    <div class="flex" [ngClass]="!trait.selectedImage ? 'h-full' : ''">
+    <div class="flex">
       <div class="flex items-center rounded-lg px-2" [ngStyle]="{
           'background-image':
             'url(https://s2.svgbox.net/pen-brushes.svg?ic=brush-1&color=' +
@@ -199,7 +199,7 @@
             addClass: 'px-3'
           }
         "></ng-container>
-      <div class="flex flex-col items-center gap-1">
+      <div class="flex flex-col items-center">
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
         <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
