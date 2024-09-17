@@ -40,7 +40,8 @@
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="contextCategory.locked" (onClick)="rollCategoryTraits(contextCategory)"
                 (mousedown)="categoryRerollIsPressed(contextCategory, true)"
-                (mouseup)="categoryRerollIsPressed(contextCategory, false)"></app-reroll-button>
+                (mouseup)="categoryRerollIsPressed(contextCategory, false)"
+                [forcePressedState]="contextCategory.rerollIsPressed"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(contextCategory)"
                 [isLocked]="contextCategory.locked"></app-lock-button>
             </div>
@@ -60,7 +61,8 @@
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="coreTraitsCategory.locked" (onClick)="rollCategoryTraits(coreTraitsCategory)"
                 (mousedown)="categoryRerollIsPressed(coreTraitsCategory, true)"
-                (mouseup)="categoryRerollIsPressed(coreTraitsCategory, false)"></app-reroll-button>
+                (mouseup)="categoryRerollIsPressed(coreTraitsCategory, false)"
+                [forcePressedState]="coreTraitsCategory.rerollIsPressed"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(coreTraitsCategory)"
                 [isLocked]="coreTraitsCategory.locked"></app-lock-button>
             </div>
@@ -83,7 +85,8 @@
               <app-reroll-button [hidden]="physicalTraitsCategory.locked"
                 (onClick)="rollCategoryTraits(physicalTraitsCategory)"
                 (mousedown)="categoryRerollIsPressed(physicalTraitsCategory, true)"
-                (mouseup)="categoryRerollIsPressed(physicalTraitsCategory, false)"></app-reroll-button>
+                (mouseup)="categoryRerollIsPressed(physicalTraitsCategory, false)"
+                [forcePressedState]="physicalTraitsCategory.rerollIsPressed"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(physicalTraitsCategory)"
                 [isLocked]="physicalTraitsCategory.locked"></app-lock-button>
             </div>
@@ -107,7 +110,8 @@
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="equipmentsCategory.locked" (onClick)="rollCategoryTraits(equipmentsCategory)"
                 (mousedown)="categoryRerollIsPressed(equipmentsCategory, true)"
-                (mouseup)="categoryRerollIsPressed(equipmentsCategory, false)"></app-reroll-button>
+                (mouseup)="categoryRerollIsPressed(equipmentsCategory, false)"
+                [forcePressedState]="equipmentsCategory.rerollIsPressed"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(equipmentsCategory)"
                 [isLocked]="equipmentsCategory.locked"></app-lock-button>
             </div>
@@ -177,7 +181,7 @@
         "></ng-container>
       <div class="flex-none flex">
         <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"
-          [categoryRerollIsPressed]="category.rerollIsPressed"></app-reroll-button>
+          [forcePressedState]="category.rerollIsPressed"></app-reroll-button>
         <app-lock-button (onClick)="toggleTraitLock(category, trait)" [isLocked]="trait.locked"></app-lock-button>
       </div>
     </div>
@@ -210,7 +214,7 @@
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
         <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"
-          [categoryRerollIsPressed]="category.rerollIsPressed"></app-reroll-button>
+          [forcePressedState]="category.rerollIsPressed"></app-reroll-button>
       </div>
     </div>
     <div *ngIf="trait.selectedImage" class="relative overflow-hidden">

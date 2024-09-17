@@ -1,12 +1,15 @@
 button {
   transition: 0.005s;
+  .wand-down {
+    transform: translate(1px, 1px) rotateZ(5deg);
+  }
 
   &:active {
     transform: translateY(1px);
-    img.active {
+    .wand-down {
       display: block;
     }
-    img.default {
+    .wand-up {
       display: none;
     }
   }
