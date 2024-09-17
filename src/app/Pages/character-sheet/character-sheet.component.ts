@@ -183,6 +183,14 @@ export class CharacterSheetComponent implements OnInit {
       this.rollCategoryTraits(category)
     })
   }
+  categoryRerollIsPressed(category: Category, isPressed: boolean) {
+    category.rerollIsPressed = isPressed
+  }
+  categoriesRerollIsPressed(categories: Category[], isPressed: boolean) {
+    categories.forEach(category => {
+      category.rerollIsPressed = isPressed
+    })
+  }
 
   rollCategoryTraits(category: Category) {
     if (!category.locked) {

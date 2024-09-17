@@ -15,7 +15,8 @@
     <div class="flex flex-col justify-between items-end gap-2">
       <app-settings-button [settings]="settings" (onSave)="categoriesLoaded = false"></app-settings-button>
 
-      <app-generate-button (onClick)="rollAllTraits()"></app-generate-button>
+      <app-generate-button (onClick)="rollAllTraits()" (mousedown)="categoriesRerollIsPressed(categories, true)"
+        (mouseup)="categoriesRerollIsPressed(categories, false)"></app-generate-button>
     </div>
     <img src="assets/img/ink-1.svg" alt="" class="
         absolute
@@ -38,8 +39,8 @@
             <h5 class="flex-grow">Context</h5>
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="contextCategory.locked" (onClick)="rollCategoryTraits(contextCategory)"
-                (mousedown)="contextCategory.rerollIsPressed = true"
-                (mouseup)="contextCategory.rerollIsPressed = false"></app-reroll-button>
+                (mousedown)="categoryRerollIsPressed(contextCategory, true)"
+                (mouseup)="categoryRerollIsPressed(contextCategory, false)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(contextCategory)"
                 [isLocked]="contextCategory.locked"></app-lock-button>
             </div>
@@ -58,8 +59,8 @@
             <h5 class="flex-grow">Archetype</h5>
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="coreTraitsCategory.locked" (onClick)="rollCategoryTraits(coreTraitsCategory)"
-                (mousedown)="coreTraitsCategory.rerollIsPressed = true"
-                (mouseup)="coreTraitsCategory.rerollIsPressed = false"></app-reroll-button>
+                (mousedown)="categoryRerollIsPressed(coreTraitsCategory, true)"
+                (mouseup)="categoryRerollIsPressed(coreTraitsCategory, false)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(coreTraitsCategory)"
                 [isLocked]="coreTraitsCategory.locked"></app-lock-button>
             </div>
@@ -81,8 +82,8 @@
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="physicalTraitsCategory.locked"
                 (onClick)="rollCategoryTraits(physicalTraitsCategory)"
-                (mousedown)="physicalTraitsCategory.rerollIsPressed = true"
-                (mouseup)="physicalTraitsCategory.rerollIsPressed = false"></app-reroll-button>
+                (mousedown)="categoryRerollIsPressed(physicalTraitsCategory, true)"
+                (mouseup)="categoryRerollIsPressed(physicalTraitsCategory, false)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(physicalTraitsCategory)"
                 [isLocked]="physicalTraitsCategory.locked"></app-lock-button>
             </div>
@@ -105,8 +106,8 @@
             <h5 class="flex-grow mb-2">Equipments</h5>
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="equipmentsCategory.locked" (onClick)="rollCategoryTraits(equipmentsCategory)"
-                (mousedown)="equipmentsCategory.rerollIsPressed = true"
-                (mouseup)="equipmentsCategory.rerollIsPressed = false"></app-reroll-button>
+                (mousedown)="categoryRerollIsPressed(equipmentsCategory, true)"
+                (mouseup)="categoryRerollIsPressed(equipmentsCategory, false)"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(equipmentsCategory)"
                 [isLocked]="equipmentsCategory.locked"></app-lock-button>
             </div>
