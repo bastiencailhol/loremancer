@@ -7,10 +7,10 @@ import { LockButtonModule } from 'src/app/Components/lock-button/lock-button.mod
 import { RerollButtonModule } from 'src/app/Components/reroll-button/reroll-button.module'
 import { CommonModule } from '@angular/common'
 import { CharacterSheetRouterModule } from './character-sheet-routing.module'
-import { SettingsButtonModule } from 'src/app/Components/settings-button/settings-button.module'
 import { BannerModule } from 'src/app/Components/banner/banner.module'
-import { CustomDialogModule } from 'src/app/Components/dialog/dialog.module'
 import { RefImageModule } from 'src/app/Components/ref-image/ref-image.module'
+import { RefImageGalleryModule } from 'src/app/Components/ref-image-gallery/ref-image-gallery.module'
+import { SettingsDialogModule } from 'src/app/Components/settings-dialog/settings-dialog.module'
 
 @NgModule({
   declarations: [CharacterSheetComponent],
@@ -23,8 +23,8 @@ import { RefImageModule } from 'src/app/Components/ref-image/ref-image.module'
     RerollButtonModule,
     CardModule,
     BannerModule,
-    SettingsButtonModule,
-    CustomDialogModule,
+    SettingsDialogModule,
+    RefImageGalleryModule,
     RefImageModule,
   ],
   exports: [CharacterSheetComponent],

@@ -21,8 +21,9 @@ import { context } from 'src/assets/traits/context'
 import { GenerateButtonComponent } from 'src/app/Components/generate-button/generate-button.component'
 import { imageReferencesRootPath } from 'src/environments/environment'
 import itemList from 'src/assets/img/image-references/image-catalog.json'
-import { Dialog, DialogRef } from '@angular/cdk/dialog'
-import { CustomDialogComponent } from 'src/app/Components/dialog/dialog.component'
+import { Dialog } from '@angular/cdk/dialog'
+import { RefImageGalleryComponent } from 'src/app/Components/ref-image-gallery/ref-image-gallery.component'
+import { SettingsDialogComponent } from 'src/app/Components/settings-dialog/settings-dialog.component'
 
 interface Category {
   name: String
@@ -42,9 +43,14 @@ interface ImageRef {
   mismatchPercentage: number
   sourceUrl: string
 }
-export interface DialogData {
+export interface ImageGallery {
   trait: Trait
   imageGallery: ImageRef[]
+}
+export interface Settings {
+  race: string
+  showContext: boolean
+  showImageRefs: boolean
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -53,11 +59,7 @@ export interface DialogData {
 export class CharacterSheetComponent implements OnInit {
   @ViewChild(GenerateButtonComponent)
   generateButtonComponent!: GenerateButtonComponent
-  settings: {
-    race: string
-    showContext: boolean
-    showImageRefs: boolean
-  }
+  settings: Settings
   contextCategory!: Category
   coreTraitsCategory!: Category
   equipmentsCategory!: Category
@@ -228,7 +230,7 @@ export class CharacterSheetComponent implements OnInit {
 
   openImageGalleryDialog(trait: Trait) {
     const imageGallery = itemList[trait.selectedAttribute]
-    const dialogRef = this.dialog.open(CustomDialogComponent, {
+    const dialogRef = this.dialog.open(RefImageGalleryComponent, {
       data: {
         trait,
         imageGallery,
@@ -240,6 +242,20 @@ export class CharacterSheetComponent implements OnInit {
       if (selectedImage) {
         this.pickAttributeImage(trait, selectedImage)
       }
+    })
+  }
+
+  openSettingsDialog() {
+    const dialogRef = this.dialog.open(SettingsDialogComponent, {
+      data: {
+        ...this.settings,
+      },
+      backdropClass: 'dialog-backdrop',
+      autoFocus: false,
+    })
+    dialogRef.closed.subscribe(result => {
+      console.log(result)
+      this.categoriesLoaded = false
     })
   }
 

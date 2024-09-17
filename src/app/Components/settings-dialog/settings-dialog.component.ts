@@ -1,24 +1,31 @@
+import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog'
 import {
   Component,
   ElementRef,
   EventEmitter,
   HostListener,
+  Inject,
   Input,
   Output,
   ViewChild,
 } from '@angular/core'
 import { FormControl, FormGroup } from '@angular/forms'
 import { NavigationExtras, Params, Router } from '@angular/router'
+import { Settings } from 'src/app/Pages/character-sheet/character-sheet.component'
+import { RefImageGalleryComponent } from '../ref-image-gallery/ref-image-gallery.component'
 
 @Component({
-  selector: 'app-settings-button',
-  templateUrl: './settings-button.component.html',
-  styleUrls: ['./settings-button.component.scss'],
+  selector: 'app-settings-dialog',
+  templateUrl: './settings-dialog.component.html',
+  styleUrls: ['./settings-dialog.component.scss'],
 })
-export class SettingsButtonComponent {
-  @ViewChild('settingsDialog')
-  settingsDialog!: ElementRef<HTMLDialogElement>
-  @Input() settings
+export class SettingsDialogComponent {
+  constructor(
+    private router: Router,
+    public dialogRef: DialogRef<RefImageGalleryComponent>,
+    @Inject(DIALOG_DATA) public data: Settings,
+  ) {}
+
   @Output() onSave = new EventEmitter()
 
   settingsForm: FormGroup<{
@@ -47,7 +54,13 @@ export class SettingsButtonComponent {
 
   lastcheckedRace = ''
 
-  constructor(private router: Router) {}
+  ngOnInit() {
+    this.settingsForm = this.initForm(
+      this.data.race.split(','),
+      this.data.showContext,
+      this.data.showImageRefs,
+    )
+  }
 
   initForm(
     raceArray: Array<string> = [],
@@ -91,10 +104,6 @@ export class SettingsButtonComponent {
     }
   }
 
-  isLastCheckedRace(race) {
-    return false
-  }
-
   handleCheckboxChange() {
     const formValues = this.settingsForm.getRawValue()
     const checkedRaces = Object.keys(formValues.includeRace).filter(
@@ -109,25 +118,11 @@ export class SettingsButtonComponent {
     }
   }
 
-  @HostListener('click', ['$event'])
-  onDialogClick(event: MouseEvent) {
-    if ((event.target as any).nodeName === 'DIALOG') {
-      this.close()
-    }
+  close() {
+    this.settingsForm.reset()
+    this.dialogRef.close()
   }
 
-  openDialog() {
-    this.settingsForm = this.initForm(
-      this.settings.race.split(','),
-      this.settings.showContext,
-      this.settings.showImageRefs,
-    )
-    this.settingsDialog.nativeElement.showModal()
-  }
-  close() {
-    this.settingsDialog.nativeElement.close()
-    this.settingsForm.reset()
-  }
   save() {
     const formValues = this.settingsForm.getRawValue()
 
@@ -146,6 +141,6 @@ export class SettingsButtonComponent {
     }
     this.router.navigate([], navigationExtras)
     this.onSave.emit()
-    this.settingsDialog.nativeElement.close()
+    this.dialogRef.close()
   }
 }

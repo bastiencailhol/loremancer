@@ -12,7 +12,19 @@
     <app-banner (onClick)="clearAllUrlParams()"></app-banner>
 
     <div class="flex flex-col justify-between items-end gap-2">
-      <app-settings-button [settings]="settings" (onSave)="categoriesLoaded = false"></app-settings-button>
+      <!-- <app-settings-button [settings]="settings" (onSave)="categoriesLoaded = false"></app-settings-button> -->
+      <button class="
+      text-md
+      font-semibold font-sans
+      tracking-wider
+      flex
+      items-center
+      gap-2
+      px-4
+      py-2
+    " (click)="openSettingsDialog()">
+        Settings<img class="opacity-90" src="assets/icons/settings.svg" alt="" />
+      </button>
 
       <app-generate-button (onClick)="rollAllTraits()" (mousedown)="categoriesRerollIsPressed(categories, true)"
         (mouseup)="categoriesRerollIsPressed(categories, false)"></app-generate-button>

@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core'
 import { CommonModule } from '@angular/common'
-import { SettingsButtonComponent } from './settings-button.component'
+import { SettingsDialogComponent } from './settings-dialog.component'
 import { ReactiveFormsModule } from '@angular/forms'
 
 @NgModule({
-  declarations: [SettingsButtonComponent],
+  declarations: [SettingsDialogComponent],
   imports: [CommonModule, ReactiveFormsModule],
-  exports: [SettingsButtonComponent],
+  exports: [SettingsDialogComponent],
 })
-export class SettingsButtonModule {}
+export class SettingsDialogModule {}
