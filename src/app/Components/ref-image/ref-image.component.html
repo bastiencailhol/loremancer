@@ -1,5 +1,5 @@
-<div class="relative overflow-hidden expandable" #expandable>
+<div class="relative overflow-hidden h-0 transition-all ease-in-out duration-200" #expandable>
   <img [src]="src"
     class="mx-auto max-h-[500px] rounded-sm cursor-pointer hover:scale-[1.03] hover:brightness-105 transition duration-400 ease-[cubic-bezier(0,0,0,1)]"
-    alt="" (click)="onImageClick()">
+    alt="" (click)="onImageClick()" (load)="updateHeight()">
 </div>
