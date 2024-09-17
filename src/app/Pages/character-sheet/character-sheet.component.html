@@ -63,7 +63,7 @@
             </div>
           </div>
           <app-card>
-            <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
               <ng-container *ngFor="let trait of coreTraitsCategory.traits">
                 <ng-container *ngTemplateOutlet="
                     genericTrait;
@@ -84,7 +84,7 @@
             </div>
           </div>
           <app-card size="xl">
-            <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-6">
+            <div class="grid xl:grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-5">
               <ng-container *ngFor="let trait of physicalTraitsCategory.traits">
                 <ng-container *ngTemplateOutlet="
                     genericTrait;
@@ -157,7 +157,7 @@
 
 <ng-template #genericTrait let-category="category" let-trait="trait">
   <div class="flex flex-col">
-    <h6 class="">
+    <h6 class="-mb-1">
       {{ trait.name }}
     </h6>
     <div class="flex">
@@ -166,7 +166,7 @@
           context: {
             category: category,
             trait: trait,
-            addClass: '-m-2 px-2'
+            addClass: '-mx-2 px-2'
           }
         "></ng-container>
       <div class="flex-none flex">
