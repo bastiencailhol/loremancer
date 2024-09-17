@@ -10,6 +10,7 @@ import { CharacterSheetRouterModule } from './character-sheet-routing.module'
 import { SettingsButtonModule } from 'src/app/Components/settings-button/settings-button.module'
 import { BannerModule } from 'src/app/Components/banner/banner.module'
 import { CustomDialogModule } from 'src/app/Components/dialog/dialog.module'
+import { RefImageModule } from 'src/app/Components/ref-image/ref-image.module'
 
 @NgModule({
   declarations: [CharacterSheetComponent],
@@ -24,6 +25,7 @@ import { CustomDialogModule } from 'src/app/Components/dialog/dialog.module'
     BannerModule,
     SettingsButtonModule,
     CustomDialogModule,
+    RefImageModule,
   ],
   exports: [CharacterSheetComponent],
 })

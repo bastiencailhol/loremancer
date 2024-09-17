@@ -217,11 +217,9 @@
           [forcePressedState]="category.rerollIsPressed"></app-reroll-button>
       </div>
     </div>
-    <div *ngIf="trait.selectedImage" class="relative overflow-hidden">
-      <img src="{{getRootImagePath(trait) + trait.selectedImage?.path}}"
-        class="mx-auto max-h-[500px] rounded-sm cursor-pointer hover:scale-[1.03] hover:brightness-105 transition duration-400 ease-[cubic-bezier(0,0,0,1)]"
-        alt="" (click)="openImageGalleryDialog(trait)">
-    </div>
+    <app-ref-image *ngIf="trait.selectedImage" [src]="getRootImagePath(trait) + trait.selectedImage?.path"
+      (onClick)="openImageGalleryDialog(trait)">
+    </app-ref-image>
 
   </app-card>
 </ng-template>

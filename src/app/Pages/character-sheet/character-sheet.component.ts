@@ -227,7 +227,6 @@ export class CharacterSheetComponent implements OnInit {
   }
 
   openImageGalleryDialog(trait: Trait) {
-    // const imageGallery = `${imageReferencesRootPath}/${trait.selectedAttribute}/`
     const imageGallery = itemList[trait.selectedAttribute]
     const dialogRef = this.dialog.open(CustomDialogComponent, {
       data: {
