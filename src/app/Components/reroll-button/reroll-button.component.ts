@@ -15,6 +15,7 @@ import {
 export class RerollButtonComponent {
   @Output() onClick = new EventEmitter()
   @Input() hidden = false
+  @Input() categoryRerollIsPressed = false
 
   onButtonClick() {
     this.onClick.emit()

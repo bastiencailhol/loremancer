@@ -28,6 +28,7 @@ interface Category {
   name: String
   traits: Trait[]
   locked?: boolean
+  rerollIsPressed?: boolean
 }
 interface Trait {
   name: string

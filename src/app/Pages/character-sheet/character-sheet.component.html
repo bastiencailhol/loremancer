@@ -37,8 +37,9 @@
           <div class="flex mb-2">
             <h5 class="flex-grow">Context</h5>
             <div class="flex items-center px-3">
-              <app-reroll-button [hidden]="contextCategory.locked"
-                (onClick)="rollCategoryTraits(contextCategory)"></app-reroll-button>
+              <app-reroll-button [hidden]="contextCategory.locked" (onClick)="rollCategoryTraits(contextCategory)"
+                (mousedown)="contextCategory.rerollIsPressed = true"
+                (mouseup)="contextCategory.rerollIsPressed = false"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(contextCategory)"
                 [isLocked]="contextCategory.locked"></app-lock-button>
             </div>
@@ -56,8 +57,9 @@
           <div class="flex mb-2">
             <h5 class="flex-grow">Archetype</h5>
             <div class="flex items-center px-3">
-              <app-reroll-button [hidden]="coreTraitsCategory.locked"
-                (onClick)="rollCategoryTraits(coreTraitsCategory)"></app-reroll-button>
+              <app-reroll-button [hidden]="coreTraitsCategory.locked" (onClick)="rollCategoryTraits(coreTraitsCategory)"
+                (mousedown)="coreTraitsCategory.rerollIsPressed = true"
+                (mouseup)="coreTraitsCategory.rerollIsPressed = false"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(coreTraitsCategory)"
                 [isLocked]="coreTraitsCategory.locked"></app-lock-button>
             </div>
@@ -67,7 +69,7 @@
               <ng-container *ngFor="let trait of coreTraitsCategory.traits">
                 <ng-container *ngTemplateOutlet="
                     genericTrait;
-                    context: { category: coreTraitsCategory, trait: trait }
+                    context: { category: coreTraitsCategory, trait: trait  }
                   "></ng-container>
               </ng-container>
             </div>
@@ -78,7 +80,9 @@
             <h5 class="flex-grow">Physical traits</h5>
             <div class="flex items-center px-3">
               <app-reroll-button [hidden]="physicalTraitsCategory.locked"
-                (onClick)="rollCategoryTraits(physicalTraitsCategory)"></app-reroll-button>
+                (onClick)="rollCategoryTraits(physicalTraitsCategory)"
+                (mousedown)="physicalTraitsCategory.rerollIsPressed = true"
+                (mouseup)="physicalTraitsCategory.rerollIsPressed = false"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(physicalTraitsCategory)"
                 [isLocked]="physicalTraitsCategory.locked"></app-lock-button>
             </div>
@@ -100,8 +104,9 @@
           <div class="flex">
             <h5 class="flex-grow mb-2">Equipments</h5>
             <div class="flex items-center px-3">
-              <app-reroll-button [hidden]="equipmentsCategory.locked"
-                (onClick)="rollCategoryTraits(equipmentsCategory)"></app-reroll-button>
+              <app-reroll-button [hidden]="equipmentsCategory.locked" (onClick)="rollCategoryTraits(equipmentsCategory)"
+                (mousedown)="equipmentsCategory.rerollIsPressed = true"
+                (mouseup)="equipmentsCategory.rerollIsPressed = false"></app-reroll-button>
               <app-lock-button (onClick)="toggleCategoryLock(equipmentsCategory)"
                 [isLocked]="equipmentsCategory.locked"></app-lock-button>
             </div>
@@ -170,7 +175,8 @@
           }
         "></ng-container>
       <div class="flex-none flex">
-        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"
+          [categoryRerollIsPressed]="category.rerollIsPressed"></app-reroll-button>
         <app-lock-button (onClick)="toggleTraitLock(category, trait)" [isLocked]="trait.locked"></app-lock-button>
       </div>
     </div>
@@ -202,7 +208,8 @@
       <div class="flex flex-col items-center">
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
-        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"></app-reroll-button>
+        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"
+          [categoryRerollIsPressed]="category.rerollIsPressed"></app-reroll-button>
       </div>
     </div>
     <div *ngIf="trait.selectedImage" class="relative overflow-hidden">

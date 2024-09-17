@@ -6,7 +6,11 @@
     p-1
     rounded-lg
   " (click)="onButtonClick()">
-  <!-- <img src="assets/icons/reroll.svg" alt="" class="opacity-90 hover:opacity-100 h-5 w-5" /> -->
-  <img class="default min-h-[1.5rem] h-6 min-w-[1.5rem] w-6" src="assets/icons/wand_up.svg" alt="" />
-  <img class="active hidden min-h-[1.5rem] h-6 min-w-[1.5rem] w-6" src="assets/icons/wand_down.svg" alt="" />
+  <ng-container *ngIf="!categoryRerollIsPressed">
+    <img class="default min-h-[1.5rem] h-6 min-w-[1.5rem] w-6" src="assets/icons/wand_up.svg" alt="" />
+    <img class="active hidden min-h-[1.5rem] h-6 min-w-[1.5rem] w-6" src="assets/icons/wand_down.svg" alt="" />
+  </ng-container>
+  <ng-container *ngIf="categoryRerollIsPressed">
+    <img class="min-h-[1.5rem] h-6 min-w-[1.5rem] w-6" src="assets/icons/wand_down.svg" alt="" />
+  </ng-container>
 </button>
