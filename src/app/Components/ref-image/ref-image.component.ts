@@ -20,6 +20,7 @@ export class RefImageComponent implements AfterViewInit, OnChanges {
   @ViewChild('expandable', { static: false }) expandable!: ElementRef // Assure-toi que expandable est de type ElementRef
   @Output() onClick = new EventEmitter()
   @Input() src: string
+  firstLoad = true
 
   ngAfterViewInit() {
     this.updateHeight() // Appel initial dans ngAfterViewInit
@@ -41,8 +42,14 @@ export class RefImageComponent implements AfterViewInit, OnChanges {
     const el = this.expandable.nativeElement
 
     setTimeout(() => {
-      const prevHeight = el.style.height ? el.style.height : '0px'
-      el.style.height = 'auto'
+      let prevHeight
+      if (this.firstLoad) {
+        el.style.height = '0px'
+        prevHeight = '0px'
+      } else {
+        prevHeight = this.firstLoad ? '0px' : el.style.height
+        el.style.height = 'auto'
+      }
       const newHeight = el.scrollHeight + 'px'
       el.style.height = prevHeight
 
@@ -50,5 +57,6 @@ export class RefImageComponent implements AfterViewInit, OnChanges {
         el.style.height = newHeight
       }, 50)
     }, delay)
+    this.firstLoad = false
   }
 }
