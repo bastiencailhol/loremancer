@@ -1,5 +1,61 @@
 .image-adjustments {
   filter: contrast(1.2);
   // filter: contrast(1.1) sepia(100%) saturate(20%) brightness(70%) hue-rotate(0deg);
-    opacity: 0.9;
+  opacity: 0.9;
+}
+
+.banner-mask {
+  mask: url('/assets/img/banner.svg');
+  mask-size: contain;
+}
+
+$number-of-stars: 100;
+$star-width: 2px;
+$max-x: 1300px; // total width of the banner (to keep working on larger screens)
+$max-y: 227px; // visible height of the banner
+$y-offset: 300; // invisible height of the banner
+
+$box-shadows: ();
+$box-shadows2: ();
+
+@for $i from 1 through $number-of-stars {
+  $x: random($max-x);
+  $y: random($max-y) + $y-offset;
+  $box-shadows: append($box-shadows, #{$x}px #{$y}px #ffffe8, comma);
+  $x2: random($max-x);
+  $y2: random($max-y) + $y-offset;
+  $box-shadows2: append($box-shadows2, #{$x2}px #{$y2}px #fdfd99, comma);
+}
+
+.stars {
+  width: $star-width;
+  height: $star-width;
+  &:after {
+    content: '';
+    position: absolute;
+    top: $max-y;
+    width: $star-width;
+    height: $star-width;
+    background: transparent;
+    box-shadow: inherit;
+  }
+  &:nth-child(1) {
+    box-shadow: $box-shadows;
+    animation: stars-rising 40s linear infinite;
+  }
+  &:nth-child(2) {
+    box-shadow: $box-shadows2;
+    filter: blur(1px);
+    animation: stars-rising 60s linear infinite;
+  }
+}
+
+@keyframes stars-rising {
+  0% {
+    transform: translateZ(0) translateY(0);
+  }
+
+  100% {
+    transform: translateZ(0) translateY(-$max-y);
+  }
 }

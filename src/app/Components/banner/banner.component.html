@@ -5,7 +5,14 @@ pt-6
 pb-12
 ">
   <img src="assets/icons/logo_full.svg" alt="" class="cursor-pointer w-60" (click)="clearAllUrlParams()" />
-  <img src="assets/img/banner.svg" alt=""
-    class="image-adjustments absolute -z-10 w-[1300px] bottom-[-70%] left-[-740px] max-w-none select-none" />
+  <div
+    class="banner-mask bg-black image-adjustments absolute -z-10 w-[1300px] bottom-[-70%] left-[-740px] max-w-none select-none">
+    <div class="absolute h-full w-full">
+      <div class="stars"></div>
+      <div class="stars"></div>
+    </div>
+    <img src="assets/img/banner.svg" alt="" class="h-full w-full" />
+
+  </div>
   <img src="assets/img/ink-2.svg" alt="" class="absolute -z-10 left-[510px] -top-[13px] max-sm:hidden select-none" />
 </div>
