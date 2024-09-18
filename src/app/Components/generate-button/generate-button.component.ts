@@ -28,7 +28,7 @@ export class GenerateButtonComponent {
   versions: Version[] = [
     {
       text: 'Summon the fates!',
-      color: '#FBF472',
+      color: '#f3ee8c',
       lighterColor: '#F9ED86',
       darkerColor: '#7F7E25',
     },
@@ -100,7 +100,7 @@ export class GenerateButtonComponent {
   onButtonClick() {
     this.onClick.emit()
     this.version = sample(
-      this.versions.filter((version) => version !== this.version),
+      this.versions.filter(version => version !== this.version),
     )
   }
 
