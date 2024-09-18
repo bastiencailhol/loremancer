@@ -1,5 +1,6 @@
 <div *ngIf="imagesRootPath" class="ripped-paper-bg p-2 my-2 columns-[3] gap-1">
-    <app-ref-image *ngFor="let image of data.imageGallery" [src]="imagesRootPath + '/' + image.path"
-        (onClick)="dialogRef.close(image)">
-    </app-ref-image>
+    <div *ngFor="let image of data.imageGallery" class="overflow-hidden mb-1">
+        <img [src]="imagesRootPath + '/' + image.path" (click)="dialogRef.close(image)"
+            class="rounded-sm cursor-pointer hover:scale-[1.03] hover:brightness-105 transition duration-400 ease-[cubic-bezier(0,0,0,1)]" />
+    </div>
 </div>
