@@ -1,5 +1,8 @@
-<div class="relative overflow-hidden h-0 transition-all ease-in-out duration-200" #expandable>
+<div class="image-wrapper relative overflow-hidden transition-all ease-in-out duration-200 {{addClass}}"
+  [ngClass]="expand && 'h-0'" #expandable>
   <img [src]="src"
-    class="mx-auto max-h-[500px] rounded-sm cursor-pointer hover:scale-[1.03] hover:brightness-105 transition duration-400 ease-[cubic-bezier(0,0,0,1)]"
-    alt="" (click)="onImageClick()" (load)="updateHeight()">
+    class="mx-auto max-h-[500px] rounded-sm cursor-pointer transition duration-400 ease-[cubic-bezier(0,0,0,1)]" alt=""
+    (click)="onImageClick()" (load)="updateHeight()">
+  <app-source-url-button [url]="sourceUrl"
+    class="absolute right-0 top-0 lg:invisible lg:opacity-0 lg:translate-x-2 lg:-translate-y-2"></app-source-url-button>
 </div>

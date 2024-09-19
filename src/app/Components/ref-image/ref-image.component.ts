@@ -18,6 +18,10 @@ export class RefImageComponent {
   @ViewChild('expandable', { static: false }) expandable!: ElementRef
   @Output() onClick = new EventEmitter<void>()
   @Input() src: string = ''
+  @Input() sourceUrl: string = ''
+  @Input() expand = false
+  @Input() addClass: string = ''
+
   firstLoad = true
 
   onImageClick() {
@@ -25,6 +29,9 @@ export class RefImageComponent {
   }
 
   updateHeight() {
+    if (!this.expand) {
+      return
+    }
     const el = this.expandable.nativeElement
 
     requestAnimationFrame(() => {

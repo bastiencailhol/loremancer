@@ -1,11 +1,6 @@
-<button type="button" [ngClass]="isLocked ? 'bg-black text-white' : 'bg-transparent text-black'" class="
-    flex
-    justify-center
-    items-center
-    text-center text-base
-    font-semibold
+<button type="button" [ngClass]="isLocked ? 'bg-black text-white shadow-md' : 'bg-transparent text-black'" class="
     p-1.5
-    rounded-lg
+    rounded-md
   " (click)="onButtonClick()">
   <svg *ngIf="isLocked; else unlockIcon" xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
     viewBox="0 0 20 20" stroke="currentColor">
