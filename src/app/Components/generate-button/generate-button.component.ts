@@ -28,15 +28,15 @@ export class GenerateButtonComponent {
   versions: Version[] = [
     {
       text: 'Summon the fates!',
-      color: '#f3ee8c',
-      lighterColor: '#F9ED86',
-      darkerColor: '#7F7E25',
-    },
-    {
-      text: 'Tell another tale',
       color: '#FFC95E',
       lighterColor: '#FECC67',
       darkerColor: '#7F5E25',
+    },
+    {
+      text: 'Tell another tale',
+      color: '#FFA9F2',
+      lighterColor: '#FEAEF3',
+      darkerColor: '#7F2561',
     },
     {
       text: 'Give it another go',
@@ -88,9 +88,9 @@ export class GenerateButtonComponent {
     },
     {
       text: 'Need to dig deeper',
-      color: '#FFA9F2',
-      lighterColor: '#FEAEF3',
-      darkerColor: '#7F2561',
+      color: '#f3ee8c',
+      lighterColor: '#F9ED86',
+      darkerColor: '#7F7E25',
     },
   ]
   version: Version | undefined = this.versions[0]
