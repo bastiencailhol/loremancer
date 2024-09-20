@@ -4,6 +4,8 @@
   max-height: 100vh;
   overflow-y: auto;
   @apply max-w-3xl;
+  @apply px-1;
+  @apply py-2;
 }
 
 @keyframes custom-dialog-enter {
