@@ -5,7 +5,7 @@ button {
   @apply rounded-full;
   border-top: 2px solid hsl(0 0% 100% / 0.5);
   border-bottom: 1px solid
-    color-mix(in srgb, var(--darker-color) 25%, transparent);
+    color-mix(in srgb, var(--darker-color) 35%, transparent);
   background: radial-gradient(
       ellipse at bottom,
       rgba(255, 255, 255, 0.25),
