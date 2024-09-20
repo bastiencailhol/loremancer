@@ -249,7 +249,6 @@ export class CharacterSheetComponent implements OnInit {
       autoFocus: false,
     })
     dialogRef.closed.subscribe(result => {
-      console.log(result)
       this.categoriesLoaded = false
     })
   }
