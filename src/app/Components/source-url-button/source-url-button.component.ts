@@ -16,6 +16,8 @@ export class SourceUrlButtonComponent {
   @Input() url = 'string'
 
   openUrl() {
-    window.open(this.url, '_blank')
+    if (this.openUrl) {
+      window.open(this.url, '_blank')
+    }
   }
 }
