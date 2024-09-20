@@ -32,7 +32,6 @@ export class SettingsDialogComponent {
     typeOfRace: FormControl<string>
     includeRace: FormGroup<any>
     showContext: FormControl<boolean>
-    showImageRefs: FormControl<boolean>
   }> = new FormGroup({
     typeOfRace: new FormControl(),
     includeRace: new FormGroup({
@@ -47,7 +46,6 @@ export class SettingsDialogComponent {
       worms: new FormControl(),
     }),
     showContext: new FormControl(),
-    showImageRefs: new FormControl(),
   })
 
   queryParams: Params = {}
@@ -58,15 +56,10 @@ export class SettingsDialogComponent {
     this.settingsForm = this.initForm(
       this.data.race.split(','),
       this.data.showContext,
-      this.data.showImageRefs,
     )
   }
 
-  initForm(
-    raceArray: Array<string> = [],
-    showContext: boolean = false,
-    showImageRefs: boolean = false,
-  ) {
+  initForm(raceArray: Array<string> = [], showContext: boolean = false) {
     if (raceArray.includes('fantasy') || !raceArray.length) {
       return new FormGroup({
         typeOfRace: new FormControl('fantasy'),
@@ -82,7 +75,6 @@ export class SettingsDialogComponent {
           worms: new FormControl(true),
         }),
         showContext: new FormControl(showContext),
-        showImageRefs: new FormControl(showImageRefs),
       })
     } else {
       return new FormGroup({
@@ -99,7 +91,6 @@ export class SettingsDialogComponent {
           worms: new FormControl(raceArray.includes('worms')),
         }),
         showContext: new FormControl(showContext),
-        showImageRefs: new FormControl(showImageRefs),
       })
     }
   }
@@ -136,7 +127,6 @@ export class SettingsDialogComponent {
                 .join(',')
             : 'fantasy',
         showContext: formValues.showContext,
-        showImageRefs: formValues.showImageRefs,
       },
     }
     this.router.navigate([], navigationExtras)

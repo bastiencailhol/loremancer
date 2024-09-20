@@ -50,7 +50,6 @@ export interface ImageGallery {
 export interface Settings {
   race: string
   showContext: boolean
-  showImageRefs: boolean
 }
 @Component({
   templateUrl: './character-sheet.component.html',
@@ -89,10 +88,6 @@ export class CharacterSheetComponent implements OnInit {
         showContext:
           queryParams.showContext !== undefined
             ? queryParams.showContext === 'true'
-            : true,
-        showImageRefs:
-          queryParams.showImageRefs !== undefined
-            ? queryParams.showImageRefs === 'true'
             : true,
       }
       if (!this.categoriesLoaded) {
