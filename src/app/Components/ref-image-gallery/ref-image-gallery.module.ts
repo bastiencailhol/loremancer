@@ -4,6 +4,7 @@ import { RefImageGalleryComponent } from './ref-image-gallery.component'
 import { DialogModule } from '@angular/cdk/dialog'
 import { RefImageModule } from '../ref-image/ref-image.module'
 import { SourceUrlButtonModule } from '../source-url-button/source-url-button.module'
+import { CloseButtonModule } from '../close-button/close-button.module'
 
 @NgModule({
   declarations: [RefImageGalleryComponent],
@@ -13,6 +14,7 @@ import { SourceUrlButtonModule } from '../source-url-button/source-url-button.mo
     RefImageModule,
     SourceUrlButtonModule,
     RefImageModule,
+    CloseButtonModule,
   ],
   exports: [RefImageGalleryComponent],
 })
