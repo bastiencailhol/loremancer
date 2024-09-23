@@ -216,7 +216,7 @@
       <div class="flex flex-col items-center">
         <app-lock-button (onClick)="toggleTraitLock(equipmentsCategory, trait)"
           [isLocked]="trait.locked"></app-lock-button>
-        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait)"
+        <app-reroll-button [hidden]="trait.locked" (onClick)="rollTrait(trait, true)"
           [forcePressedState]="category.rerollIsPressed"></app-reroll-button>
       </div>
     </div>

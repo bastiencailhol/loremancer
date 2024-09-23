@@ -83,7 +83,6 @@ export class CharacterSheetComponent implements OnInit {
   ngOnInit() {
     this.route.queryParams.subscribe(queryParams => {
       this.queryParams = queryParams
-
       this.settings = {
         race: queryParams.race || 'fantasy',
         showContext:
@@ -169,8 +168,15 @@ export class CharacterSheetComponent implements OnInit {
     this.categories.forEach(category => {
       category.traits.forEach(trait => {
         if (this.queryParams[trait.name]) {
-          trait.selectedAttribute = this.queryParams[trait.name]
-          category.name === 'equipments' && this.rollAttributeImage(trait)
+          const selectedAttribute = this.queryParams[trait.name].split(':')
+          trait.selectedAttribute = selectedAttribute[0]
+          if (category.name === 'equipments') {
+            if (selectedAttribute[1]) {
+              this.pickAttributeImage(trait, selectedAttribute[1])
+            } else {
+              this.rollAttributeImage(trait)
+            }
+          }
         }
       })
     })
@@ -198,22 +204,30 @@ export class CharacterSheetComponent implements OnInit {
     }
   }
 
-  rollTrait(trait: Trait, shouldRollImage = true) {
+  rollTrait(trait: Trait, shouldRollImage = false) {
     if (!trait.locked) {
       trait.selectedAttribute = sample(
         trait.attributes.filter(
           attribute => attribute !== trait.selectedAttribute,
         ),
       )
-      if (trait.name !== '' && shouldRollImage) this.rollAttributeImage(trait)
-      this.updateUrl(trait)
+      if (trait.name !== '' && shouldRollImage) {
+        this.rollAttributeImage(trait)
+      } else {
+        this.updateUrl(trait)
+      }
     }
   }
+
   rollAttributeImage(trait: Trait) {
-    this.pickAttributeImage(trait, sample(itemList[trait.selectedAttribute]))
+    this.pickAttributeImage(
+      trait,
+      sample(Object.keys(itemList[trait.selectedAttribute])),
+    )
   }
-  pickAttributeImage(trait: Trait, image: ImageRef) {
-    trait.selectedImage = image
+  pickAttributeImage(trait: Trait, imageHash: string) {
+    trait.selectedImage = itemList[trait.selectedAttribute][imageHash]
+    this.updateUrl(trait, imageHash)
   }
 
   getRootImagePath(trait: Trait) {
@@ -266,21 +280,29 @@ export class CharacterSheetComponent implements OnInit {
     })
   }
 
-  updateUrl(trait: Trait) {
+  updateUrl(trait: Trait, imageHash = '') {
+    let traitUrl = imageHash
+      ? `${trait.selectedAttribute}:${imageHash}`
+      : trait.selectedAttribute
+
     this.queryParams = {
       ...this.queryParams,
-      [trait.name]: trait.selectedAttribute,
+      [trait.name]: traitUrl,
     }
     this.router.navigate([], { queryParams: this.queryParams })
   }
   onSelectChange(trait: any, category: any) {
-    if (trait.selectedAttribute === '') {
-      this.emptyImageTrait(trait)
+    if (category.name === 'equipments') {
+      if (trait.selectedAttribute) {
+        this.rollAttributeImage(trait)
+      } else {
+        this.emptyImageTrait(trait)
+        this.updateUrl(trait)
+      }
     } else {
-      this.rollAttributeImage(trait)
+      this.updateUrl(trait)
     }
     this.toggleTraitLock(category, trait, true)
-    this.updateUrl(trait)
   }
 
   clearAllUrlParams() {
