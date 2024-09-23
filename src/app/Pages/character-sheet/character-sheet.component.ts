@@ -250,10 +250,7 @@ export class CharacterSheetComponent implements OnInit {
     })
     dialogRef.closed.subscribe((selectedImageKey: string) => {
       if (selectedImageKey) {
-        this.pickAttributeImage(
-          trait,
-          itemList[trait.selectedAttribute][selectedImageKey],
-        )
+        this.pickAttributeImage(trait, selectedImageKey)
       }
     })
   }
