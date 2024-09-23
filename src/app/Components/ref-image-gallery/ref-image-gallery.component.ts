@@ -16,6 +16,7 @@ import { imageReferencesRootPath } from 'src/environments/environment'
 })
 export class RefImageGalleryComponent {
   imagesRootPath = `${imageReferencesRootPath}/${this.data.trait.selectedAttribute}`
+  imageGallery = Object.keys(this.data.imageGallery)
   constructor(
     public dialogRef: DialogRef<RefImageGalleryComponent>,
     @Inject(DIALOG_DATA) public data: ImageGallery,

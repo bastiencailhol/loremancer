@@ -210,7 +210,7 @@ export class CharacterSheetComponent implements OnInit {
     }
   }
   rollAttributeImage(trait: Trait) {
-    trait.selectedImage = sample(itemList[trait.selectedAttribute])
+    this.pickAttributeImage(trait, sample(itemList[trait.selectedAttribute]))
   }
   pickAttributeImage(trait: Trait, image: ImageRef) {
     trait.selectedImage = image
@@ -234,9 +234,12 @@ export class CharacterSheetComponent implements OnInit {
       backdropClass: 'dialog-backdrop',
       autoFocus: false,
     })
-    dialogRef.closed.subscribe((selectedImage: ImageRef) => {
-      if (selectedImage) {
-        this.pickAttributeImage(trait, selectedImage)
+    dialogRef.closed.subscribe((selectedImageKey: string) => {
+      if (selectedImageKey) {
+        this.pickAttributeImage(
+          trait,
+          itemList[trait.selectedAttribute][selectedImageKey],
+        )
       }
     })
   }

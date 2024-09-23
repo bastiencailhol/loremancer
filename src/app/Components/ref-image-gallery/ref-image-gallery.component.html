@@ -1,8 +1,9 @@
 <div class="ripped-paper-bg p-2">
     <app-close-button (onClick)="dialogRef.close()"></app-close-button>
     <div *ngIf="imagesRootPath" class="columns-[3] max-md:columns-[2] gap-1">
-        <app-ref-image *ngFor="let image of data.imageGallery" [src]="imagesRootPath + '/' + image.path"
-            [sourceUrl]="image.sourceUrl" (onClick)="dialogRef.close(image)" addClass="mb-1">
+        <app-ref-image *ngFor="let imageKey of imageGallery"
+            [src]="imagesRootPath + '/' + data.imageGallery[imageKey].path"
+            [sourceUrl]="data.imageGallery[imageKey].sourceUrl" (onClick)="onClose(imageKey)" addClass="mb-1">
         </app-ref-image>
     </div>
 </div>
