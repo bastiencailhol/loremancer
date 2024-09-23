@@ -24,6 +24,7 @@ import itemList from 'src/assets/img/image-references/image-catalog.json'
 import { Dialog } from '@angular/cdk/dialog'
 import { RefImageGalleryComponent } from 'src/app/Components/ref-image-gallery/ref-image-gallery.component'
 import { SettingsDialogComponent } from 'src/app/Components/settings-dialog/settings-dialog.component'
+import { AboutDialogComponent } from 'src/app/Components/about-dialog/about-dialog.component'
 
 interface Category {
   name: String
@@ -250,6 +251,15 @@ export class CharacterSheetComponent implements OnInit {
     })
     dialogRef.closed.subscribe(result => {
       this.categoriesLoaded = false
+    })
+  }
+  openAboutDialog() {
+    const dialogRef = this.dialog.open(AboutDialogComponent, {
+      data: {
+        ...this.settings,
+      },
+      backdropClass: 'dialog-backdrop',
+      autoFocus: false,
     })
   }
 

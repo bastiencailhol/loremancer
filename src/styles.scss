@@ -48,6 +48,7 @@
   }
   h4 {
     @apply text-xl;
+    @apply font-medium;
   }
   h5 {
     @apply text-base;
@@ -62,7 +63,21 @@
     @apply font-sans;
   }
   a {
-    @apply text-blue-600 underline;
+    @apply underline;
+    @apply font-sans;
+  }
+  p {
+    @apply font-sans;
+  }
+
+  .secondary-button {
+    @apply font-sans font-medium;
+    @apply tracking-wider;
+    @apply flex;
+    @apply items-center;
+    @apply gap-2;
+    @apply px-4;
+    @apply py-2;
   }
 
   .paper-bg {

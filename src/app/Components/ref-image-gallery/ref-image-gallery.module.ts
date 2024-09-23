@@ -13,7 +13,6 @@ import { CloseButtonModule } from '../close-button/close-button.module'
     DialogModule,
     RefImageModule,
     SourceUrlButtonModule,
-    RefImageModule,
     CloseButtonModule,
   ],
   exports: [RefImageGalleryComponent],
